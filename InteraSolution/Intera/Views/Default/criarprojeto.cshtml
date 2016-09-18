@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "criarprojeto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Criar Novo Projeto</h2>
+<br />
+<div class="container">
+    <div class="row">
+        <div class=" col-md-12 text-left">
+            <div class="form-group row">
+                <label class="col-xs-2 col-form-label">Data de Inicio</label>
+                <div class="input-group">
+                    <input class="form-control" type="date" value="2016-09-21" id="example-date-input">
+                </div>
+                <br />
+                <br />
+                <label for="basic-url">Titulo do Projeto</label>
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon3"></span>
+                    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                </div>
+                <br />
+                <div>
+
+                    <fieldset class="input-group">
+
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                    Trabalho de Conclusão de Curso
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                    Iniciação Científica
+                                </label>
+                            </div>
+
+                        </div>
+                    </fieldset>
+                </div>
+                <br />
+                <div class="form-group row">
+                    <label>Número de Membros</label>
+                    <select class="custom-select">
+                        <option selected>Membros</option>
+                        <option value="1">Apenas eu</option>
+                        <option value="2">Dois Membros</option>
+                        <option value="3">Três Membros</option>
+                        <option value="3">Quatro Membros</option>
+                    </select>
+
+                </div>
+            </div>
+        </div>
+    </div>

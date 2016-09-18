@@ -43,3 +43,4 @@ C:\Users\Luiz Felipe\Source\Repos\Intera\InteraSolution\Intera\bin\System.Web.He
 C:\Users\Luiz Felipe\Source\Repos\Intera\InteraSolution\Intera\bin\System.Web.Mvc.xml
 C:\Users\Luiz Felipe\Source\Repos\Intera\InteraSolution\Intera\obj\Debug\Intera.dll
 C:\Users\Luiz Felipe\Source\Repos\Intera\InteraSolution\Intera\obj\Debug\Intera.pdb
+C:\Users\Luiz Felipe\Source\Repos\Intera\InteraSolution\Intera\obj\Debug\Intera.csprojResolveAssemblyReference.cache
