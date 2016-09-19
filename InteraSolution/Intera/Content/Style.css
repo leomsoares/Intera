@@ -1,0 +1,8 @@
+﻿#btnteste:hover {
+    background-color: #ffd800;
+    border:none;
+}
+#btn:hover{
+    background-color: #2980b9;
+    color:#FFF;
+}
