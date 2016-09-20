@@ -51,5 +51,9 @@ namespace Intera.Controllers
         {
             return View();
         }
+        public ActionResult register()
+        {
+            return View();
+        }
     }
 }
