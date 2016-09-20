@@ -14,36 +14,36 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult adicionarprojeto()
+        public ActionResult addproject()
         {
             return View();
         }
 
-        public ActionResult professores()
+        public ActionResult professors()
         {
             return View();
         }
 
-        public ActionResult iniciacaocientifica()
+        public ActionResult scientificresearch()
         {
             return View();
         }
 
-        public ActionResult projetos()
+        public ActionResult projects()
         {
             return View();
         }
 
-        public ActionResult perfil()
+        public ActionResult profile()
         {
             return View();
         }
 
-        public ActionResult grupo()
+        public ActionResult group()
         {
             return View();
         }
-        public ActionResult criarprojeto()
+        public ActionResult createproject()
         {
             return View();
         }

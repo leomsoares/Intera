@@ -1,16 +1,19 @@
-﻿#btn:hover{
+﻿body{
+    margin-top:50px;
+}
+#btnAdd:hover{
     background-color: #2980b9;
     color:#FFF;
 }
-#btn2:hover{
+#btnEdit:hover{
     background-color: #F7CA18;
     color:#FFF;
 }
-#btn3:hover{
+#btnDel:hover{
     background-color: #F22613;
     color:#FFF;
 }
-#btn4:hover{
+#btnConfirm:hover{
     background-color: #26A65B;
     color:#FFF;
 }

@@ -1,104 +1,97 @@
 ﻿
 @{
-    ViewBag.Title = "criarprojeto";
+    ViewBag.Title = "createproject";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Criar Novo Projeto</h2>
-<br />
-<br />
-<div class="container-fluid">
+<h2>Create New Project</h2>
+
+<div class="container-fluid" style="margin-top: 50px">
     <div class="row">
         <div class="media-left">
             <div class="form-group row">
-                <label class="col-xs-2 col-form-label">Data de Inicio</label>
+                <label>Initial Date</label>
                 <div class="input-group">
                     <input class="form-control" type="date" value="2016-09-21" id="example-date-input">
                 </div>
-                <br />
-                <br />
-                <label for="basic-url">Titulo do Projeto</label>
+
+                <br/>
+                
+                <label for="basic-url">Project Title</label>
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon3"></span>
                     <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
                 </div>
-                <br />
+                
+                <br/>
+
                 <div>
-
                     <fieldset class="input-group">
-
-                        <div class="col-sm-10">
+                        <div>
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                                    Trabalho de Conclusão de Curso
+                                    TCC
                                 </label>
                             </div>
+
                             <div class="form-check">
                                 <label class="form-check-label">
                                     <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                                    Iniciação Científica
+                                    Scientific Research
                                 </label>
                             </div>
-
                         </div>
                     </fieldset>
                 </div>
-                <br />
-               
             </div>
-            <div class="container">
-                <h2>Membros do Grupo</h2>
 
-                <table class="table table-hover" align="left">
+            <div class="container">
+                <h2>Group Members</h2>
+
+                <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Aluno</th>
-                            <th>Função</th>
+                            <th>Studant</th>
+                            <th>Function</th>
                             <th>Email</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Aluno1</td>
-                            <td>Documentação</td>
-                            <td>aluno1@example.com</td>
+                            <td>Student1</td>
+                            <td>Documentation</td>
+                            <td>student1@example.com</td>
                         </tr>
                         <tr>
-                            <td>Aluno2</td>
-                            <td>Programação</td>
-                            <td>aluno2@example.com</td>
+                            <td>Student2</td>
+                            <td>Programation</td>
+                            <td>student2@example.com</td>
                         </tr>
                         <tr>
-                            <td>Aluno3</td>
-                            <td>Banco</td>
-                            <td>aluno3@example.com</td>
+                            <td>Student3</td>
+                            <td>Database</td>
+                            <td>student3@example.com</td>
                         </tr>
                     </tbody>
                    
                 </table>
-                <a id="btn" class="btn btn-default" href="/default/criarprojeto">
+                <a id="btnAdd" class="btn btn-default" href="/default/criarprojeto">
                     <spam class="glyphicon glyphicon-plus"></spam>
-                    Adicionar Membros ao grupo
+                    Add Member
                 </a>
-                <a id="btn2" class="btn btn-default" href="/default/criarprojeto">
-                    <spam class="glyphicon glyphicon-edit"></spam> Editar
+                <a id="btnEdit" class="btn btn-default" href="/default/criarprojeto">
+                    <spam class="glyphicon glyphicon-edit"></spam> Edit
                 </a>
-
-               
-                <a id="btn3" class="btn btn-default" href="/default/criarprojeto">
-                    <spam class="btn btn-xs glyphicon glyphicon-trash"></spam> Apagar
+                <a id="btnDel" class="btn btn-default" href="/default/criarprojeto">
+                    <spam class="glyphicon glyphicon-trash"></spam> Delete
                 </a>
-                <a id="btn4" class="btn btn-default" href="/default/grupo">
+                <a id="btnConfirm" class="btn btn-default" href="/default/grupo">
                     <spam class="glyphicon glyphicon-ok"></spam>
-                    Criar Projeto
+                    Create Project
                 </a>
               
             </div>
         </div>
-        
-
-
-
-        </div>
     </div>
+</div>

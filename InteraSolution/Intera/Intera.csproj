@@ -141,13 +141,13 @@
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Default\adicionarprojeto.cshtml" />
-    <Content Include="Views\Default\grupo.cshtml" />
+    <Content Include="Views\Default\addproject.cshtml" />
+    <Content Include="Views\Default\group.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
-    <Content Include="Views\Default\iniciacaocientifica.cshtml" />
-    <Content Include="Views\Default\perfil.cshtml" />
-    <Content Include="Views\Default\professores.cshtml" />
-    <Content Include="Views\Default\projetos.cshtml" />
+    <Content Include="Views\Default\scientificresearch.cshtml" />
+    <Content Include="Views\Default\profile.cshtml" />
+    <Content Include="Views\Default\professors.cshtml" />
+    <Content Include="Views\Default\projects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -164,7 +164,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Default\criarprojeto.cshtml" />
+    <Content Include="Views\Default\createproject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
