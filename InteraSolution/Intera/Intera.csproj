@@ -166,6 +166,7 @@
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Default\createproject.cshtml" />
     <Content Include="Views\Default\register.cshtml" />
+    <Content Include="Views\Default\contact.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
