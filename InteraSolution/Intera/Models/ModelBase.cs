@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace Intera.Models
 {
-    public abstract class ModelBase :IDisposable
+    public abstract class ModelBase : IDisposable
     {
         protected SqlConnection connection = null;
 
@@ -21,4 +21,5 @@ namespace Intera.Models
         {
             connection.Close();
         }
+    }
 }

@@ -4,46 +4,53 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add Project</h2>
+<div style="margin-top:100px;">
+    <div class="divHeader">
+        <h2 class="">Add Project</h2>
+    </div>
+    <div class="container" style="margin-top:10px;">
 
-<br/>
+        <div class="divProject">
+            <label>Project Title</label>
+            <input type="text" class="form-control inputProject">
+        </div>
 
-<label for="basic-url">Project Title</label>
-<div class="input-group"*@>
-    <span class="input-group-addon" id="basic-addon3"></span>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
+        <div class="divProject">
+            <label>Members</label>
+            <input type="text" class="form-control inputProject" style="margin-left:38px;">
+        </div>
 
-<br />
+        <div class="divProject">
+            <label>Orientador</label>
+            <input type="text" class="form-control inputProject" style="margin-left:26px;">
+        </div>
 
-<label for="basic-url">Author</label>
-<div class="input-group">
-    <span class="input-group-addon" id="basic-addon3"></span>
-    <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
-</div>
+        <div class="divProject">
+            <label>Coorientador</label>
+            <input type="text" class="form-control inputProject" style="margin-left:12px;">
+        </div>
 
-<br />
+        <hr class="hrProject">
 
-<div class="panel panel-default">
-    <div class="panel-heading" >Description</div>
-    <div class="panel-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vulputate risus non condimentum tincidunt. Aenean in quam congue, facilisis mi ut, pretium sapien. Quisque magna augue, ullamcorper nec nulla eget, lacinia convallis arcu. Donec vitae laoreet eros. Integer dignissim massa sed massa luctus tristique. Nullam ornare metus ac ornare ultrices. In dignissim mattis blandit. Ut felis justo, tempor sed arcu quis, elementum imperdiet leo.
+        <div>
+            <label>Resume</label>
+            <textarea class="form-control textareaProject" rows="10"></textarea>
+        </div>
 
-        Morbi iaculis nibh magna, in ornare lacus tempus sit amet. Phasellus at sem a leo porttitor gravida. Cras eu turpis sapien. Integer fringilla nec ligula eu mollis. Donec eget sem lobortis, venenatis sem nec, tincidunt sapien. Fusce arcu metus, laoreet eget posuere eu, imperdiet sit amet mauris. Nunc congue, nisi at efficitur elementum, ipsum quam luctus mauris, a rutrum metus lorem nec est. Nullam bibendum sagittis metus, eget sollicitudin est vulputate sit amet. Vestibulum cursus ultricies ipsum at sollicitudin. Quisque mollis, ligula eu fringilla posuere, augue mauris viverra risus, egestas placerat ligula libero ac dui.
+        <hr class="hrProject">
+
+
+
+        <div class="row" style="height:50px;">
+            <input type="file" class="file">
+            <div class="input-group col-xs-6">
+                <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
+                <span class="input-group-btn">
+                    <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                </span>
+            </div>
+            <a class="btn btn-default btn-lg pull-right btnProject" href="#"><span class="glyphicon glyphicon-send"></span> Send</a>
+            <a class="btn btn-default btn-lg pull-right btnProject" href="#"><span class="glyphicon glyphicon-arrow-left"></span> Back</a>
+        </div>
     </div>
 </div>
-
-<br/>
-
-<input type="file" class="filestyle" data-buttonName="btn-primary">
-
-<br/>
-
-<a class="btn btn-danger" href="/default/index">
-    <span class="glyphicon glyphicon-arrow-left"></span>
-    Back
-</a>
-<a class="btn btn-success" href="/default/index">
-    <span class="glyphicon glyphicon"></span>
-    Send
-</a>

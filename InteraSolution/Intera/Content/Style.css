@@ -1,22 +1,6 @@
 ﻿body{
-    margin-top:50px;
-    
     font-family: 'Open Sans', sans-serif;
 }
-div{
-    font-family: 'Open Sans', sans-serif
-}
-
-h1{
-    font-family: 'Open Sans', sans-serif
-}
-h2{
-    font-family: 'Open Sans', sans-serif
-}
-h3{
-    font-family: 'Open Sans', sans-serif
-}
-
 
 #btnAdd:hover{
     background-color: #2980b9;
@@ -118,5 +102,167 @@ h3{
     }
 }
 
+
+
+
+
+.mdl-layout__header-row {
+    background-color: #757575;
+}
+
+.mdl-layout__drawer span.mdl-layout-title {
+    background-color: #C8E6C9;
+    color: #ffffff;
+    font-weight: 800;
+}
+
+.android-title .mdl-layout-title {
+    color: #ffffff;
+}
+
+
+::-moz-selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+::selection {
+  background-color: #6ab344;
+  color: #fff;
+}
+
+.android-header .material-icons {
+    color: #ffffff !important;
+}
+
+.android-header .mdl-navigation__link {
+    background-color: transparent;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.android-drawer-separator {
+    height: 2px;
+    background-color: #C8E6C9;
+    margin: 0px 0;
+}
+
+.android-more-button {
+    order: 5;
+}
+
+/*ADD PROJECT*/
+.divProject{
+    display:block;
+    margin-top: 15px;
+}
+
+.inputProject{
+    width: 550px;
+    margin-left: 20px;
+    display: inline;
+}
+
+.inputProject:focus {
+    border-color: #808080;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+}
+
+.hrProject{
+    margin-top:30px;
+    margin-bottom:30px;
+    border: 0; 
+    height: 1px; 
+    background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -moz-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -ms-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    background-image: -o-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+    width:90%;
+}
+
+.textareaProject{
+    width: 800px;
+    margin-left: 107px;
+}
+
+.textareaProject:focus {
+    border-color: #808080;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+}
+
+.btn-default{
+    background: #414141;
+    color: #f0f0f0;
+}
+
+.btn-default:hover{
+    background: #ffffff;
+    color: #414141;
+    border-color: #414141;
+}
+
+.file-input-wrapper{
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.btnProject{
+    margin: 5px;
+    position: relative;
+    left: -70px;
+    top: -51px;
+}
+
+.divHeader{
+    height: 75px;
+    background: rgb(55, 54, 54);
+    color: #fff;
+}
+
+.divFooter{
+    height: 40px;
+    background: rgb(55, 54, 54);
+    color: #fff;
+}
+
+.aProject{
+    color: #fff;
+}
+
+.aProject:hover{
+    text-decoration: none;
+    color: #fff;
+}
+
+.aTerms{
+    position:relative;
+    top: 20px;    
+}
+
+h2{
+    position: absolute;
+    left: 50px;
+}
+
+.file {
+  visibility: hidden;
+  position: absolute;
+}
+
+.inputFile{
+    width: 200px;
+}
+
+.rowFooter{
+    position: relative;
+    top: 10px;
+}
 
 
