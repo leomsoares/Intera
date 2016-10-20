@@ -106,51 +106,7 @@
 
 
 
-.mdl-layout__header-row {
-    background-color: #757575;
-}
 
-.mdl-layout__drawer span.mdl-layout-title {
-    background-color: #C8E6C9;
-    color: #ffffff;
-    font-weight: 800;
-}
-
-.android-title .mdl-layout-title {
-    color: #ffffff;
-}
-
-
-::-moz-selection {
-  background-color: #6ab344;
-  color: #fff;
-}
-
-::selection {
-  background-color: #6ab344;
-  color: #fff;
-}
-
-.android-header .material-icons {
-    color: #ffffff !important;
-}
-
-.android-header .mdl-navigation__link {
-    background-color: transparent;
-    color: #ffffff;
-    font-weight: 700;
-    font-size: 16px;
-}
-
-.android-drawer-separator {
-    height: 2px;
-    background-color: #C8E6C9;
-    margin: 0px 0;
-}
-
-.android-more-button {
-    order: 5;
-}
 
 /*ADD PROJECT*/
 .divProject{
