@@ -3,59 +3,58 @@
     ViewBag.Title = "register";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div style="margin-top:60px;">
+    <h2>Register</h2>
+    <br />
+    <div class="container">
+        <form class="form-horizontal" role="form">
 
-<h2>Register</h2>
-<br/>
-<div class="container">
-    <form class="form-horizontal" role="form">
-       
-        <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">Full Name</label>
-            <div class="col-sm-6">
-                <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
-                <span class="help-block">Last Name, First Name, eg.: Luizão</span>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                <div class="col-sm-6">
+                    <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+                    <span class="help-block">Last Name, First Name, eg.: Luizão</span>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="email" class="col-sm-3 control-label">Email</label>
-            <div class="col-sm-6">
-                <input type="email" id="email" placeholder="Email" class="form-control">
+            <div class="form-group">
+                <label for="email" class="col-sm-3 control-label">Email</label>
+                <div class="col-sm-6">
+                    <input type="email" id="email" placeholder="Email" class="form-control">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
-            <div class="col-sm-6">
-                <input type="text" id="firstName" placeholder="ex: 1210481512033" class="form-control" autofocus>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
+                <div class="col-sm-6">
+                    <input type="text" id="firstName" placeholder="ex: 1210481512033" class="form-control" autofocus>
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-6">
-                <input type="password" id="password" placeholder="Password" class="form-control">
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">Password</label>
+                <div class="col-sm-6">
+                    <input type="password" id="password" placeholder="Password" class="form-control">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-3">Profession</label>
-            <div class="col-sm-6">
-                <div class="row">
-                    <div class="col-sm-4">
-                        <label class="radio-inline">
-                            <input type="radio" >Professor
-                        </label>
-                    </div>
-                    <div class="col-sm-4">
-                        <label class="radio-inline">
-                            <input type="radio" >Student
-                        </label>
+            <div class="form-group">
+                <label class="control-label col-sm-3">Profession</label>
+                <div class="col-sm-6">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                <input type="radio">Professor
+                            </label>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="radio-inline">
+                                <input type="radio">Student
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="container col-sm-3 col-sm-offset-4">
-                <a type="submit" class="btn btn-success btn-block" href="/default/profile">Register</a>
+            <div class="form-group">
+                <div class="container col-sm-3 col-sm-offset-4">
+                    <a type="submit" class="btn btn-success btn-block" href="/default/profile">Register</a>
+                </div>
             </div>
-        </div>
-    </form> <!-- /form -->
-</div> <!-- ./container -->
+        </form> <!-- /form -->
+    </div> <!-- ./container -->
