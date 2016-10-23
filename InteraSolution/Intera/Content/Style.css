@@ -202,11 +202,6 @@
     top: 20px;    
 }
 
-/*h2{
-    position: absolute;
-    left: 50px;
-}*/
-
 .file {
   visibility: hidden;
   position: absolute;
@@ -221,4 +216,78 @@
     top: 10px;
 }
 
+/*CREATE PROJECT*/
+.input-create:focus {
+    border-color: #808080;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+}
 
+.title-create{
+    width: 550px;
+}
+
+/*INDEX*/
+
+.teste-shadow:hover{
+    -webkit-box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+    box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+
+}
+
+/*SEEK PROJECT*/
+.input-search {
+    width:1000px;
+    display: inline-block;
+}
+
+.button-search {
+    width: 150px;
+    display: inline-block;
+}
+
+.nav-left{
+    width: 200px;
+    border: 1px solid black;
+    display: inline-block;
+}
+
+.teste {
+    width: 900px;
+    display: inline-block;
+    padding: 10px;
+}
+
+.item-project {
+    padding: 5px;
+    border: 1px solid gray;
+    margin: 7px 2px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.info-seek {
+    display: inline-block;
+}
+
+.label-seek {
+    display: block;
+}
+
+.btn-seek {
+    display: block;
+    width: 110px;
+    margin-bottom: 10px;
+
+}
+
+/*LAYOUT*/
+#menu li a:hover {
+    background: #fff;
+    color: #000;
+    transition: background 0.1s linear 0.01s;
+}

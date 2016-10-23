@@ -14,22 +14,12 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult addproject()
-        {
-            return View();
-        }
-
         public ActionResult professors()
         {
             return View();
         }
 
         public ActionResult scientificresearch()
-        {
-            return View();
-        }
-
-        public ActionResult projects()
         {
             return View();
         }
@@ -43,10 +33,7 @@ namespace Intera.Controllers
         {
             return View();
         }
-        public ActionResult createproject()
-        {
-            return View();
-        }
+
         public ActionResult login()
         {
             return View();
