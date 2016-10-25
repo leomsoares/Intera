@@ -23,5 +23,10 @@ namespace Intera.Controllers
         {
             return View();
         }
+
+        public ActionResult seeproject()
+        {
+            return View();
+        }
     }
 }
