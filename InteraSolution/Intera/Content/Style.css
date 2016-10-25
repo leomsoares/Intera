@@ -243,18 +243,27 @@
     display: inline-block;
 }
 
+.input-search:focus {
+    border-color: #808080;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+}
+
 .button-search {
-    width: 150px;
+    width: 115px;
     display: inline-block;
 }
 
 .nav-left{
     width: 200px;
-    border: 1px solid black;
     display: inline-block;
+    position: relative;
+    top: -160px;
+    padding-top: 0px;
 }
 
-.teste {
+.div-projects {
     width: 900px;
     display: inline-block;
     padding: 10px;
@@ -272,6 +281,9 @@ ul {
 
 .info-seek {
     display: inline-block;
+    padding-left: 20px;
+    position: relative;
+    top: 27px;
 }
 
 .label-seek {
@@ -283,6 +295,13 @@ ul {
     width: 110px;
     margin-bottom: 10px;
 
+}
+
+.nav-left h3 {
+    background: #242424;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
 }
 
 /*LAYOUT*/
