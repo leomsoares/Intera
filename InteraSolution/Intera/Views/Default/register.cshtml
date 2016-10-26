@@ -7,31 +7,31 @@
     <h2>Register</h2>
     <br />
     <div class="container">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" id="formRegister">
 
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Full Name</label>
                 <div class="col-sm-6">
-                    <input type="text" id="firstName" placeholder="Full Name" class="form-control" autofocus>
+                    <input type="text" id="firstName" placeholder="Full Name" class="form-control input-register" autofocus>
                     <span class="help-block">Last Name, First Name, eg.: Luizão</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" id="email" placeholder="Email" class="form-control">
+                    <input type="email" id="email" placeholder="Email" class="form-control input-register">
                 </div>
             </div>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
                 <div class="col-sm-6">
-                    <input type="text" id="firstName" placeholder="ex: 1210481512033" class="form-control" autofocus>
+                    <input type="text" id="firstName" placeholder="ex: 1210481512033" class="form-control input-register" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-6">
-                    <input type="password" id="password" placeholder="Password" class="form-control">
+                    <input type="password" id="password" placeholder="Password" class="form-control input-register">
                 </div>
             </div>
             <div class="form-group">
@@ -40,12 +40,13 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio">Professor
+                                <input type="radio" name="userRadio" checked>Student
                             </label>
                         </div>
+
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio">Student
+                                <input type="radio" name="userRadio">Professor
                             </label>
                         </div>
                     </div>
@@ -55,7 +56,7 @@
             </div>
             <div class="form-group">
                 <div class="container col-sm-3 col-sm-offset-4">
-                    <a type="submit" class="btn btn-success btn-block" href="/default/profile">Register</a>
+                    <a type="submit" class="btn btn-default btn-block" href="/default/profile">Register</a>
                 </div>
             </div>
         </form> <!-- /form -->

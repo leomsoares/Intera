@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "createproject";
-    Layout = "~/Views/Shared/_LayoutOff.cshtml";
+    Layout = "~/Views/Shared/_LayoutOn.cshtml";
 }
 <div style="margin-top:60px;">
     <h2>Create New Project</h2>
@@ -10,13 +10,6 @@
         <div class="row">
             <div class="media-left">
                 <div class="form-group row">
-                    @*<label>Initial Date</label>
-                    <div class="input-group">
-                        <input class="form-control input-create" type="date" value="2016-09-21" id="example-date-input">
-                    </div>
-
-                    <br />*@
-
                     <label>Project Title</label>
                     <div class="input-group">
                         <input type="text" class="form-control input-create title-create">
@@ -83,9 +76,6 @@
                     <a id="btnAdd" class="btn btn-default" href="#">
                         <spam class="glyphicon glyphicon-plus"></spam>
                         Add Member
-                    </a>
-                    <a id="btnEdit" class="btn btn-default" href="#">
-                        <spam class="glyphicon glyphicon-edit"></spam> Edit
                     </a>
                     <a id="btnDel" class="btn btn-default" href="#">
                         <spam class="glyphicon glyphicon-trash"></spam> Delete

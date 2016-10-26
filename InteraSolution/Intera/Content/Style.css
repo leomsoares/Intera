@@ -234,7 +234,15 @@
     -webkit-box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
     -moz-box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
     box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+}
 
+#drop-user li a:hover {
+    background: #ebebeb;
+}
+
+.img-user {
+    width: 30px;
+    height: 30px;
 }
 
 /*SEEK PROJECT*/
@@ -309,4 +317,33 @@ ul {
     background: #fff;
     color: #000;
     transition: background 0.1s linear 0.01s;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    font-weight: bold;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    background: #fff;
+    color: #000;
+    transition: background 0.1s linear 0.01s;
+}
+
+#menu li a {
+    font-weight: bold;
+}
+
+.img-layout {
+    width: 116px;
+    height: 40px;
+    position: relative;
+    top: -9px;
+}
+
+/*REGISTER*/
+.input-register:focus {
+    border-color: #808080;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
 }
