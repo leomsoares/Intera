@@ -46,5 +46,9 @@ namespace Intera.Controllers
         {
             return View();
         }
+        public ActionResult about()
+        {
+            return View();
+        }
     }
 }

@@ -174,6 +174,7 @@
     <Content Include="Views\Default\contact.cshtml" />
     <Content Include="Views\Shared\_LayoutOn.cshtml" />
     <Content Include="Views\Project\seeproject.cshtml" />
+    <Content Include="Views\Default\about.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
