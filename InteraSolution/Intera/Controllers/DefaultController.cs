@@ -50,5 +50,9 @@ namespace Intera.Controllers
         {
             return View();
         }
+        public ActionResult editmembers()
+        {
+            return View();
+        }
     }
 }
