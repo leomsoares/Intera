@@ -154,7 +154,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Entity\Aluno.cs" />
     <Compile Include="Entity\Pessoa.cs" />
+    <Compile Include="Entity\Professor.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

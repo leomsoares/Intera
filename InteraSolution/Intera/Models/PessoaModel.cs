@@ -54,5 +54,20 @@ namespace Intera.Models
             }
             return p;
         }
+
+        public void CreateAluno(Pessoa p, Aluno a)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"INSERT INTO Pessoa VALUES (@nome, 1, @email, @senha) 
+                                INSERT INTO Aluno VALUE (@@IDENTITY, @ra)";
+
+            cmd.Parameters.AddWithValue("@nome", p.Nome);
+            cmd.Parameters.AddWithValue("@email", p.Email);
+            cmd.Parameters.AddWithValue("@senha", p.Senha);
+            cmd.Parameters.AddWithValue("@ra", a.Ra);
+
+            cmd.ExecuteNonQuery();
+        }
     }
 }

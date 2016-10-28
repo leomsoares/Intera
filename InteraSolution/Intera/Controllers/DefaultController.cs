@@ -28,7 +28,6 @@ namespace Intera.Controllers
                 if(p != null)
                 {
                     Session["user"] = p;
-                    ViewBag.NomeUsuario = p.Nome;
                     return RedirectToAction("Index", "Default");
                 }
             }
@@ -43,7 +42,29 @@ namespace Intera.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult register()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult register(FormCollection form)
+        {
+            Pessoa p = new Pessoa();
+            Aluno a = new Aluno();
+
+            p.Nome = form["Nome"];
+            p.Email = form["Email"];
+            p.Senha = form["Senha"];
+            a.Ra = form["Ra"];
+
+            using (PessoaModel model = new PessoaModel())
+            {
+                model.CreateAluno(p, a);
+            }
+
+            return RedirectToAction("Register", "Default");
+        }
 
 
 
@@ -68,10 +89,6 @@ namespace Intera.Controllers
         }
 
         public ActionResult login()
-        {
-            return View();
-        }
-        public ActionResult register()
         {
             return View();
         }

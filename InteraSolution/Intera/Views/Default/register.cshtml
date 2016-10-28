@@ -7,31 +7,31 @@
     <h2>Register</h2>
     <br />
     <div class="container">
-        <form class="form-horizontal" role="form" id="formRegister">
+        <form class="form-horizontal" action="/default/register" method="post">
 
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Full Name</label>
                 <div class="col-sm-6">
-                    <input type="text" id="firstName" placeholder="Full Name" class="form-control input-register" autofocus>
+                    <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" autofocus>
                     <span class="help-block">Last Name, First Name, eg.: Luizão</span>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-3 control-label">Email</label>
                 <div class="col-sm-6">
-                    <input type="email" id="email" placeholder="Email" class="form-control input-register">
+                    <input type="email" name="Email" placeholder="Email" class="form-control input-register">
                 </div>
             </div>
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
                 <div class="col-sm-6">
-                    <input type="text" id="firstName" placeholder="ex: 1210481512033" class="form-control input-register" autofocus>
+                    <input type="text" name="Ra" placeholder="ex: 1210481512033" class="form-control input-register" autofocus>
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 control-label">Password</label>
                 <div class="col-sm-6">
-                    <input type="password" id="password" placeholder="Password" class="form-control input-register">
+                    <input type="password" name="Senha" placeholder="Password" class="form-control input-register">
                 </div>
             </div>
             <div class="form-group">
@@ -56,7 +56,7 @@
             </div>
             <div class="form-group">
                 <div class="container col-sm-3 col-sm-offset-4">
-                    <a type="submit" class="btn btn-default btn-block" href="/default/profile">Register</a>
+                    <button type="submit" class="btn btn-default btn-block">Register</button>
                 </div>
             </div>
         </form> <!-- /form -->
