@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Intera.Entity;
+using Intera.Models;
 
 namespace Intera.Controllers
 {
@@ -13,6 +15,37 @@ namespace Intera.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index(FormCollection form)
+        {
+            string email = form["email"];
+            string senha = form["senha"];
+
+            using (PessoaModel model = new PessoaModel())
+            {
+                Pessoa p = model.Login(email, senha);
+                if(p != null)
+                {
+                    Session["user"] = p;
+                    ViewBag.NomeUsuario = p.Nome;
+                    return RedirectToAction("Index", "Default");
+                }
+            }
+
+            ViewBag.Mensagem = "Usuário não cadastrado";
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Remove("user");
+            return RedirectToAction("Index");
+        }
+
+
+
+
 
         public ActionResult professors()
         {
