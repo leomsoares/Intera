@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css" />
 </head>
 <body>
+    @if (Session["user"] == null)
+    {
     <nav class="navbar navbar-inverse navbar-fixed-top ">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -19,7 +21,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/default/index">@*<img src="http://i68.tinypic.com/ojftox.jpg" />*@<img src="http://i67.tinypic.com/2jv7s4.png" class="img-layout"/></a>
+                <a class="navbar-brand" href="/default/index"><img src="http://i67.tinypic.com/2jv7s4.png" class="img-layout"/></a>
             </div>
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -28,17 +30,70 @@
                     <li><a href="/project/addproject">ADD PROJECT</a></li>
                     <li><a href="/project/seekproject">PROJECTS</a></li>
                     <li><a href="/default/scientificresearch">SCIENTIFIC RESEARCH</a></li>
-                    @*<li><a href="/default/professors">PROFESSORS</a></li>*@
+                    <li><a href="/default/about">ABOUT</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">LOGIN<span class="caret"></span></a>
+                        <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <form class="form" role="form" method="post" action="/default/Index" id="login-nav">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                <input type="email" class="form-control" name="email"  placeholder="Email address" required>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                <input type="password" class="form-control" name="senha" placeholder="Password" required>
+                                                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    }
+
+    else
+    { 
+    <nav class="navbar navbar-inverse navbar-fixed-top ">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/default/index"><img src="http://i67.tinypic.com/2jv7s4.png" class="img-layout" /></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul id="menu" class="nav navbar-nav">
+                    <li class="active">
+                    <li><a href="/project/addproject">ADD PROJECT</a></li>
+                    <li><a href="/project/seekproject">PROJECTS</a></li>
+                    <li><a href="/default/scientificresearch">SCIENTIFIC RESEARCH</a></li>
                     <li><a href="/default/group">MY GROUP</a></li>
                     <li><a href="/default/about">ABOUT</a></li>
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" id="drop-user">
-                        <a href="#"  data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"> Admin<span class="caret"></span></a>
+                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.Nome<span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="/default/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                            @*<li><a href="#">Status</a></li>*@
                             <li><a href="/project/createproject"><span class="glyphicon glyphicon-plus"></span> Create Project</a></li>
                             <li><a href="/default/register"><span class="glyphicon glyphicon-plus-sign"></span> Register</a></li>
                             <li role="separator" class="divider"></li>
@@ -49,6 +104,8 @@
             </div>
         </div>
     </nav>
+    }
+
 
     <div class="container">
         @RenderBody()
