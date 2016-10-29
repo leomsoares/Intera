@@ -141,7 +141,6 @@
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Shared\_LayoutOff.cshtml" />
     <Content Include="Views\Project\addproject.cshtml" />
     <Content Include="Views\Default\group.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
@@ -174,7 +173,7 @@
     <Content Include="Views\Project\createproject.cshtml" />
     <Content Include="Views\Default\register.cshtml" />
     <Content Include="Views\Default\contact.cshtml" />
-    <Content Include="Views\Shared\_LayoutOn.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Project\seeproject.cshtml" />
     <Content Include="Views\Default\about.cshtml" />
     <Content Include="Views\Default\editmembers.cshtml" />
