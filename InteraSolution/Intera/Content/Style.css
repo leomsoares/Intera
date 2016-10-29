@@ -334,11 +334,12 @@ ul {
 }
 
 .img-layout {
-    width: 116px;
-    height: 40px;
+    /*width: 116px;
+    height: 40px;*/
     position: relative;
     top: -9px;
 }
+
 
 /*REGISTER*/
 .input-register:focus {
