@@ -7,7 +7,7 @@ using Intera.Entity;
 
 namespace Intera.Models
 {
-    public class PessoaModel : Modelbase
+    public class PessoaModel : ModelBase
     {
         public List<Pessoa> Read()
         {
