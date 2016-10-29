@@ -50,20 +50,36 @@ namespace Intera.Controllers
         [HttpPost]
         public ActionResult register(FormCollection form)
         {
-            Pessoa p = new Pessoa();
+            int verificar = 0;
+            verificar = Convert.ToInt32(form["Type"]);
+
             Aluno a = new Aluno();
+            Professor p = new Professor();
+           
+            a.Nome = form["Nome"];
+            a.Email = form["Email"];
+            a.Senha = form["Senha"];
+            a.Ra = form["RaRs"];
+            a.Curso = form["Curso"];
 
             p.Nome = form["Nome"];
             p.Email = form["Email"];
             p.Senha = form["Senha"];
-            a.Ra = form["Ra"];
+            p.Rs = form["RaRs"];
 
             using (PessoaModel model = new PessoaModel())
             {
-                model.CreateAluno(p, a);
+                if(verificar == 1)
+                {
+                    model.CreateAluno(a);
+                }
+                else if(verificar == 2)
+                {
+                    model.CreateProfessor(p);
+                }
             }
 
-            return RedirectToAction("Register", "Default");
+            return RedirectToAction("Register");
         }
 
 

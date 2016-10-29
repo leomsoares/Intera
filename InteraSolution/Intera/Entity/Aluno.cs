@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Intera.Entity
 {
-    public class Aluno
+    public class Aluno : Pessoa
     {
-        public int Pessoa_id { get; set; }
         public string Ra { get; set; }
-        public String Curso { get; set; }
+        public string Curso { get; set; }
     }
 }

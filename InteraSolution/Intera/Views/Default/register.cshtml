@@ -25,7 +25,13 @@
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
                 <div class="col-sm-6">
-                    <input type="text" name="Ra" placeholder="ex: 1210481512033" class="form-control input-register" autofocus>
+                    <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" autofocus>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Curso</label>
+                <div class="col-sm-6">
+                    <input type="text" name="Curso" placeholder="ex: Curso" class="form-control input-register" autofocus>
                 </div>
             </div>
             <div class="form-group">
@@ -40,19 +46,17 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" name="userRadio" checked>Student
+                                <input type="radio" name="Type" value="1" checked>Student
                             </label>
                         </div>
 
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" name="userRadio">Professor
+                                <input type="radio" name="Type" value="2" >Professor
                             </label>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
             </div>
             <div class="form-group">
                 <div class="container col-sm-3 col-sm-offset-4">
@@ -61,3 +65,4 @@
             </div>
         </form> <!-- /form -->
     </div> <!-- ./container -->
+</div>

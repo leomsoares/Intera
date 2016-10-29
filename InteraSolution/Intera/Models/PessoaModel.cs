@@ -55,17 +55,33 @@ namespace Intera.Models
             return p;
         }
 
-        public void CreateAluno(Pessoa p, Aluno a)
+        public void CreateAluno(Aluno aluno)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"INSERT INTO Pessoa VALUES (@nome, 1, @email, @senha) 
-                                INSERT INTO Aluno VALUE (@@IDENTITY, @ra)";
+            cmd.CommandText = @"AddAluno";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-            cmd.Parameters.AddWithValue("@nome", p.Nome);
-            cmd.Parameters.AddWithValue("@email", p.Email);
-            cmd.Parameters.AddWithValue("@senha", p.Senha);
-            cmd.Parameters.AddWithValue("@ra", a.Ra);
+            cmd.Parameters.AddWithValue("@nome", aluno.Nome);
+            cmd.Parameters.AddWithValue("@email", aluno.Email);
+            cmd.Parameters.AddWithValue("@senha", aluno.Senha);
+            cmd.Parameters.AddWithValue("@ra", aluno.Ra);
+            cmd.Parameters.AddWithValue("@curso", aluno.Curso);
+
+            cmd.ExecuteNonQuery();
+        }
+
+        public void CreateProfessor(Professor professor)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = @"AddProfessor";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@nome", professor.Nome);
+            cmd.Parameters.AddWithValue("@email", professor.Email);
+            cmd.Parameters.AddWithValue("@senha", professor.Senha);
+            cmd.Parameters.AddWithValue("@rs", professor.Rs);
 
             cmd.ExecuteNonQuery();
         }

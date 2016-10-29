@@ -5,9 +5,8 @@ using System.Web;
 
 namespace Intera.Entity
 {
-    public class Professor
+    public class Professor : Pessoa
     {
-        public int Pessoa_id { get; set; }
         public string Rs { get; set; }
     }
 }
