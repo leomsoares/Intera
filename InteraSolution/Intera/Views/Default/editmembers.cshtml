@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Aluno>
+
 @{
     ViewBag.Title = "editmembers";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -66,25 +67,26 @@
     <table class="table table-hover">
         <tr>
             <th>Name</th>
-            <th>RA</th>
+            <th>RA/RS</th>
             <th>Studying</th>
             <th>Semester</th>
         </tr>
-        @*@foreach (var t in Model)
-        {
+        @foreach (var a in Model)
+        { 
             <tr>
 
-                <td>@t.IdTarefa</td>
-                <td>@t.Texto</td>
-                <td>@t.Concluida</td>
+                <td>@a.Nome</td>
+                <td>@a.Ra</td>
+                <td>@a.Curso</td>
+
                 <td>
                     <div class="btn-group">
-                        <a href="/tarefa/update/@t.IdTarefa" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
-                        <a href="/tarefa/update/@t.IdTarefa" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span> Apagar</a>
+                        <a href="/tarefa/update/@a.Ra" class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+                        <a href="/tarefa/update/@a.Ra" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span> Apagar</a>
                     </div>
                 </td>
             </tr>
-        }*@
+        }
     </table>
 
 

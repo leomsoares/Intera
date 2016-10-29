@@ -85,5 +85,47 @@ namespace Intera.Models
 
             cmd.ExecuteNonQuery();
         }
+
+        public List<Aluno> Read(string Nome, string Ra, string Curso)
+        {
+            List<Aluno> lista = new List<Aluno>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Alunos";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Aluno a = new Aluno();
+
+                a.Nome = (string)reader["Nome"];
+                a.Ra = (string)reader["Ra"];
+                a.Curso = (string)reader["Curso"];
+
+                lista.Add(a);
+            }
+            return lista;
+        }
+
+        public List<Professor> Read(string Rs)
+        {
+            List<Professor> lista = new List<Professor>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Professor";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Professor prof = new Professor();
+
+                prof.Rs = (string)reader["Rs"];
+
+                lista.Add(prof);
+            }
+            return lista;
+        }
     }
 }
