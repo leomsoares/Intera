@@ -145,14 +145,16 @@
     <Content Include="Views\Default\group.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\scientificresearch.cshtml" />
-    <Content Include="Views\Default\profile.cshtml" />
+    <Content Include="Views\User\profile.cshtml" />
     <Content Include="Views\Default\professors.cshtml" />
     <Content Include="Views\Project\seekproject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Autoriza.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entity\Aluno.cs" />
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Professor.cs" />
@@ -171,12 +173,12 @@
     </Content>
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Project\createproject.cshtml" />
-    <Content Include="Views\Default\register.cshtml" />
+    <Content Include="Views\User\manage.cshtml" />
     <Content Include="Views\Default\contact.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Project\seeproject.cshtml" />
     <Content Include="Views\Default\about.cshtml" />
-    <Content Include="Views\Default\editmembers.cshtml" />
+    <Content Include="Views\User\edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -187,6 +189,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Imagens\" />
+    <Folder Include="Views\Autoriza\" />
+    <Folder Include="Views\NameUser\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

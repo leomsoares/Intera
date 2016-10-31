@@ -13,6 +13,12 @@ namespace Intera.Controllers
         // GET: Default
         public ActionResult Index()
         {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+            }
             return View();
         }
 
@@ -42,45 +48,7 @@ namespace Intera.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult register()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult register(FormCollection form)
-        {
-            int verificar = 0;
-            verificar = Convert.ToInt32(form["Type"]);
-
-            Aluno a = new Aluno();
-            Professor p = new Professor();
-           
-            a.Nome = form["Nome"];
-            a.Email = form["Email"];
-            a.Senha = form["Senha"];
-            a.Ra = form["RaRs"];
-            a.Curso = form["Curso"];
-
-            p.Nome = form["Nome"];
-            p.Email = form["Email"];
-            p.Senha = form["Senha"];
-            p.Rs = form["RaRs"];
-
-            using (PessoaModel model = new PessoaModel())
-            {
-                if(verificar == 1)
-                {
-                    model.CreateAluno(a);
-                }
-                else if(verificar == 2)
-                {
-                    model.CreateProfessor(p);
-                }
-            }
-
-            return RedirectToAction("Register");
-        }
+        
 
 
 
@@ -114,6 +82,12 @@ namespace Intera.Controllers
         }
         public ActionResult about()
         {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+            }
             return View();
         }
         public ActionResult editmembers()

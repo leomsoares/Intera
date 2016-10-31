@@ -1,13 +1,43 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Aluno>
 @{
-    ViewBag.Title = "register";
+    ViewBag.Title = "manage";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="margin-top:60px;">
-    <h2>Register</h2>
-    <br />
+    <h2>Manage Users</h2>
+    
     <div class="container">
-        <form class="form-horizontal" action="/default/register" method="post">
+        <div class="row">
+            <input type="text" class="form-control input-search" placeholder="search...">
+            <button class="form-control btn btn-default button-search" type="submit">
+                <span class="glyphicon glyphicon-search">  </span>
+            </button>
+        </div>
+    
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>NAME</th>
+            <th>E-MAIL</th>
+            <th>RA / RS</th>
+            <th>STATUS</th>
+        </tr>
+        @foreach (var a in Model)
+        {
+            <tr>
+                <td>@a.IdPessoa</td>
+                <td>@a.Nome</td>
+                <td>@a.Email</td>
+                <td>@a.Ra</td>
+                <td>@a.Status</td>
+                <td>Student</td>
+            </tr>
+        }
+    </table>
+    
+    
+    
+        <form class="form-horizontal" action="/user/register" method="post">
 
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Full Name</label>

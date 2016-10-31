@@ -39,7 +39,8 @@ namespace Intera.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa WHERE Email = @email AND Senha = @senha";
+            cmd.CommandText = "Login";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@senha", senha);
@@ -86,22 +87,24 @@ namespace Intera.Models
             cmd.ExecuteNonQuery();
         }
 
-        public List<Aluno> Read(string Nome, string Ra, string Curso)
+        public List<Aluno> AlunoRead()
         {
             List<Aluno> lista = new List<Aluno>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Alunos";
+            cmd.CommandText = "select	  p.IdPessoa	Id , p.Nome Nome, p.Email Email, a.Ra Ra, p.Status Status from Pessoa p, Aluno a where p.IdPessoa = a.Pessoa_id";
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 Aluno a = new Aluno();
 
+                a.IdPessoa = (int)reader["Id"];
                 a.Nome = (string)reader["Nome"];
+                a.Email = (string)reader["Email"];
                 a.Ra = (string)reader["Ra"];
-                a.Curso = (string)reader["Curso"];
+                a.Status = (int)reader["Status"];
 
                 lista.Add(a);
             }
