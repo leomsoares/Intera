@@ -8,6 +8,18 @@
     <div>
         <h2>Add Project</h2>
     </div>
+
+
+    <form action="" method="post">
+        @*<label style="display: block">
+            <input type="button" name="add" value="Add" />
+        </label>
+        <label style="display: block">Nome: 
+            <input type="text" name="foto[]">
+        </label>
+        <fieldset id="inputs_adicionais" style="border: none"></fieldset>*@
+    </form>  
+
     <div class="container" style="margin-top:10px;">
 
         <div class="divProject">
@@ -17,7 +29,11 @@
 
         <div class="divProject">
             <label>Members</label>
-            <input type="text" class="form-control inputProject" style="margin-left:35px;">
+            <label>
+                <input type="text" class="form-control inputProject" name="foto[]" style="margin-left:35px;">
+            </label>
+            <input type="button" class="btn btn-default" name="add" value="+" />
+            <fieldset id="inputs_adicionais"></fieldset>
         </div>
 
         <div class="divProject">
