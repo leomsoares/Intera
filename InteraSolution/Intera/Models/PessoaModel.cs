@@ -99,7 +99,7 @@ namespace Intera.Models
             while (reader.Read())
             {
                 Aluno a = new Aluno();
-
+                
                 a.IdPessoa = (int)reader["Id"];
                 a.Nome = (string)reader["Nome"];
                 a.Email = (string)reader["Email"];
@@ -108,23 +108,28 @@ namespace Intera.Models
 
                 lista.Add(a);
             }
+            
             return lista;
         }
 
-        public List<Professor> Read(string Rs)
+        public List<Professor> ProfessorRead()
         {
             List<Professor> lista = new List<Professor>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Professor";
+            cmd.CommandText = "select	  p.IdPessoa	Id, p.Nome Nome, p.Email Email, prof.Rs Rs, p.Status Status from Pessoa p, Professor prof where p.IdPessoa = prof.Pessoa_id ";
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 Professor prof = new Professor();
 
+                prof.IdPessoa = (int)reader["Id"];
+                prof.Nome = (string)reader["Nome"];
+                prof.Email = (string)reader["Email"];
                 prof.Rs = (string)reader["Rs"];
+                prof.Status = (int)reader["Status"];
 
                 lista.Add(prof);
             }

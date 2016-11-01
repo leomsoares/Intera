@@ -20,6 +20,7 @@ namespace Intera.Controllers
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
             }
+
             PessoaModel model = new PessoaModel();
             List<Aluno> lista = model.AlunoRead();
 
