@@ -22,7 +22,8 @@ namespace Intera.Controllers
             }
 
             PessoaModel model = new PessoaModel();
-            List<Aluno> lista = model.AlunoRead();
+            List<Pessoa> lista = model.PessoaRead();
+
 
             return View(lista);
         }

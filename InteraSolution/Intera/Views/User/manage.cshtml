@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Intera.Models.Aluno>
+﻿@model IEnumerable<Intera.Entity.Pessoa>
 @{
     ViewBag.Title = "manage";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,23 +19,26 @@
             <th>#</th>
             <th>NAME</th>
             <th>E-MAIL</th>
-            <th>RA / RS</th>
             <th>STATUS</th>
         </tr>
-        @foreach (var a in Model)
+
+        @foreach (var t in Model)
         {
             <tr>
-                <td>@a.IdPessoa</td>
-                <td>@a.Nome</td>
-                <td>@a.Email</td>
-                <td>@a.Ra</td>
-                <td>@a.Status</td>
-                <td>Student</td>
+                <td>@t.IdPessoa</td>
+                <td>@t.Nome</td>
+                <td>@t.Email</td>
+                @if(t.Status == 1)
+                {
+                    <td>Ativo</td>
+                }
+                else if (t.Status == 0)
+                {
+                    <td>Inativo</td>
+                }
             </tr>
         }
     </table>
-    
-    
     
         <form class="form-horizontal" action="/user/register" method="post">
 

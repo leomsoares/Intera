@@ -9,7 +9,7 @@ namespace Intera.Models
 {
     public class PessoaModel : ModelBase
     {
-        public List<Pessoa> Read()
+        public List<Pessoa> PessoaRead()
         {
             List<Pessoa> lista = new List<Pessoa>();
 
