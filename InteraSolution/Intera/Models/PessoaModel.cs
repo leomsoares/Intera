@@ -9,19 +9,45 @@ namespace Intera.Models
 {
     public class PessoaModel : ModelBase
     {
-        public List<Pessoa> PessoaRead()
+        public List<Pessoa> Read()
         {
             List<Pessoa> lista = new List<Pessoa>();
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa";
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 0 OR Status = 1 OR Status = 2";
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 Pessoa p = new Pessoa();
 
+                p.IdPessoa = (int)reader["IdPessoa"];
+                p.Nome = (string)reader["Nome"];
+                p.Status = (int)reader["Status"];
+                p.Email = (string)reader["Email"];
+                p.Senha = (string)reader["Senha"];
+
+                lista.Add(p);
+            }
+            return lista;
+        }
+
+        public List<Pessoa> Read(string busca)
+        {
+            List<Pessoa> lista = new List<Pessoa>();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Pessoa LIKE @nome";
+
+            cmd.Parameters.AddWithValue("@nome", busca);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Pessoa p = new Pessoa();
                 p.IdPessoa = (int)reader["IdPessoa"];
                 p.Nome = (string)reader["Nome"];
                 p.Status = (int)reader["Status"];
@@ -86,54 +112,30 @@ namespace Intera.Models
 
             cmd.ExecuteNonQuery();
         }
-
-        public List<Aluno> AlunoRead()
+        
+        public  void Update(Pessoa p)
         {
-            List<Aluno> lista = new List<Aluno>();
-
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "select	  p.IdPessoa	Id , p.Nome Nome, p.Email Email, a.Ra Ra, p.Status Status from Pessoa p, Aluno a where p.IdPessoa = a.Pessoa_id";
+            cmd.CommandText = "UPDATE Pessoa SET Nome= @nome, Email = @email, Senha = @senha WHERE IdPessoa = @idPessoa";
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Aluno a = new Aluno();
-                
-                a.IdPessoa = (int)reader["Id"];
-                a.Nome = (string)reader["Nome"];
-                a.Email = (string)reader["Email"];
-                a.Ra = (string)reader["Ra"];
-                a.Status = (int)reader["Status"];
+            cmd.Parameters.AddWithValue("@nome", p.Nome);
+            cmd.Parameters.AddWithValue("@email", p.Email);
+            cmd.Parameters.AddWithValue("@senha", p.Senha);
+            cmd.Parameters.AddWithValue("@idPessoa", p.IdPessoa);
 
-                lista.Add(a);
-            }
-            
-            return lista;
+            cmd.ExecuteNonQuery();
         }
 
-        public List<Professor> ProfessorRead()
+        public void Delete(int IdPessoa)
         {
-            List<Professor> lista = new List<Professor>();
-
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "select	  p.IdPessoa	Id, p.Nome Nome, p.Email Email, prof.Rs Rs, p.Status Status from Pessoa p, Professor prof where p.IdPessoa = prof.Pessoa_id ";
+            cmd.CommandText = "DELETE FROM Pessoa WHERE IdPessoa = @idPessoa";
 
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Professor prof = new Professor();
+            cmd.Parameters.AddWithValue("@idPessoa", IdPessoa);
 
-                prof.IdPessoa = (int)reader["Id"];
-                prof.Nome = (string)reader["Nome"];
-                prof.Email = (string)reader["Email"];
-                prof.Rs = (string)reader["Rs"];
-                prof.Status = (int)reader["Status"];
-
-                lista.Add(prof);
-            }
-            return lista;
+            cmd.ExecuteNonQuery();
         }
     }
 }

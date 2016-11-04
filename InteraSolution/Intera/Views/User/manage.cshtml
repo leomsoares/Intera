@@ -28,19 +28,27 @@
                 <td>@t.IdPessoa</td>
                 <td>@t.Nome</td>
                 <td>@t.Email</td>
-                @if(t.Status == 1)
-                {
-                    <td>Ativo</td>
-                }
-                else if (t.Status == 0)
+                @if(t.Status == 0)
                 {
                     <td>Inativo</td>
                 }
+                else if (t.Status == 1)
+                {
+                    <td>Aluno</td>
+                }
+                else if (t.Status == 2)
+                {
+                    <td>Professor</td>
+                }
+                <td>
+                    <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                    <a href="#" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                </td>
             </tr>
         }
     </table>
     
-        <form class="form-horizontal" action="/user/register" method="post">
+        <form class="form-horizontal" action="/user/manage" method="post">
 
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Full Name</label>
