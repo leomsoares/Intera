@@ -6,7 +6,7 @@ Objetivo: Construir uma aplicação web com o foco em auxiliar
 os alunos e os professores no desenvolvimento de trabalhos 
 de conclusão de curso e iniciações científicas, além de possibilitar
 um melhor acompanhamento e exposição de projetos em andamento 
-e que ainda podem iniciar. 
+e que ainda podem ser iniciados. 
 
 
 Membros: Luiz Felipe Martin Cordeiro
