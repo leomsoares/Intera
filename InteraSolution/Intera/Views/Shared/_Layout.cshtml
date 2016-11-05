@@ -7,7 +7,7 @@
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     <link href="~/Content/Style.css" rel="stylesheet" />
     <link href="http://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css">
 </head>
 <body>
     @if (Session["user"] == null)
@@ -91,16 +91,16 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown" id="drop-user">
-                        <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.User<span class="caret"></span></a>
+                        <a href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.User<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/user/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
-                            <li><a href="/project/createproject"><span class="glyphicon glyphicon-plus"></span> Create Project</a></li>
+                            <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                            <li><a href="/project/createproject"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a></li>
                             @if (ViewBag.Status == 3)
                             {
                                 <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
                             }
                             <li role="separator" class="divider"></li>
-                            <li><a href="/default/Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                            <li><a href="/default/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -108,7 +108,6 @@
         </div>
     </nav>
     }
-
 
     <div class="container">
         @RenderBody()

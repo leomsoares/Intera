@@ -88,6 +88,7 @@ namespace Intera.Controllers
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
             }
             return View();
         }

@@ -19,6 +19,7 @@ namespace Intera.Controllers
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
             }
 
             PessoaModel model = new PessoaModel();
@@ -44,6 +45,7 @@ namespace Intera.Controllers
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
             }
             return View();
         }
@@ -86,9 +88,10 @@ namespace Intera.Controllers
         {
             if (Session["user"] != null)
             {
-                Pessoa user = new Pessoa();
-                user = (Pessoa)Session["user"];
-                ViewBag.user = user.Nome;
+                Pessoa u = new Pessoa();
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Status = u.Status;
             }
             Pessoa p = new Pessoa();
             using (PessoaModel model = new PessoaModel())
@@ -165,9 +168,10 @@ namespace Intera.Controllers
         {
             if (Session["user"] != null)
             {
-                Pessoa user = new Pessoa();
-                user = (Pessoa)Session["user"];
-                ViewBag.user = user.Nome;
+                Pessoa u = new Pessoa();
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Status = u.Status;
             }
             Pessoa p = new Pessoa();
             using (PessoaModel model = new PessoaModel())
@@ -207,6 +211,7 @@ namespace Intera.Controllers
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
             }
             return View();
         }
