@@ -5,7 +5,6 @@
 }
 <div style="margin-top:60px;">
     <h2>Manage Users</h2>
-    
     <div class="container">
         <div class="row">
             <input type="text" class="form-control input-search" placeholder="search...">
@@ -13,96 +12,35 @@
                 <span class="glyphicon glyphicon-search">  </span>
             </button>
         </div>
+            <a href="/user/create" class="form-control btn btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Add User</a>
     
-    <table class="table table-bordered">
-        <tr>
-            <th>#</th>
-            <th>NAME</th>
-            <th>E-MAIL</th>
-            <th>STATUS</th>
-        </tr>
-
-        @foreach (var t in Model)
-        {
+        <table class="table table-bordered">
             <tr>
-                <td>@t.IdPessoa</td>
-                <td>@t.Nome</td>
-                <td>@t.Email</td>
-                @if(t.Status == 0)
-                {
-                    <td>Inativo</td>
-                }
-                else if (t.Status == 1)
-                {
-                    <td>Aluno</td>
-                }
-                else if (t.Status == 2)
-                {
-                    <td>Professor</td>
-                }
-                <td>
-                    <a href="#" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                    <a href="#" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                </td>
+                <th>#</th>
+                <th>NAME</th>
+                <th>E-MAIL</th>
+                <th>STATUS</th>
             </tr>
-        }
-    </table>
-    
-        <form class="form-horizontal" action="/user/manage" method="post">
-
-            <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Full Name</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="email" class="col-sm-3 control-label">Email</label>
-                <div class="col-sm-6">
-                    <input type="email" name="Email" placeholder="Email" class="form-control input-register">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
-                <div class="col-sm-6">
-                    <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Curso</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" autofocus>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="password" class="col-sm-3 control-label">Password</label>
-                <div class="col-sm-6">
-                    <input type="password" name="Senha" placeholder="Password" class="form-control input-register">
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="control-label col-sm-3">Type</label>
-                <div class="col-sm-6">
-                    <div class="row">
-                        <div class="col-sm-4">
-                            <label class="radio-inline">
-                                <input type="radio" name="Type" value="1" checked>Student
-                            </label>
-                        </div>
-
-                        <div class="col-sm-4">
-                            <label class="radio-inline">
-                                <input type="radio" name="Type" value="2" >Professor
-                            </label>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="container col-sm-3 col-sm-offset-4">
-                    <button type="submit" class="btn btn-default btn-block">Register</button>
-                </div>
-            </div>
-        </form> <!-- /form -->
-    </div> <!-- ./container -->
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td>@t.IdPessoa</td>
+                    <td>@t.Nome</td>
+                    <td>@t.Email</td>
+                    @if (t.Status == 1)
+                    {
+                        <td>Aluno</td>
+                    }
+                    else if (t.Status == 2)
+                    {
+                        <td>Professor</td>
+                    }
+                    <td>
+                        <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                        <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
 </div>

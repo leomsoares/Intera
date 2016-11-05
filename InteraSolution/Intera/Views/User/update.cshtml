@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-top:60px">Update User</h2>
+<div class="container">
+    <form class="form-horizontal" action="/user/create/@ViewBag.IdPessoa" method="post">
+
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+            <div class="col-sm-6">
+                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@ViewBag.Nome" autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Email</label>
+            <div class="col-sm-6">
+                <input type="email" name="Email" placeholder="Email" class="form-control input-register" value="@ViewBag.Email">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
+            <div class="col-sm-6">
+                <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" value="@ViewBag.RaRs" autofocus>
+            </div>
+        </div>
+        
+        @if (ViewBag.Status == 1)
+        {
+            <div class="form-group">
+                <label for="firstName" class="col-sm-3 control-label">Curso</label>
+                <div class="col-sm-6">
+                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" value="@ViewBag.Curso" autofocus>
+                </div>
+            </div>
+        }
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-6">
+                <input type="password" name="Senha" placeholder="Password" class="form-control input-register" value="@ViewBag.Senha">
+            </div>
+        </div>
+
+        <div class="form-group" style="visibility: hidden">
+            <input type="radio" name="Type" value="@ViewBag.Status" />
+        </div>
+        <div class="form-group">
+            <div class="container col-sm-3 col-sm-offset-4">
+                <button type="submit" class="btn btn-default btn-block">Register</button>
+            </div>
+        </div>
+    </form>
+</div>

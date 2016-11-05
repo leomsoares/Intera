@@ -15,7 +15,7 @@ namespace Intera.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 0 OR Status = 1 OR Status = 2";
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status != 0 AND Status != 3";
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -39,7 +39,7 @@ namespace Intera.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa LIKE @nome";
+            cmd.CommandText = "SELECT * FROM Pessoa LIKE '@nome'";
 
             cmd.Parameters.AddWithValue("@nome", busca);
 
@@ -127,12 +127,80 @@ namespace Intera.Models
             cmd.ExecuteNonQuery();
         }
 
+        public int UpdateReadPessoa(int IdPessoa)
+        {
+            Pessoa p = new Pessoa();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT Status FROM Pessoa WHERE IdPessoa = @idPessoa";
+            cmd.Parameters.AddWithValue("@idPessoa", IdPessoa);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                p.Status = (int)reader["Status"];
+            }
+
+            return p.Status;
+        }
+
+        public Aluno UpdateReadAluno(int IdPessoa)
+        {
+            Aluno a = new Aluno();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT p.IdPessoa Id, p.Nome Nome, p.Status Status, p.Email Email, p.Senha Senha, a.Ra Ra, a.Curso Curso FROM Pessoa p, Aluno a WHERE IdPessoa = @idPessoa";
+            cmd.Parameters.AddWithValue("@idPessoa", IdPessoa);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                a.IdPessoa = (int)reader["Id"];
+                a.Nome = (string)reader["Nome"];
+                a.Status = (int)reader["Status"];
+                a.Email = (string)reader["Email"];
+                a.Senha = (string)reader["Senha"];
+                a.Ra = (string)reader["Ra"];
+                a.Curso = (string)reader["Curso"];
+            }
+            return a;
+        }
+
+        public Professor UpdateReadProfessor(int IdPessoa)
+        {
+            Professor prof = new Professor();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT p.IdPessoa Id, p.Nome Nome, p.Status Status, p.Email Email, p.Senha Senha, pr.Rs Rs FROM Pessoa p, Professor pr WHERE IdPessoa = @idPessoa";
+            cmd.Parameters.AddWithValue("@idPessoa", IdPessoa);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                prof.IdPessoa = (int)reader["Id"];
+                prof.Nome = (string)reader["Nome"];
+                prof.Status = (int)reader["Status"];
+                prof.Email = (string)reader["Email"];
+                prof.Senha = (string)reader["Senha"];
+                prof.Rs = (string)reader["Rs"];
+            }
+            return prof;
+        }
+
+        public void UpdateAluno(Aluno a)
+        {
+
+        }
+
+        public void UpdateProfessor(Professor p)
+        {
+
+        }
+
         public void Delete(int IdPessoa)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "DELETE FROM Pessoa WHERE IdPessoa = @idPessoa";
-
+            cmd.CommandText = "UPDATE Pessoa SET Status = 0 WHERE IdPessoa = @idPessoa";
             cmd.Parameters.AddWithValue("@idPessoa", IdPessoa);
 
             cmd.ExecuteNonQuery();
