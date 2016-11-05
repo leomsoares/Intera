@@ -122,24 +122,30 @@ namespace Intera.Controllers
         }
 
         [HttpPost]
-        public ActionResult update(FormCollection form)
+        public ActionResult update(int id, FormCollection form)
         {
             int verificar = 0;
             verificar = Convert.ToInt32(form["Type"]);
-
             Aluno a = new Aluno();
             Professor p = new Professor();
 
-            a.Nome = form["Nome"];
-            a.Email = form["Email"];
-            a.Senha = form["Senha"];
-            a.Ra = form["RaRs"];
-            a.Curso = form["Curso"];
-
-            p.Nome = form["Nome"];
-            p.Email = form["Email"];
-            p.Senha = form["Senha"];
-            p.Rs = form["RaRs"];
+            if (verificar == 1)
+            {
+                a.IdPessoa = id;
+                a.Nome = form["Nome"];
+                a.Email = form["Email"];
+                a.Senha = form["Senha"];
+                a.Ra = form["RaRs"];
+                a.Curso = form["Curso"];
+            }
+            else if (verificar ==2)
+            {
+                p.IdPessoa = id;
+                p.Nome = form["Nome"];
+                p.Email = form["Email"];
+                p.Senha = form["Senha"];
+                p.Rs = form["RaRs"];
+            }
 
             using (PessoaModel model = new PessoaModel())
             {
@@ -152,7 +158,7 @@ namespace Intera.Controllers
                     model.UpdateProfessor(p);
                 }
             }
-            return View();
+            return RedirectToAction("Manage");
         }
     }
 }

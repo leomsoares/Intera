@@ -188,12 +188,29 @@ namespace Intera.Models
 
         public void UpdateAluno(Aluno a)
         {
-
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE Pessoa SET Nome = @nome, Email = @email, Senha = @senha WHERE IdPessoa = @idPessoa UPDATE Aluno SET Ra = @ra, Curso = @curso WHERE Pessoa_id = @idPessoa";
+            cmd.Parameters.AddWithValue("@idPessoa", a.IdPessoa);
+            cmd.Parameters.AddWithValue("@nome", a.Nome);
+            cmd.Parameters.AddWithValue("@email", a.Email);
+            cmd.Parameters.AddWithValue("@senha", a.Senha);
+            cmd.Parameters.AddWithValue("@ra", a.Ra);
+            cmd.Parameters.AddWithValue("@Curso", a.Curso);
+            cmd.ExecuteNonQuery();
         }
 
         public void UpdateProfessor(Professor p)
         {
-
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE Pessoa SET Nome = @nome, Email = @email, Senha = @senha WHERE IdPessoa = @idPessoa UPDATE Professor SET Rs = @rs WHERE Pessoa_id = @idPessoa";
+            cmd.Parameters.AddWithValue("@idPessoa", p.IdPessoa);
+            cmd.Parameters.AddWithValue("@nome", p.Nome);
+            cmd.Parameters.AddWithValue("@email", p.Email);
+            cmd.Parameters.AddWithValue("@senha", p.Senha);
+            cmd.Parameters.AddWithValue("@rs", p.Rs);
+            cmd.ExecuteNonQuery();
         }
 
         public void Delete(int IdPessoa)
