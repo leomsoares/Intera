@@ -12,7 +12,7 @@ namespace Intera.Models
 
         public ModelBase()
         {
-            string strConn = @"Data Source=localhost; Initial Catalog=BDIntera; Integrated Security=true";
+            string strConn = @"Data Source=LEO-PC\SQLEXPRESS; Initial Catalog=BDIntera; Integrated Security=true";
             connection = new SqlConnection(strConn);
                 connection.Open();
         }

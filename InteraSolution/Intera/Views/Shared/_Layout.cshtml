@@ -93,9 +93,12 @@
                     <li class="dropdown" id="drop-user">
                         <a href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.User<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="/default/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
+                            <li><a href="/user/profile"><span class="glyphicon glyphicon-user"></span> My Profile</a></li>
                             <li><a href="/project/createproject"><span class="glyphicon glyphicon-plus"></span> Create Project</a></li>
-                            <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
+                            @if (ViewBag.Status == 3)
+                            {
+                                <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
+                            }
                             <li role="separator" class="divider"></li>
                             <li><a href="/default/Logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                         </ul>

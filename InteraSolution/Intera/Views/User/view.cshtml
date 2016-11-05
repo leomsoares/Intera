@@ -1,62 +1,54 @@
-﻿@{
-    ViewBag.Title = "update";
+﻿
+@{
+    ViewBag.Title = "view";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 style="margin-top:60px">Update User</h2>
+<h2 style="margin-top:60px">View User</h2>
 <div class="container">
-    <form class="form-horizontal" action="/user/update/@ViewBag.IdPessoa" method="post">
+    <form class="form-horizontal" action="/user/view/@ViewBag.IdPessoa" method="post">
 
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Full Name</label>
             <div class="col-sm-6">
-                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@ViewBag.Nome" maxlength="50" autofocus>
+                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@ViewBag.Nome" disabled >
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Email</label>
             <div class="col-sm-6">
-                <input type="email" name="Email" placeholder="Email" class="form-control input-register" value="@ViewBag.Email" maxlength="50">
+                <input type="email" name="Email" placeholder="Email" class="form-control input-register" value="@ViewBag.Email" disabled>
             </div>
         </div>
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
             <div class="col-sm-6">
-                <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" value="@ViewBag.RaRs" maxlength="15" autofocus>
+                <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" value="@ViewBag.RaRs" disabled >
             </div>
         </div>
-        
+
         @if (ViewBag.Status == 1)
         {
             <div class="form-group">
                 <label for="firstName" class="col-sm-3 control-label">Curso</label>
                 <div class="col-sm-6">
-                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" value="@ViewBag.Curso" maxlength="50" autofocus>
+                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" value="@ViewBag.Curso" disabled >
                 </div>
             </div>
-        }
-        <div class="form-group">
-            <label for="password" class="col-sm-3 control-label">Password</label>
-            <div class="col-sm-6">
-                <input type="password" name="Senha" placeholder="Password" class="form-control input-register" value="@ViewBag.Senha" maxlength="20">
-            </div>
-        </div>
 
-        @if (ViewBag.Status == 1)
-        {
-            <div class="form-group" style="visibility: hidden">
+            <div class="form-group">
                 <label class="control-label col-sm-3">Type</label>
                 <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" name="Type" value="1" checked>Student
+                                <input type="radio" name="Type" value="1" checked disabled>Student
                             </label>
                         </div>
 
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" name="Type" value="2">Professor
+                                <input type="radio" name="Type" value="2" disabled>Professor
                             </label>
                         </div>
                     </div>
@@ -65,19 +57,19 @@
         }
         else if (ViewBag.Status == 2)
         {
-            <div class="form-group" style="visibility: hidden">
+            <div class="form-group">
                 <label class="control-label col-sm-3">Type</label>
                 <div class="col-sm-6">
                     <div class="row">
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" name="Type" value="1">Student
+                                <input type="radio" name="Type" value="1" disabled>Student
                             </label>
                         </div>
 
                         <div class="col-sm-4">
                             <label class="radio-inline">
-                                <input type="radio" name="Type" value="2" checked>Professor
+                                <input type="radio" name="Type" value="2" checked disabled>Professor
                             </label>
                         </div>
                     </div>
@@ -87,8 +79,16 @@
 
         <div class="form-group">
             <div class="container col-sm-3 col-sm-offset-4">
-                <button type="submit" class="btn btn-default btn-block">Salvar</button>
+                <a href="/user/update/@ViewBag.IdPessoa" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+                <a href="/user/delete/@ViewBag.IdPessoa" class="btn btn-danger btn-block"><span class="glyphicon glyphicon-trash"></span> Delete</a>
+            </div>
+        </div>
+        <div class="form-group" style="visibility:hidden">
+            <label for="password" class="col-sm-3 control-label">Password</label>
+            <div class="col-sm-6">
+                <input type="password" name="Senha" placeholder="Password" class="form-control input-register" value="@ViewBag.Senha" disabled>
             </div>
         </div>
     </form>
 </div>
+
