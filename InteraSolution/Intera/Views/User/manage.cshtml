@@ -1,47 +1,49 @@
 ﻿@model IEnumerable<Intera.Entity.Pessoa>
 @{
-    ViewBag.Title = "manage";
+    ViewBag.Title = "Manage Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="margin-top:60px;">
     <h2>Manage Users</h2>
     <div class="container">
         <div class="row">
-            <input type="text" class="form-control input-search" placeholder="search...">
+            <input type="text" class="form-control input-search" placeholder="Search...">
             <button class="form-control btn btn-default button-search" type="submit">
                 <span class="fa fa-search">  </span>
             </button>
         </div>
+        <div style="margin:60px">
             <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
-    
-        <table class="table table-bordered">
-            <tr>
-                <th>#</th>
-                <th>NAME</th>
-                <th>E-MAIL</th>
-                <th>STATUS</th>
-            </tr>
-            @foreach (var t in Model)
-            {
+
+            <table class="table table-bordered">
                 <tr>
-                    <td>@t.IdPessoa</td>
-                    <td>@t.Nome</td>
-                    <td>@t.Email</td>
-                    @if (t.Status == 1)
-                    {
-                        <td>Aluno</td>
-                    }
-                    else if (t.Status == 2)
-                    {
-                        <td>Professor</td>
-                    }
-                    <td>
-                        <a href="/user/view/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a> 
-                        <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                        <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
-                    </td>
+                    <th>#</th>
+                    <th>NAME</th>
+                    <th>E-MAIL</th>
+                    <th>STATUS</th>
                 </tr>
-            }
-        </table>
+                @foreach (var t in Model)
+            {
+                    <tr>
+                        <td>@t.IdPessoa</td>
+                        <td>@t.Nome</td>
+                        <td>@t.Email</td>
+                        @if (t.Status == 1)
+                        {
+                            <td>Aluno</td>
+                        }
+                        else if (t.Status == 2)
+                        {
+                            <td>Professor</td>
+                        }
+                        <td>
+                            <a href="/user/view/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                            <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                            <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
     </div>
 </div>
