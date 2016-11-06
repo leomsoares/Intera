@@ -182,6 +182,7 @@
     <Content Include="Views\User\create.cshtml" />
     <Content Include="Views\User\update.cshtml" />
     <Content Include="Views\User\view.cshtml" />
+    <Content Include="Views\Default\forget.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

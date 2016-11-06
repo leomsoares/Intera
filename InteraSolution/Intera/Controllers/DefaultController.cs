@@ -77,6 +77,11 @@ namespace Intera.Controllers
         {
             return View();
         }
+
+        public ActionResult forget()
+        {
+            return View();
+        }
         public ActionResult contact()
         {
             return View();
