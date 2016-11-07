@@ -12,20 +12,42 @@ namespace Intera.Controllers
     public class UserController : Controller
     {
         // GET: User
-        public ActionResult manage()
+        //public ActionResult manage()
+        //{
+        //    if (Session["user"] != null)
+        //    {
+        //        Pessoa p = new Pessoa();
+        //        p = (Pessoa)Session["user"];
+        //        ViewBag.user = p.Nome;
+        //        ViewBag.Status = p.Status;
+        //    }
+
+        //    PessoaModel model = new PessoaModel();
+        //    List<Pessoa> lista = model.Read();
+
+
+        //    return View(lista);
+        //}
+        public ActionResult manage(FormCollection form)
         {
             if (Session["user"] != null)
             {
-                Pessoa p = new Pessoa();
-                p = (Pessoa)Session["user"];
-                ViewBag.user = p.Nome;
-                ViewBag.Status = p.Status;
+                Pessoa u = new Pessoa();
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Status = u.Status;
             }
-
-            PessoaModel model = new PessoaModel();
-            List<Pessoa> lista = model.Read();
-
-
+            string busca = null;
+            busca = form["Search"];
+            List<Pessoa> lista = new List<Pessoa>();
+            if (busca == null)
+            {
+                busca = "";
+            }
+            using(PessoaModel model = new PessoaModel())
+            {
+                lista = model.Search(busca);
+            }   
             return View(lista);
         }
 

@@ -7,10 +7,12 @@
     <h2>Manage Users</h2>
     <div class="container">
         <div class="row">
-            <input type="text" class="form-control input-search" placeholder="Search...">
-            <button class="form-control btn btn-default button-search" type="submit">
-                <span class="fa fa-search">  </span>
-            </button>
+            <form action="/user/manage" method="post">
+                <input type="text" class="form-control input-search" name="Search" placeholder="Search for name...">
+                <button class="form-control btn btn-default button-search" type="submit">
+                    <i class="fa fa-search">  </i>
+                </button>
+            </form>
         </div>
         <div style="margin:60px">
             <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
@@ -21,6 +23,7 @@
                     <th>NAME</th>
                     <th>E-MAIL</th>
                     <th>STATUS</th>
+                    <th>OPTIONS</th>
                 </tr>
                 @foreach (var t in Model)
             {

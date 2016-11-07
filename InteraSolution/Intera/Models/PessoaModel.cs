@@ -4,11 +4,53 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 using Intera.Entity;
+using System.Web.Mail;
 
 namespace Intera.Models
 {
     public class PessoaModel : ModelBase
     {
+        public Pessoa Login(string email, string senha)
+        {
+            Pessoa p = null;
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "Login";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@senha", senha);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                p = new Pessoa();
+                p.IdPessoa = (int)reader["IdPessoa"];
+                p.Nome = (string)reader["Nome"];
+                p.Email = (string)reader["Email"];
+                p.Status = (int)reader["Status"];
+            }
+            return p;
+        }
+
+        public Pessoa ResgatarSenha(string email)
+        {
+            Pessoa p = new Pessoa();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT Nome, Senha FROM Pessoa WHERE Email = @email";
+            cmd.Parameters.AddWithValue("@email", email);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                p.Nome = (string)reader["Nome"];
+                p.Senha = (string)reader["Senha"];
+            }
+
+            return p;
+        }
+
         public List<Pessoa> Read()
         {
             List<Pessoa> lista = new List<Pessoa>();
@@ -33,54 +75,24 @@ namespace Intera.Models
             return lista;
         }
 
-        public List<Pessoa> Read(string busca)
+        public List<Pessoa> Search(string nome)
         {
             List<Pessoa> lista = new List<Pessoa>();
-
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa LIKE '@nome'";
-
-            cmd.Parameters.AddWithValue("@nome", busca);
-
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status != 0 AND Status != 3 AND Nome LIKE '%' + @nome + '%'";
+            cmd.Parameters.AddWithValue("@nome", nome);
             SqlDataReader reader = cmd.ExecuteReader();
-
             while (reader.Read())
             {
                 Pessoa p = new Pessoa();
                 p.IdPessoa = (int)reader["IdPessoa"];
                 p.Nome = (string)reader["Nome"];
-                p.Status = (int)reader["Status"];
                 p.Email = (string)reader["Email"];
-                p.Senha = (string)reader["Senha"];
-
+                p.Status = (int)reader["Status"];
                 lista.Add(p);
             }
             return lista;
-        }
-
-        public Pessoa Login(string email, string senha)
-        {
-            Pessoa p = null;
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = connection;
-            cmd.CommandText = "Login";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-            cmd.Parameters.AddWithValue("@email", email);
-            cmd.Parameters.AddWithValue("@senha", senha);
-
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                p = new Pessoa();
-                p.IdPessoa = (int)reader["IdPessoa"];
-                p.Nome = (string)reader["Nome"];
-                p.Email = (string)reader["Email"];
-                p.Status = (int)reader["Status"];
-            }
-            return p;
         }
 
         public void CreateAluno(Aluno aluno)

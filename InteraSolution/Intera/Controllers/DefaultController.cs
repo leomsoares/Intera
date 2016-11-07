@@ -49,7 +49,19 @@ namespace Intera.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult forget()
+        {
+            return View();
+        }
         
+        [HttpPost]
+        public ActionResult forget(FormCollection form)
+        {
+            return View();
+        }
+        
+
+
 
 
 
@@ -78,10 +90,6 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult forget()
-        {
-            return View();
-        }
         public ActionResult contact()
         {
             return View();
