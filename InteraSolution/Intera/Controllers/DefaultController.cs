@@ -57,7 +57,18 @@ namespace Intera.Controllers
         [HttpPost]
         public ActionResult forget(FormCollection form)
         {
-            return View();
+            string email = form["Email"];
+            Pessoa p = new Pessoa();
+            using (PessoaModel modelp = new PessoaModel())
+            {
+                p = modelp.ResgatarSenha(email);
+            }
+
+            using (HomeModel modelh = new HomeModel())
+            {
+                modelh.EnviarEmail(email, p);
+            }
+            return RedirectToAction("Index");
         }
         
 

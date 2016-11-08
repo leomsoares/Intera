@@ -20,13 +20,13 @@
                                 <p>You can reset your password here.</p>
                                 <div class="panel-body">
 
-                                    <form class="form">
+                                    <form class="form" action="/default/forget" method="post">
                                         <fieldset>
                                             <div class="form-group">
                                                 <div class="input-group">
                                                     <span class="input-group-addon "><i class="glyphicon glyphicon-envelope"></i></span>
 
-                                                    <input id="emailInput" placeholder="email address" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="">
+                                                    <input id="emailInput" placeholder="email address" name="Email" class="form-control" type="email" oninvalid="setCustomValidity('Please enter a valid email address!')" onchange="try{setCustomValidity('')}catch(e){}" required="">
                                                 </div>
                                             </div>
                                             <div class="form-group">
