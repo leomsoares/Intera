@@ -147,7 +147,6 @@
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\scientificresearch.cshtml" />
     <Content Include="Views\User\profile.cshtml" />
-    <Content Include="Views\Default\professors.cshtml" />
     <Content Include="Views\Project\seekproject.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +175,6 @@
     <Content Include="scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Project\createproject.cshtml" />
     <Content Include="Views\User\manage.cshtml" />
-    <Content Include="Views\Default\contact.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Project\seeproject.cshtml" />
     <Content Include="Views\Default\about.cshtml" />
