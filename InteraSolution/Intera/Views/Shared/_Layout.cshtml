@@ -50,7 +50,16 @@
                                                 <label class="sr-only" for="exampleInputPassword2">Password</label>
                                                 <input type="password" class="form-control" name="senha" placeholder="Password" required>
                                                 <div class="help-block text-right"><a href="/default/forget">Forget my password ?</a></div>
-
+                                                @if(ViewBag.Mensagem != null)
+                                                {
+                                                    <script>
+                                                        function aviso()
+                                                        {
+                                                            alert("Usuário e/ou senha inválidos!");
+                                                        }
+                                                        aviso();
+                                                    </script>
+                                                }
                                             </div>
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-success btn-block">Sign in</button>

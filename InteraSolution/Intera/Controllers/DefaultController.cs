@@ -39,7 +39,7 @@ namespace Intera.Controllers
                 }
             }
 
-            ViewBag.Mensagem = "Usuário não cadastrado";
+            ViewBag.Mensagem = "Usuário e/ou senha inválidos!";
             return View();
         }
 

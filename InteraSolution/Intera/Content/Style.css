@@ -341,12 +341,17 @@ ul {
 }
 
 .info-profile {
-    padding: 4px 8px 10px;
+    padding: 4px 8px 10px; margin-top:60px;
 }
 
 .info-title
 {
+    text-align:center;
     font-size: 4em;
+}
+
+.img-circle {
+    width:200px; height:200px;
 }
 
 .info-profile label {
