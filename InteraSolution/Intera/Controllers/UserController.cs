@@ -8,7 +8,7 @@ using Intera.Entity;
 
 namespace Intera.Controllers
 {
-    [Autoriza]
+   [Autoriza]
     public class UserController : Controller
     {
         // GET: User
