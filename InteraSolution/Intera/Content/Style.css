@@ -337,26 +337,30 @@ ul {
 
 /*PROFILE*/
 .profile-card {
-    padding: 4px 8px 10px;
+    margin-left:200px;
+    padding: 6px 8px 10px;
 }
 
 .info-profile {
-    padding: 4px 8px 10px; margin-top:60px;
+    margin-top:20px;
 }
 
 .info-title
 {
-    text-align:center;
+    margin-left:50px;
+    text-align:left;
     font-size: 4em;
 }
 
 .img-circle {
+    margin-top:40px;
     width:200px; height:200px;
 }
 
 .info-profile label {
+    margin-left:450px;
     display: block;
-    text-align: center;
+    text-align:center;
 }
 
 .facebook:hover {
@@ -393,4 +397,23 @@ ul {
     color: #fff;
     transition: background-color 0.1s linear 0.01s;
 }
+
+.list-group {
+    width:370px;
+    margin-left:630px;
+    margin-top:60px;
+}
+
+.list-group-item {
+    text-align:center;
+}
+
+.network {
+    margin-left:40px;
+    margin-top:30px;
+}
+
+.pull-right {
+    margin-top:5px;
+    margin-left:300px;
 }
