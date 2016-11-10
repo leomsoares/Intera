@@ -23,7 +23,7 @@ namespace Intera.Controllers
         }
 
         [Autoriza]
-        public ActionResult createproject()
+        public ActionResult createstep1()
         {
             if (Session["user"] != null)
             {
@@ -32,6 +32,11 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
+            return View();
+        }
+
+        public ActionResult createstep2()
+        {
             return View();
         }
 

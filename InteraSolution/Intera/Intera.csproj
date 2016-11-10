@@ -173,7 +173,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="scripts\jquery-1.9.1.min.map" />
-    <Content Include="Views\Project\createproject.cshtml" />
+    <Content Include="Views\Project\createstep1.cshtml" />
     <Content Include="Views\User\manage.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Project\seeproject.cshtml" />
@@ -182,6 +182,7 @@
     <Content Include="Views\User\update.cshtml" />
     <Content Include="Views\User\view.cshtml" />
     <Content Include="Views\Default\forget.cshtml" />
+    <Content Include="Views\Project\createstep2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
