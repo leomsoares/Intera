@@ -183,6 +183,7 @@
     <Content Include="Views\User\view.cshtml" />
     <Content Include="Views\Default\forget.cshtml" />
     <Content Include="Views\Project\createstep2.cshtml" />
+    <Content Include="Views\User\editprofile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
