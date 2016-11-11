@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Intera.Entity.Aluno>
+@{
+    ViewBag.Title = "addstudent";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="margin-top:60px;">
+    <h2>Add Student Project</h2>
+    <div class="container">
+        <div class="row">
+            <form action="/project/addstudent" method="post">
+                <input type="text" class="form-control input-search" name="Search" placeholder="Search for name...">
+                <button class="form-control btn btn-default button-search" type="submit">
+                    <i class="fa fa-search">  </i>
+                </button>
+            </form>
+        </div>
+        <div style="margin:60px">
+            <table class="table table-bordered">
+                <tr>
+                    <th>NAME</th>
+                    <th>E-MAIL</th>
+                    <th>#</th>
+                </tr>
+                @foreach (var t in Model)
+                {
+                    <tr>
+                        <td>@t.Nome</td>
+                        <td>@t.Email</td>
+                        <td>
+                            <a href="/project/createstep2/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> View</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <a href="/project/createstep1" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
+        </div>
+    </div>
+</div>

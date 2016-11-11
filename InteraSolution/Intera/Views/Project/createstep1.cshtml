@@ -10,30 +10,25 @@
         <form action="/project/createstep1" method="post">
             <div class="divProject">
                 <label>Project Title</label>
-                <input type="text" class="form-control inputProject">
-            </div>
-
-            <div class="divProject">
-                <label>Advisor</label>
-                <input type="text" class="form-control inputProject" style="margin-left:27px;">
+                <input type="text" name="NomeProjeto" class="form-control inputProject">
             </div>
 
             <div class="divProject">
                 <label>Co-Advisor</label>
-                <input type="text" class="form-control inputProject" style="margin-left:27px;">
+                <input type="text" name="IdCoorientador" class="form-control inputProject" style="margin-left:27px;">
             </div>
 
             <div class="divProject">
                 <div class="form-check">
                     <label>Type</label>
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
                         TCC
                     </label>
                 </div>
                 <div class="form-check">
                     <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
                         Scientific Research
                     </label>
                 </div>
@@ -42,7 +37,7 @@
 
         <div>
             <label>Description</label>
-            <textarea class="form-control textareaProject" placeholder="Short description..." rows="2"></textarea>
+            <textarea class="form-control textareaProject" name="Descricao" placeholder="Short description..." rows="2"></textarea>
         </div>
         <a class="btn btn-default btn-lg pull-right btnProject" href="/project/createstep2"><i class="fa fa-arrow-right"></i> Next</a>
     </div>

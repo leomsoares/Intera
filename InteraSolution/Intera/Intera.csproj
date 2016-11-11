@@ -158,12 +158,14 @@
     <Compile Include="Entity\Aluno.cs" />
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Professor.cs" />
+    <Compile Include="Entity\Projeto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\ModelBase.cs" />
     <Compile Include="Models\PessoaModel.cs" />
+    <Compile Include="Models\ProjetoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -184,6 +186,7 @@
     <Content Include="Views\Project\createstep2.cshtml" />
     <Content Include="Views\User\editprofile.cshtml" />
     <Content Include="Views\Project\createstep1.cshtml" />
+    <Content Include="Views\Project\addstudent.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
