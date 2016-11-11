@@ -237,5 +237,10 @@ namespace Intera.Controllers
             }
             return View();
         }
+
+        public ActionResult editprofile()
+        {
+            return View();
+        }
     }
 }
