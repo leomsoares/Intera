@@ -156,6 +156,7 @@
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entity\Aluno.cs" />
+    <Compile Include="Entity\AlunoProjeto.cs" />
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Professor.cs" />
     <Compile Include="Entity\Projeto.cs" />

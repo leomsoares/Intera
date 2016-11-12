@@ -26,6 +26,14 @@ namespace Intera.Controllers
         [Autoriza]
         public ActionResult createstep1()
         {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+                ViewBag.id = p.IdPessoa;
+            }
             return View();
         }
 

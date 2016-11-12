@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Pessoa>
 @{
     ViewBag.Title = "createstep2";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -16,10 +16,14 @@
                 <th>FINAL DATE</th>
                 <th>#</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-            </tr>
+            @foreach (var pessoa in Model)
+            {
+                <tr>
+                    <td>@pessoa.Nome</td>
+                    <td>@pessoa.Email</td>
+                    <td></td>
+                </tr>
+            }
         </table>
     </form>
 </div>
