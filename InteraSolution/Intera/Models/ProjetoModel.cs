@@ -53,6 +53,16 @@ namespace Intera.Models
             cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 1";
 
             SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Pessoa pessoa = new Pessoa();
+                pessoa.IdPessoa = (int)reader["IdPessoa"];
+                pessoa.Nome = (string)reader["Nome"];
+                pessoa.Email = (string)reader["Email"];
+
+                lista.Add(pessoa);
+            }
+            return lista;
         }
     }
 }
