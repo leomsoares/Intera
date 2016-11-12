@@ -24,6 +24,12 @@ namespace Intera.Controllers
         }
 
         [Autoriza]
+        public ActionResult createstep1()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult createstep1(FormCollection form)
         {
             if (Session["user"] != null)

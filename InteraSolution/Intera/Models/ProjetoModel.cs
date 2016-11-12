@@ -13,7 +13,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO Projeto VALUES (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao";
+            cmd.CommandText = "INSERT INTO Projeto VALUES (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao)";
             cmd.Parameters.AddWithValue("@idProfessor", projeto.IdProfessor);
             cmd.Parameters.AddWithValue("@idCoorientador", projeto.IdCoorientador);
             cmd.Parameters.AddWithValue("@idTipo", projeto.IdTipo);
