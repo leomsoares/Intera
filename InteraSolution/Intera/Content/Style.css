@@ -356,12 +356,13 @@ ul {
 .info-title
 {
     margin-left:50px;
-    text-align:left;
+    text-align:right;
     font-size: 4em;
 }
 
 .img-circle {
     margin-top:40px;
+    
     width:200px; height:200px;
 }
 
