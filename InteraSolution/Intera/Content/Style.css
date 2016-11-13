@@ -277,10 +277,11 @@ ul {
 
 .info-seek {
     display: inline-block;
-    padding-left: 20px;
+    padding-left: 200px;
     position: relative;
     top: 27px;
 }
+
 
 .label-seek {
     display: block;
@@ -298,6 +299,13 @@ ul {
     color: #fff;
     padding: 5px;
     text-align: center;
+}
+
+
+
+.main-list .media {
+	padding-bottom: 1.1em;
+	border-bottom: 1px solid #e8e8e8;
 }
 
 /*LAYOUT*/
@@ -416,4 +424,20 @@ ul {
 .pull-right {
     margin-top:5px;
     margin-left:300px;
+}
+
+/*Search*/
+
+
+.stylish-input-group .input-group-addon{
+    background: white !important; 
+}
+.stylish-input-group .form-control{
+	border-right:0; 
+	box-shadow:0 0 0; 
+	border-color:#ccc;
+}
+.stylish-input-group button{
+    border:0;
+    background:transparent;
 }

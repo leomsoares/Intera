@@ -51,7 +51,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM AlunoData WHERE Projeto_id = @idProjeto");
+            cmd.CommandText = "SELECT * FROM AlunoData WHERE Projeto_id = @idProjeto";
             cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
 
             SqlDataReader reader = cmd.ExecuteReader();
