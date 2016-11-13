@@ -7,39 +7,42 @@
 <div style="margin-top:60px;">
     <h2>Create New Project - Step One</h2>
     <form role="form" action="/project/createstep1" method="post">
+        <div style="margin-top:20px;">
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="NomeProjeto" placeholder="Project Title" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="IdOrientador" placeholder="Advisor" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" name="IdCoorientador" placeholder="Co-Advisor" required>
+            </div>
+            <div class="form-group">
+                <label>Type</label>
+                <div class="form-check">
 
-        <div class="form-group">
-            <input type="text" class="form-control" id="name" name="NomeProjeto" placeholder="Project Title" required>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" id="name" name="IdCoorientador" placeholder="Co-Advisor" required>
-        </div>
-                    <div class="form-group">
-                        <label>Type</label>
-                        <div class="form-check">
-                            
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
-                                TCC
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
-                                Scientific Research
-                            </label>
-                        </div>
-                    </div>
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
+                        TCC
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
+                        Scientific Research
+                    </label>
+                </div>
+            </div>
 
-                    <div>
-                        <label>Initial Date</label>
-                        <input type="date" name="name" />
+            <div>
+                <label>Initial Date</label>
+                <input type="date" name="name" />
 
-                        
-                        <textarea class="form-control " name="Descricao" placeholder="Short description..." rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-default btn-lg pull-right"><i class="fa fa-arrow-right"></i> Next</button>
-                </form>
+
+                <textarea class="form-control " name="Descricao" placeholder="Short description..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default btn-lg pull-right"><i class="fa fa-arrow-right"></i> Next</button>
+</form>
             </div>
 
 
