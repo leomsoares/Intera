@@ -45,10 +45,10 @@ namespace Intera.Controllers
             {
                 busca = "";
             }
-            using(PessoaModel model = new PessoaModel())
+            using (PessoaModel model = new PessoaModel())
             {
                 lista = model.Search(busca);
-            }   
+            }
             return View(lista);
         }
 
@@ -124,7 +124,7 @@ namespace Intera.Controllers
 
             using (PessoaModel model2 = new PessoaModel())
             {
-                if(p.Status == 1)
+                if (p.Status == 1)
                 {
                     Aluno a = model2.UpdateReadAluno(id);
                     ViewBag.IdPessoa = a.IdPessoa;
@@ -164,7 +164,7 @@ namespace Intera.Controllers
                 a.Ra = form["RaRs"];
                 a.Curso = form["Curso"];
             }
-            else if (verificar ==2)
+            else if (verificar == 2)
             {
                 p.IdPessoa = id;
                 p.Nome = form["Nome"];
@@ -236,14 +236,24 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
+
             return View();
         }
 
-        public ActionResult editprofile()
+        public ActionResult editprofile(int id)
         {
-            
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+            }
+
+
             return View();
         }
+
 
         public ActionResult Upload()
         {
