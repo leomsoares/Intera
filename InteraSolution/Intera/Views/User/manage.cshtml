@@ -8,11 +8,23 @@
     <div class="container">
         <div class="row">
             <form action="/user/manage" method="post">
-                <input type="text" class="form-control " name="Search" placeholder="Search for name...">
-                <button class="form-control btn-default" type="submit">Search
-                    <i class="fa fa-search">  </i>
-                </button>
+                <div class="col-md-12">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default btn-lg" type="button">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </form>
+                    </div>
+                </div>
+    
+            
         </div>
         <div style="margin:60px">
             <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
@@ -48,5 +60,3 @@
                 }
             </table>
         </div>
-    </div>
-</div>
