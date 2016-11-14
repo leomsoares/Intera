@@ -9,11 +9,13 @@ namespace Intera.Models
 {
     public class ProjetoModel : ModelBase
     {
-        public void CreateProject(Projeto projeto)
+        public int CreateProject(Projeto projeto)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO Projeto VALUES (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao)";
+            //cmd.CommandText = "INSERT INTO Projeto VALUES (1, 3, 1, 'testando', 1, null, '2061-11-14', null, 'sem')";
+            
+            cmd.CommandText = "INSERT into Projeto values (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
             cmd.Parameters.AddWithValue("@idProfessor", projeto.IdProfessor);
             cmd.Parameters.AddWithValue("@idCoorientador", projeto.IdCoorientador);
             cmd.Parameters.AddWithValue("@idTipo", projeto.IdTipo);
@@ -21,7 +23,11 @@ namespace Intera.Models
             cmd.Parameters.AddWithValue("@dataInicio", projeto.DataInicio);
             cmd.Parameters.AddWithValue("@descricao", projeto.Descricao);
 
-            cmd.ExecuteNonQuery();
+            int idProjeto = Convert.ToInt32(cmd.ExecuteScalar());
+
+
+
+            return idProjeto;
         }
 
         public void AddAluno(int idAluno, int idProjeto, DateTime data)
@@ -84,6 +90,11 @@ namespace Intera.Models
                 lista.Add(pessoa);
             }
             return lista;
+        }
+
+        public void AddAluno()
+        {
+
         }
     }
 }

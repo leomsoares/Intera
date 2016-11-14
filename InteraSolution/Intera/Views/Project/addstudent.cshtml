@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Intera.Entity.Aluno>
+﻿@model IEnumerable<Intera.Entity.Pessoa>
 @{
     ViewBag.Title = "addstudent";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -28,7 +28,7 @@
                         <td>@t.Nome</td>
                         <td>@t.Email</td>
                         <td>
-                            <a href="/project/createstep2/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> View</a>
+                            <a href="/project/createstep2/@t" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> View</a>
                         </td>
                     </tr>
                 }

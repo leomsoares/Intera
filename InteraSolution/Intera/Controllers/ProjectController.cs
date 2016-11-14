@@ -59,9 +59,10 @@ namespace Intera.Controllers
 
             using (ProjetoModel model = new ProjetoModel())
             {
-                model.CreateProject(projeto);
+                projeto.IdProjeto = model.CreateProject(projeto);
             }
 
+            Session["idProjeto"] = projeto;
             return RedirectToAction("createstep2");
         }
 
@@ -74,9 +75,33 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
-            return View();
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+            List<AlunoProjeto> lista = new List<AlunoProjeto>();
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadAlunoProjeto(projeto.IdProjeto);
+            }
+            return View(lista);
         }
 
+        public ActionResult addstudent()
+        {
+            List<Pessoa> lista = new List<Pessoa>();
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadAluno();
+            }
+
+            return View(lista);
+        }
+
+        [HttpPost]
+        public ActionResult addstudent(FormCollection form)
+        {
+            return View();
+        }
         public ActionResult seekproject()
         {
             if (Session["user"] != null)

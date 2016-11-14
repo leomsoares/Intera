@@ -141,5 +141,20 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/scripts/inputFile.js"></script>
     <script src="~/scripts/addCampo.js"></script>
+    @* Add imagem *@
+    @*<script src="~/scripts/jquery.MultiFile.js"></script>
+    <script type="text/javascript">
+         $(document).ready(function () {
+             $('#file').MultiFile({
+                 accept: 'gif|jpg|png',
+                 max: 3,
+                 STRING: {
+                     remove: 'Remover',
+                     denied: 'Tipo do arquivo inválido $ext!',
+                     duplicate: 'Esse arquivo já foi selecionado:\n$file!'
+                 }
+             });
+         });
+    </script>*@
 </body>
 </html>

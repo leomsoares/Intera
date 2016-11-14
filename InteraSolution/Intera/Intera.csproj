@@ -141,6 +141,7 @@
     <Content Include="scripts\inputFile.js" />
     <Content Include="scripts\jquery-1.9.1.js" />
     <Content Include="scripts\jquery-1.9.1.min.js" />
+    <Content Include="scripts\jquery.MultiFile.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Project\addproject.cshtml" />
     <Content Include="Views\Default\group.cshtml" />
@@ -188,6 +189,7 @@
     <Content Include="Views\User\editprofile.cshtml" />
     <Content Include="Views\Project\createstep1.cshtml" />
     <Content Include="Views\Project\addstudent.cshtml" />
+    <Content Include="Views\User\Upload.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

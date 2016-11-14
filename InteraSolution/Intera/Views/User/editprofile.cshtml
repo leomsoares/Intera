@@ -6,12 +6,11 @@
 
 <h2 style="margin-top:60px">Edit Profile</h2>
 <div class="container">
-    <form class="form-horizontal" action="/user/update/@ViewBag.IdPessoa" method="post">
-
+    <form class="form-horizontal" action="/user/editprofile" method="post">
         <div class="form-group">
             <label for="img-circle" class="col-sm-3 control-label">Profile Image</label>
             <div class="col-sm-6">
-                <input type="image" name="ProfileImage" placeholder="Profile Image" class="form-control input-register" value="" maxlength="50" autofocus>
+                <input type="search" name="ProfileImage" placeholder="Profile Image" class="form-control input-register" value="" maxlength="50" autofocus>
             </div>
         </div>
         <div class="form-group">
@@ -50,17 +49,6 @@
                 <input type="text" name="Linkedin" placeholder="ex: Linkedin" class="form-control input-register" value="" maxlength="15" autofocus>
             </div>
         </div>
-
-
-        @if (ViewBag.Status == 1)
-        {
-            <div class="form-group">
-                <label for="firstName" class="col-sm-3 control-label">Curso</label>
-                <div class="col-sm-6">
-                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" value="@ViewBag.Curso" maxlength="50" autofocus>
-                </div>
-            </div>
-        }
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-6">
