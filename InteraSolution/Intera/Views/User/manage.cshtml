@@ -13,7 +13,7 @@
                         <div class="input-group col-md-12">
                             <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." />
                             <span class="input-group-btn">
-                                <button class="btn btn-default btn-lg" type="button">
+                                <button class="btn btn-default btn-lg" type="submit">
                                     <i class="glyphicon glyphicon-search"></i>
                                 </button>
                             </span>
@@ -21,42 +21,42 @@
                     </div>
                 </div>
             </form>
-                    </div>
-                </div>
-    
-            
         </div>
-        <div style="margin:60px">
-            <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+    </div>
 
-            <table class="table table-bordered">
-                <tr>
-                    <th>#</th>
-                    <th>NAME</th>
-                    <th>E-MAIL</th>
-                    <th>STATUS</th>
-                    <th>OPTIONS</th>
-                </tr>
-                @foreach (var t in Model)
+
+</div>
+<div style="margin:60px">
+    <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>#</th>
+            <th>NAME</th>
+            <th>E-MAIL</th>
+            <th>STATUS</th>
+            <th>OPTIONS</th>
+        </tr>
+        @foreach (var t in Model)
             {
-                    <tr>
-                        <td>@t.IdPessoa</td>
-                        <td>@t.Nome</td>
-                        <td>@t.Email</td>
-                        @if (t.Status == 1)
-                        {
-                            <td>Aluno</td>
-                        }
-                        else if (t.Status == 2)
-                        {
-                            <td>Professor</td>
-                        }
-                        <td>
-                            <a href="/user/view/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                            <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                            <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
-                        </td>
-                    </tr>
+            <tr>
+                <td>@t.IdPessoa</td>
+                <td>@t.Nome</td>
+                <td>@t.Email</td>
+                @if (t.Status == 1)
+                {
+                    <td>Aluno</td>
                 }
-            </table>
-        </div>
+                else if (t.Status == 2)
+                {
+                    <td>Professor</td>
+                }
+                <td>
+                    <a href="/user/view/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                    <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                    <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

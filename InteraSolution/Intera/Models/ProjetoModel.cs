@@ -13,8 +13,6 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            //cmd.CommandText = "INSERT INTO Projeto VALUES (1, 3, 1, 'testando', 1, null, '2061-11-14', null, 'sem')";
-            
             cmd.CommandText = "INSERT into Projeto values (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
             cmd.Parameters.AddWithValue("@idProfessor", projeto.IdProfessor);
             cmd.Parameters.AddWithValue("@idCoorientador", projeto.IdCoorientador);
@@ -24,9 +22,6 @@ namespace Intera.Models
             cmd.Parameters.AddWithValue("@descricao", projeto.Descricao);
 
             int idProjeto = Convert.ToInt32(cmd.ExecuteScalar());
-
-
-
             return idProjeto;
         }
 
@@ -34,7 +29,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "ISNERT INTO AlunoData VALUES (@idAluno, @idProjeto, @dataInicio, null)";
+            cmd.CommandText = "INSERT INTO AlunoData VALUES (@idAluno, @idProjeto, @dataInicio, null)";
             cmd.Parameters.AddWithValue("@idAluno", idAluno);
             cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
             cmd.Parameters.AddWithValue("@dataInicio", data);
@@ -66,7 +61,10 @@ namespace Intera.Models
                 AlunoProjeto aProjeto = new AlunoProjeto();
                 aProjeto.IdPessoa = (int)reader["Aluno_id"];
                 aProjeto.DataEntrada = (DateTime)reader["DataInicio"];
-                aProjeto.DataSaida = (DateTime)reader["DataFinal"];
+                if (reader["DataFinal"] == null)
+                {
+                    aProjeto.DataSaida = (DateTime)reader["DataFinal"];
+                }
                 lista.Add(aProjeto);
             }
             return lista;
@@ -92,9 +90,21 @@ namespace Intera.Models
             return lista;
         }
 
-        public void AddAluno()
+        public Pessoa GetAluno(int id)
         {
+            Pessoa p = null;
+            SqlCommand cmd = new SqlCommand();
 
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE IdPessoa = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                p.Nome = (string)reader["Nome"];
+                p.Email = (string)reader["Email"];
+            }
+            return p;
         }
     }
 }

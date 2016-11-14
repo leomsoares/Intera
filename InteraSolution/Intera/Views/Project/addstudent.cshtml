@@ -18,6 +18,7 @@
         <div style="margin:60px">
             <table class="table table-bordered">
                 <tr>
+                    <th>#</th>
                     <th>NAME</th>
                     <th>E-MAIL</th>
                     <th>#</th>
@@ -25,15 +26,15 @@
                 @foreach (var t in Model)
                 {
                     <tr>
+                        <td>@t.IdPessoa</td>
                         <td>@t.Nome</td>
                         <td>@t.Email</td>
                         <td>
-                            <a href="/project/createstep2/@t" class="btn btn-default btn-sm"><i class="fa fa-plus"></i> View</a>
+                            <a href="/project/addalunodata/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></a>
                         </td>
                     </tr>
                 }
             </table>
-            <a href="/project/createstep1" class="btn btn-default"><i class="fa fa-arrow-left"></i> Voltar</a>
         </div>
     </div>
 </div>

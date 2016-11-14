@@ -245,30 +245,30 @@ namespace Intera.Controllers
             return View();
         }
 
-        //public ActionResult Upload()
-        //{
+        public ActionResult Upload()
+        {
 
-        //    return View();
-        //}
-     
-        //public ActionResult FileUpload()
-        //{
-        //    int arquivosSalvos = 0;
-        //    for (int i = 0; i < Request.Files.Count; i++)
-        //    {
-        //        HttpPostedFileBase arquivo = Request.Files[i];
+            return View();
+        }
 
-        //        if (arquivo.ContentLength > 0)
-        //        {
-        //            var uploadPath = Server.MapPath("~/Imagens");
-        //            string caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
-        //            arquivo.SaveAs(caminhoArquivo);
-        //            arquivosSalvos++;
-        //        }
-        //    }
+        public ActionResult FileUpload()
+        {
+            int arquivosSalvos = 0;
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase arquivo = Request.Files[i];
 
-        //    ViewData["Message"] = String.Format("{0} arquivo(s) salvo(s) com sucesso.", arquivosSalvos);
-        //    return View("Upload");
-        //}
+                if (arquivo.ContentLength > 0)
+                {
+                    var uploadPath = Server.MapPath("~/Imagens");
+                    string caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+                    arquivo.SaveAs(caminhoArquivo);
+                    arquivosSalvos++;
+                }
+            }
+
+            ViewData["Message"] = String.Format("{0} arquivo(s) salvo(s) com sucesso.", arquivosSalvos);
+            return View("Upload");
+        }
     }
 }
