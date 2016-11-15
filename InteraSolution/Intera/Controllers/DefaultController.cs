@@ -83,6 +83,13 @@ namespace Intera.Controllers
 
         public ActionResult scientificresearch()
         {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+            }
             return View();
         }
 
@@ -93,6 +100,20 @@ namespace Intera.Controllers
 
         public ActionResult group()
         {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+
+                List<Projeto> lista = new List<Projeto>();
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    lista = model.ReadProjeto(p.IdPessoa);
+                }
+                return View(lista);
+            }
             return View();
         }
 

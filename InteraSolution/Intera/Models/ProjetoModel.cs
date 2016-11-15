@@ -69,6 +69,33 @@ namespace Intera.Models
             }
             return lista;
         }
+        public List<Projeto> ReadProjeto(int idProfessor)
+        {
+            List<Projeto> lista = new List<Projeto>();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Projeto WHERE Professor_id = @idProfessor";
+            cmd.Parameters.AddWithValue("@idProfessor", idProfessor);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Projeto Projeto = new Projeto();
+                Projeto.IdProjeto = (int)reader["IdProjeto"];
+                Projeto.IdProfessor = (int)reader["Professor_id"];
+                Projeto.IdCoorientador = (int)reader["Coorientador_id"];
+                Projeto.IdTipo = (int)reader["TipoProjeto_id"];
+                Projeto.NomeProjeto = (string)reader["NomeProjeto"];
+                Projeto.Status = (int)reader["Status"];
+                Projeto.Link = (string)reader["Link"];
+                Projeto.DataInicio = (DateTime)reader["DataInicio"];
+                Projeto.DataFinal = (DateTime)reader["DataFinal"];
+                Projeto.Descricao = (string)reader["Descricao"];
+                lista.Add(Projeto);
+            }
+            return lista;
+        }
 
         public List<Pessoa> ReadAluno()
         {
