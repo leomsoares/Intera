@@ -6,42 +6,35 @@
 <div style="margin-top:60px;">
 
     <div class="container">
-        <div class="col-md-3">
-            <div>
-                <img src="http://i.imgur.com/RCsa9nP.jpg" class="img-circle" />
-                
-            </div>
-            
-            <div class="col-md-offset-2">
-                <a target="_blank" class="btn facebook" href="https://www.facebook.com/profile.php?id=100000471764101&fref=ts"><i class="fa fa-facebook"></i></a>
-                <a target="_blank" class="btn twitter" href="https://twitter.com/negrito177"><i class="fa fa-twitter"></i></a>
-                <a target="_blank" class="btn google-plus" href="#"><i class="fa fa-google-plus"></i></a>
-                <a target="_blank" class="btn linkedin" href="#"><i class="fa fa-linkedin"></i></a>
-            </div>
-        </div>
-
-        <div class="pull-right">
-            <a href="/User/editprofile" class="btn btn-default" type="button" aria-expanded="false">Edit</a>
-        </div>
-
         <div>
-            <label class="info-title">Luizão</label>
+            <div>
+                <img src="~/Imagens/User.png" class="img-circle" />
+                <label class="info-title">@ViewBag.User</label>
+
+                <div class="col-md-offset-2" style="margin-left:20px;">
+                    <a target="_blank" class="btn facebook" href="https://www.facebook.com/profile.php?id=100000471764101&fref=ts"><i class="fa fa-facebook"></i></a>
+                    <a target="_blank" class="btn twitter" href="https://twitter.com/negrito177"><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" class="btn google-plus" href="#"><i class="fa fa-google-plus"></i></a>
+                    <a target="_blank" class="btn linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                </div>
+                <div class="pull-right">
+                    <label><i class="fa fa-envelope"></i> luizao@luizao.com</label>
+                    <label><i class="fa fa-graduation-cap"></i> Aluno</label>
+               
+                    <a href="/User/editprofile" class="btn btn-default" type="button" style="margin-left:30px" aria-expanded="false">Edit</a>
+                </div>
+                <div style="margin-top:60px">
+                    <label class="list-group-item disabled"> My Projects</label>
+                    <a href="#" class="list-group-item"> Project 1 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#" class="list-group-item"> Project 2 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                </div>
+            </div>
+           
         </div>
 
-        <div class="col-sm-offset-10">
-            
-            <label><i class="fa fa-envelope"></i> luizao@luizao.com</label>
-            <label><i class="fa fa-graduation-cap"></i> Aluno</label>
-        </div>
+      
 
-        <div class="col-md-offset-6">
-            <label class="list-group-item disabled"> My Projects</label>
-            <a href="#" class="list-group-item"> Project 1 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-            <a href="#" class="list-group-item"> Project 2 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-        </div>
         
-        <form action="/" method="post">
-
-        </form>
+        <form action="/" method="post"></form>
     </div>
 </div>
