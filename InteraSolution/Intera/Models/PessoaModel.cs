@@ -29,6 +29,7 @@ namespace Intera.Models
                 p.IdPessoa = (int)reader["IdPessoa"];
                 p.Nome = (string)reader["Nome"];
                 p.Email = (string)reader["Email"];
+                p.Senha = (string)reader["Senha"];
                 p.Status = (int)reader["Status"];
             }
             return p;
@@ -95,7 +96,7 @@ namespace Intera.Models
             return lista;
         }
 
-        public void CreateAluno(Aluno aluno)
+        public int CreateAluno(Aluno aluno)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -108,10 +109,11 @@ namespace Intera.Models
             cmd.Parameters.AddWithValue("@ra", aluno.Ra);
             cmd.Parameters.AddWithValue("@curso", aluno.Curso);
 
-            cmd.ExecuteNonQuery();
+            int idPessoa = Convert.ToInt32(cmd.ExecuteScalar());
+            return idPessoa;
         }
 
-        public void CreateProfessor(Professor professor)
+        public int CreateProfessor(Professor professor)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
@@ -123,7 +125,21 @@ namespace Intera.Models
             cmd.Parameters.AddWithValue("@senha", professor.Senha);
             cmd.Parameters.AddWithValue("@rs", professor.Rs);
 
-            cmd.ExecuteNonQuery();
+            int idPessoa = Convert.ToInt32(cmd.ExecuteScalar());
+            return idPessoa;
+        }
+
+        public void CreateSocial(int id)
+        {
+            for (int i = 1; i < 5; i++)
+            {
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = connection;
+                cmd.CommandText = "INSERT INTO Social VALUES (@id, '#', @idsocial)";
+                cmd.Parameters.AddWithValue("@id", id);
+                cmd.Parameters.AddWithValue("@idsocial", i);
+                cmd.ExecuteNonQuery();
+            }
         }
 
         public int UpdateReadPessoa(int IdPessoa)
@@ -247,5 +263,46 @@ namespace Intera.Models
             return lista;
         }
 
+        public List<Social> ReadSocialAluno(int id)
+        {
+            List<Social> lista = new List<Social>();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Social WHERE Pessoa_id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Social social = new Social();
+                social.Nick = (string)reader["Nick"];
+                social.IdSocial = (int)reader["Social_id"];
+                lista.Add(social);
+            }
+            return lista;
+        }
+
+        public void UpdateProfile(Pessoa pessoa, List<Social> lista)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE Pessoa SET Email = @email, Senha = @senha WHERE IdPessoa = @idPessoa";
+            cmd.Parameters.AddWithValue("@email", pessoa.Email);
+            cmd.Parameters.AddWithValue("@senha", pessoa.Senha);
+            cmd.Parameters.AddWithValue("@idPessoa", pessoa.IdPessoa);
+            cmd.ExecuteNonQuery();
+
+
+            foreach (Social social in lista)
+            {
+                SqlCommand cmdSocial = new SqlCommand();
+                cmdSocial.Connection = connection;
+                cmdSocial.CommandText = "UPDATE Social SET Nick = @nick WHERE Pessoa_id = @pessoaId AND Social_id = @socialId";
+                cmdSocial.Parameters.AddWithValue("@nick", social.Nick);
+                cmdSocial.Parameters.AddWithValue("@pessoaId", pessoa.IdPessoa);
+                cmdSocial.Parameters.AddWithValue("@socialId", social.IdSocial);
+                cmdSocial.ExecuteNonQuery();
+            }
+        }
     }
 }

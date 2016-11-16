@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Social>
 @{
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,15 +12,43 @@
                 <label class="info-title">@ViewBag.User</label>
 
                 <div class="col-md-offset-2" style="margin-left:20px;">
-                    <a target="_blank" class="btn facebook" href="https://www.facebook.com/profile.php?id=100000471764101&fref=ts"><i class="fa fa-facebook"></i></a>
-                    <a target="_blank" class="btn twitter" href="https://twitter.com/negrito177"><i class="fa fa-twitter"></i></a>
-                    <a target="_blank" class="btn google-plus" href="#"><i class="fa fa-google-plus"></i></a>
-                    <a target="_blank" class="btn linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+                    @foreach (var social in Model)
+                    {
+                        if (social.IdSocial == 1)
+                        {
+                            <a target="_blank" class="btn facebook" href="@social.Nick"><i class="fa fa-facebook"></i></a>
+
+                        }
+                        if (social.IdSocial == 2)
+                        {
+                            <a target="_blank" class="btn twitter" href="@social.Nick"><i class="fa fa-twitter"></i></a>
+
+                        }
+                        if (social.IdSocial == 3)
+                        {
+                            <a target="_blank" class="btn google-plus" href="@social.Nick"><i class="fa fa-google-plus"></i></a>
+
+                        }
+                        if (social.IdSocial == 4)
+                        {
+                            <a target="_blank" class="btn linkedin" href="@social.Nick"><i class="fa fa-linkedin"></i></a>
+
+                        }
+                    }
                 </div>
                 <div class="pull-right">
-                    <label><i class="fa fa-envelope"></i> luizao@luizao.com</label>
-                    <label><i class="fa fa-graduation-cap"></i> Aluno</label>
-               
+                    <label><i class="fa fa-envelope"></i> @ViewBag.Email</label>
+                    @if (ViewBag.Status == 1)
+                    {
+                        <label><i class="fa fa-graduation-cap"></i> Aluno</label>
+
+                    }
+                    @if (ViewBag.Status == 2)
+                    {
+                        <label><i class="fa fa-graduation-cap"></i> Professor</label>
+
+                    }
+
                     <a href="/User/editprofile" class="btn btn-default" type="button" style="margin-left:30px" aria-expanded="false">Edit</a>
                 </div>
                 <div style="margin-top:60px">
@@ -29,12 +57,7 @@
                     <a href="#" class="list-group-item"> Project 2 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
                 </div>
             </div>
-           
+
         </div>
-
-      
-
-        
-        <form action="/" method="post"></form>
     </div>
 </div>

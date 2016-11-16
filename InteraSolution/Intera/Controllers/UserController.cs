@@ -13,22 +13,6 @@ namespace Intera.Controllers
     public class UserController : Controller
     {
         // GET: User
-        //public ActionResult manage()
-        //{
-        //    if (Session["user"] != null)
-        //    {
-        //        Pessoa p = new Pessoa();
-        //        p = (Pessoa)Session["user"];
-        //        ViewBag.user = p.Nome;
-        //        ViewBag.Status = p.Status;
-        //    }
-
-        //    PessoaModel model = new PessoaModel();
-        //    List<Pessoa> lista = model.Read();
-
-
-        //    return View(lista);
-        //}
         public ActionResult manage(FormCollection form)
         {
             if (Session["user"] != null)
@@ -97,11 +81,13 @@ namespace Intera.Controllers
             {
                 if (verificar == 1)
                 {
-                    model.CreateAluno(a);
+                    int id = model.CreateAluno(a);
+                    model.CreateSocial(id);
                 }
                 else if (verificar == 2)
                 {
-                    model.CreateProfessor(p);
+                    int id = model.CreateProfessor(p);
+                    model.CreateSocial(id);
                 }
             }
             return RedirectToAction("Manage");
@@ -229,15 +215,21 @@ namespace Intera.Controllers
 
         public ActionResult profile()
         {
+            Pessoa p = new Pessoa();
             if (Session["user"] != null)
             {
-                Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
+                ViewBag.Email = p.Email;
                 ViewBag.Status = p.Status;
             }
+            List<Social> lista = new List<Social>();
+            using (PessoaModel model = new PessoaModel())
+            {
+                lista = model.ReadSocialAluno(p.IdPessoa);
+            }
 
-            return View();
+            return View(lista);
         }
 
         public ActionResult editprofile()
@@ -247,6 +239,7 @@ namespace Intera.Controllers
             if (Session["user"] != null)
             {
                 u = (Pessoa)Session["user"];
+                ViewBag.IdPessoa = u.IdPessoa;
                 ViewBag.user = u.Nome;
                 ViewBag.Email = u.Email;
                 ViewBag.Status = u.Status;
@@ -260,6 +253,30 @@ namespace Intera.Controllers
             }
 
             return View(social);
+        }
+
+        [HttpPost]
+        public ActionResult editprofile(FormCollection form)
+        {
+            Pessoa pessoa = new Pessoa();
+            List<Social> lista = new List<Social>();
+
+            pessoa = (Pessoa)Session["user"];
+
+            pessoa.Email = form["Email"];
+            pessoa.Senha = form["Senha"];
+
+            lista.Add(new Social { Nick = form["Facebook"], IdSocial = 1 });
+            lista.Add(new Social { Nick = form["Twitter"], IdSocial = 2 });
+            lista.Add(new Social { Nick = form["GooglePlus"], IdSocial = 3 });
+            lista.Add(new Social { Nick = form["Linkedin"], IdSocial = 4 });
+
+            using (PessoaModel model = new PessoaModel())
+            {
+                model.UpdateProfile(pessoa, lista);
+            }
+
+            return RedirectToAction("Profile");
         }
 
 
