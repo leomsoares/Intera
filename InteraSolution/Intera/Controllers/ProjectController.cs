@@ -24,7 +24,6 @@ namespace Intera.Controllers
             return View();
         }
 
-        
         public ActionResult createstep1()
         {
             if (Session["user"] != null)

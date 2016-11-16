@@ -52,19 +52,18 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM AlunoData WHERE Projeto_id = @idProjeto";
+            cmd.CommandText = "SELECT ad.Projeto_id Projeto, p.IdPessoa IdAluno, p.Nome Nome, p.Email Email, ad.DataInicio DataInicio, ad.DataFinal DataFinal FROM Pessoa as p FULL OUTER JOIN AlunoData as ad ON(p.IdPessoa = ad.Aluno_id) WHERE ad.Projeto_id = @idProjeto";
             cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 AlunoProjeto aProjeto = new AlunoProjeto();
-                aProjeto.IdPessoa = (int)reader["Aluno_id"];
+                aProjeto.IdPessoa = (int)reader["IdAluno"];
+                aProjeto.Nome = (string)reader["Nome"];
+                aProjeto.Email = (string)reader["Email"];
                 aProjeto.DataEntrada = (DateTime)reader["DataInicio"];
-                if (reader["DataFinal"] == null)
-                {
-                    aProjeto.DataSaida = (DateTime)reader["DataFinal"];
-                }
+                //aProjeto.DataSaida = (DateTime)reader["DataFinal"];
                 lista.Add(aProjeto);
             }
             return lista;
