@@ -160,6 +160,7 @@
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Professor.cs" />
     <Compile Include="Entity\Projeto.cs" />
+    <Compile Include="Entity\Social.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

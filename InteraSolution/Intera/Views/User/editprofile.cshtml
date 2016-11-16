@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Social>
 @{
     ViewBag.Title = "Edit Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,7 +10,7 @@
         <div class="form-group">
             <label for="firstName" class="col-sm-3 control-label">Full Name</label>
             <div class="col-sm-6">
-                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@ViewBag.Nome" maxlength="50" autofocus>
+                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@ViewBag.user" maxlength="50" autofocus>
             </div>
         </div>
         <div class="form-group">
@@ -19,30 +19,50 @@
                 <input type="email" name="Email" placeholder="Email" class="form-control input-register" value="@ViewBag.Email" maxlength="50">
             </div>
         </div>
-        <div class="form-group">
-            <label for="facebook" class="col-sm-3 control-label">Facebook</label>
-            <div class="col-sm-6">
-                <input type="text" name="Facebook" placeholder="ex: https://www.facebook.com/profile" class="form-control input-register" value="" maxlength="15" autofocus>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="twitter" class="col-sm-3 control-label">Twitter</label>
-            <div class="col-sm-6">
-                <input type="text" name="Twitter" placeholder="ex: https://www.twitter.com/profile" class="form-control input-register" value="" maxlength="15" autofocus>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="googlePlus" class="col-sm-3 control-label">Google Plus</label>
-            <div class="col-sm-6">
-                <input type="text" name="GooglePlus" placeholder="ex: Google Plus" class="form-control input-register" value="" maxlength="15" autofocus>
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="linkedin" class="col-sm-3 control-label">Linkedin</label>
-            <div class="col-sm-6">
-                <input type="text" name="Linkedin" placeholder="ex: Linkedin" class="form-control input-register" value="" maxlength="15" autofocus>
-            </div>
-        </div>
+        @foreach (var social in Model)
+        {
+            if (social.IdSocial == 1)
+            {
+
+                <div class="form-group">
+                    <label for="facebook" class="col-sm-3 control-label">Facebook</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="Facebook" placeholder="ex: https://www.facebook.com/profile" class="form-control input-register" value="@social.Nick" autofocus>
+                    </div>
+                </div>
+            }
+
+            if (social.IdSocial == 2)
+            {
+
+                <div class="form-group">
+                    <label for="twitter" class="col-sm-3 control-label">Twitter</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="Twitter" placeholder="ex: https://www.twitter.com/profile" class="form-control input-register" value="@social.Nick" autofocus>
+                    </div>
+                </div>
+            }
+            if (social.IdSocial == 3)
+            {
+
+                <div class="form-group">
+                    <label for="googlePlus" class="col-sm-3 control-label">Google Plus</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="GooglePlus" placeholder="ex: Google Plus" class="form-control input-register" value="@social.Nick" autofocus>
+                    </div>
+                </div>
+            }
+            if (social.IdSocial == 4)
+            {
+
+                <div class="form-group">
+                    <label for="linkedin" class="col-sm-3 control-label">Linkedin</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="Linkedin" placeholder="ex: Linkedin" class="form-control input-register" value="@social.Nick" autofocus>
+                    </div>
+                </div>
+            }
+        }
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-6">
@@ -52,7 +72,7 @@
 
         <div class="form-group">
             <div class="container col-sm-3 col-sm-offset-4">
-                <button type="submit" class="btn btn-success btn-block">Salvar</button>
+                <button type="submit" class="btn btn-success btn-block"> Save</button>
             </div>
         </div>
     </form>

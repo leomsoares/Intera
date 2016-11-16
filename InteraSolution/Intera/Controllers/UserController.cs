@@ -240,18 +240,26 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult editprofile(int id)
+        public ActionResult editprofile()
         {
+            Pessoa u = new Pessoa();
+            List<Social> social = new List<Social>();
             if (Session["user"] != null)
             {
-                Pessoa p = new Pessoa();
-                p = (Pessoa)Session["user"];
-                ViewBag.user = p.Nome;
-                ViewBag.Status = p.Status;
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Email = u.Email;
+                ViewBag.Status = u.Status;
+                ViewBag.Senha = u.Senha;
             }
 
+            using (PessoaModel model = new PessoaModel())
+            {
+                social = model.ReadSocial(u.IdPessoa);
 
-            return View();
+            }
+
+            return View(social);
         }
 
 

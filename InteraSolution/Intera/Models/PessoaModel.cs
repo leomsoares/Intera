@@ -224,5 +224,28 @@ namespace Intera.Models
 
             cmd.ExecuteNonQuery();
         }
+
+        public List<Social> ReadSocial(int id)
+        {
+            List<Social> lista = new List<Social>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "select p.IdPessoa Id, p.Nome Nome, p.Email Email, p.Senha Senha, s.Nick Nick, s.Social_id Social from Pessoa as p full outer join Social as s on (p.IdPessoa = s.Pessoa_id) where IdPessoa = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Social social = new Social();
+                social.IdPessoa = id;
+                social.Nome = (string)reader["Nome"];
+                social.Senha = (string)reader["Senha"];
+                social.Nick = (string)reader["Nick"];
+                social.IdSocial = (int)reader["Social"];
+                lista.Add(social);
+            }
+            return lista;
+        }
+
     }
 }
