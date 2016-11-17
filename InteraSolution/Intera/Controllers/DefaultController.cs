@@ -108,11 +108,23 @@ namespace Intera.Controllers
                 ViewBag.Status = p.Status;
 
                 List<Projeto> lista = new List<Projeto>();
-                using (ProjetoModel model = new ProjetoModel())
+
+                if (p.Status == 1)
                 {
-                    lista = model.ReadProjeto(p.IdPessoa);
+                    using (ProjetoModel model = new ProjetoModel())
+                    {
+                        lista = model.ReadProjetoAluno(p.IdPessoa);
+                    }
+                    return View(lista);
                 }
-                return View(lista);
+                if (p.Status == 2)
+                {
+                    using (ProjetoModel model = new ProjetoModel())
+                    {
+                        lista = model.ReadProjetoProfessor(p.IdPessoa);
+                    }
+                    return View(lista);
+                }
             }
             return View();
         }

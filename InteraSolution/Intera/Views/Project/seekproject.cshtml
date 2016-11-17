@@ -1,51 +1,37 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Projeto>
 @{
     ViewBag.Title = "Projects";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="margin-top:60px"; class="container">
+<div style="margin-top:60px" ; class="container">
     <div class="row">
         <div id="filter-panel" class="collapse filter-panel">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form class="form-inline" role="form">
+                    <form action="/project/seekproject" method="post" class="form-inline" role="form">
                         <div class="form-group">
                             <label class="filter-col" style="margin-right:0;" for="pref-perpage">Professor:</label>
-                            <select id="pref-perpage" class="form-control">
-                                <option value="2">Viana</option>
-                                <option value="3">Sergio</option>
-                                <option value="4">Mario</option>
-                                <option value="5">Carlos</option>
-                                <option value="6">Edes</option>
-                                <option value="7">Marildo</option>
-                                <option value="8">Lucimar</option>
-                                <option value="9">Junior</option>
-                                <option selected="selected" value="10">Henrique</option>
-                               
+                            <select id="pref-perpage" class="form-control" name="Professor">
+                                <option selected="selected"></option>
+                                <option value=1>Vianna</option>
+                                <option value=2>Lucimar</option>
+
                             </select>
-                        </div> 
-                        <div class="form-group">
-                            <label class="filter-col" style="margin-left:15px;" for="pref-search">Project Title:</label>
-                            <input type="text" class="form-control input-sm-" id="pref-search">
                         </div>
                         <div class="form-group">
-                            <label class="filter-col" style="margin-left:15px;" for="pref-orderby">Order by:</label>
-                            <select id="pref-orderby" class="form-control">
-                                <option>Newest</option>
-                                <option>Oldest</option>
-                            </select>
-                        </div> 
+                            <label class="filter-col" style="margin-left:15px;" for="pref-search">Project Title:</label>
+                            <input type="text" class="form-control input-sm-" id="pref-search" name="NameProject">
+                        </div>
                         <div class="form-group">
-                            <label class="filter-col" style="margin-left:15px;" for="pref-orderby">Type:</label>
-                            <select id="pref-orderby" class="form-control">
-                                <option>TCC</option>
-                                <option>Scientific Research</option>
+                            <label class="filter-col" style="margin-right:0;" for="pref-perpage">Status:</label>
+                            <select id="pref-perpage" class="form-control" name="Status">
+                                <option selected="selected"></option>
+                                <option value=1>In progress</option>
+                                <option value=2>Finished</option>
+
                             </select>
-                        </div> 
+                        </div>
                         <div class="form-group">
-                            <div class="checkbox" style="margin-left:15px; margin-right:15px;">
-                                <label><input type="checkbox"> Remember</label>
-                            </div>
                             <button type="submit" class="btn btn-default filter-col top-right">
                                 <span class="glyphicon glyphicon-ok-sign"></span> Save Settings
                             </button>
@@ -59,67 +45,39 @@
         </button>
     </div>
 </div>
-                <div class="col-md-9 col-lg-9 pull-right">
-                    <ul class="media-list main-list">
-                        <li class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/150x90" alt="...">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Project 1</h4>
-                                <p class="by-author">Jonatas Sgamato</p>
-                            </div>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-eye-open"></span> View
-                            </button>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-save"></span> Dowload
-                            </button>
-                        </li>
-                        <li class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/150x90" alt="...">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Project 2</h4>
-                                <p class="by-author">Luiz Martin</p>
-                            </div>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-eye-open"></span> View
-                            </button>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-save"></span> Dowload
-                            </button>
-                        </li>
-                        <li class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/150x90" alt="...">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Project 3</h4>
-                                <p class="by-author">Pedro Giorgetti</p>
-                            </div>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-eye-open"></span> View
-                            </button>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-save"></span> Dowload
-                            </button>
-                        </li>
-                        <li class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/150x90" alt="...">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Project 4</h4>
-                                <p class="by-author">Leonardo Soares</p>
-                            </div>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-eye-open"></span> View
-                            </button>
-                            <button type="submit" class="btn btn-default filter-col top-right">
-                                <span class="glyphicon glyphicon-save"></span> Dowload
-                            </button>
-                        </li>
-                            </div>
-         
+@foreach (var t in Model)
+{
+    <div class="col-md-9 col-lg-9 pull-right">
+        <ul class="media-list main-list">
+            <li class="media">
+                <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/150x90" alt="...">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">@t.NomeProjeto</h4>
+                    <p class="by-author">@t.Descricao</p>
+
+                    @if (@t.Status == 1)
+                    {
+                        <p class="by-author">In progress</p>
+                    }
+                    @if (@t.Status == 2)
+                    {
+                        <p class="by-author">Finished</p>
+                    }
+
+                </div>
+
+                <button type="submit" class="btn btn-default filter-col top-right">
+                    <span class="glyphicon glyphicon-eye-open"></span> View
+                </button>
+                <button type="submit" class="btn btn-default filter-col top-right">
+                    <span class="glyphicon glyphicon-save"></span> Dowload
+                </button>
+            </li>
+        </ul>
+    </div>
+
+}
+
+

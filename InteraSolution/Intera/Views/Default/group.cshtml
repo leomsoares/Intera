@@ -16,10 +16,10 @@
         </tr>
         @foreach (var t in Model)
             {
-        <tr>
-            <td>@t.NomeProjeto</td>
-            <td>Vai ser foda colocar os membro</td>
-                @if(@t.Status == 1)
+            <tr>
+                <td>@t.NomeProjeto</td>
+                <td>Vai ser foda colocar os membro</td>
+                @if (@t.Status == 1)
                 {
                     <td>Em andamento</td>
                 }
@@ -27,11 +27,11 @@
                 {
                     <td>Finalizado</td>
                 }
-            <td>
-                <a href=""><i class="fa fa-eye" aria-hidden="true"></i> View</a>
-                <a href="" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-            </td>
-        </tr>
+                <td>
+                    <a href=""><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                    <a href="" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
+                </td>
+            </tr>
         }
     </table>
 </div>

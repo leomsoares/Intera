@@ -115,16 +115,40 @@ namespace Intera.Controllers
             return RedirectToAction("Createstep2");
         }
 
-        public ActionResult seekproject()
+        public ActionResult seekproject(FormCollection form)
         {
             if (Session["user"] != null)
             {
-                Pessoa p = new Pessoa();
-                p = (Pessoa)Session["user"];
-                ViewBag.user = p.Nome;
-                ViewBag.Status = p.Status;
+                Pessoa u = new Pessoa();
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Status = u.Status;
             }
-            return View();
+            string Professor = null;
+            string NameProject = null;
+            string Status = null;
+            Professor = form["Professor"];
+            NameProject = form["NameProject"];
+            Status = form["Status"];
+            List<Projeto> lista = new List<Projeto>();
+            if (Professor == null)
+            {
+                Professor = "";
+            }
+            if (NameProject == null)
+            {
+                NameProject = "";
+            }
+            if (Status == null)
+            {
+                Status = "";
+            }
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadProjeto(Professor, NameProject, Status);
+            }
+            return View(lista);
         }
 
         public ActionResult seeproject()
