@@ -151,16 +151,23 @@ namespace Intera.Controllers
             return View(lista);
         }
 
-        public ActionResult seeproject()
+        public ActionResult seeproject(int id)
         {
             if (Session["user"] != null)
             {
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
-                ViewBag.Status = p.Status;
+                ViewBag.Status = p.Status; 
             }
-            return View();
+            List<Projeto> lista = new List<Projeto>();
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadProjeto(id);
+            }
+            return View(lista);
+
         }
     }
 }
