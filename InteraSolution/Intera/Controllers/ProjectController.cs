@@ -102,6 +102,19 @@ namespace Intera.Controllers
             return RedirectToAction("Createstep2");
         }
 
+        public ActionResult delalunodata(int id)
+        {
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.DelAluno(id, projeto.IdProjeto);
+            }
+
+            return RedirectToAction("Createstep2");
+        }
+
         public ActionResult seekproject()
         {
             if (Session["user"] != null)

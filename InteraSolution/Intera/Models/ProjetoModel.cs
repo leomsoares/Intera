@@ -37,12 +37,13 @@ namespace Intera.Models
             cmd.ExecuteNonQuery();
         }
 
-        public void DelAluno(int idAluno)
+        public void DelAluno(int idAluno, int idProjeto)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "DELETE FROM AlunoData WHERE Aluno_id = @idAluno";
+            cmd.CommandText = "DELETE FROM AlunoData WHERE Aluno_id = @idAluno AND Projeto_id = @idProjeto";
             cmd.Parameters.AddWithValue("@idAluno", idAluno);
+            cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
             cmd.ExecuteNonQuery();
         }
 
@@ -87,9 +88,9 @@ namespace Intera.Models
                 Projeto.IdTipo = (int)reader["TipoProjeto_id"];
                 Projeto.NomeProjeto = (string)reader["NomeProjeto"];
                 Projeto.Status = (int)reader["Status"];
-                Projeto.Link = (string)reader["Link"];
+                //Projeto.Link = (string)reader["Link"];
                 Projeto.DataInicio = (DateTime)reader["DataInicio"];
-                Projeto.DataFinal = (DateTime)reader["DataFinal"];
+                //Projeto.DataFinal = (DateTime)reader["DataFinal"];
                 Projeto.Descricao = (string)reader["Descricao"];
                 lista.Add(Projeto);
             }
