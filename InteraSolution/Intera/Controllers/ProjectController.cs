@@ -10,20 +10,8 @@ namespace Intera.Controllers
 {
     public class ProjectController : Controller
     {
-        [Autoriza]
         // GET: Project
-        public ActionResult addproject()
-        {
-            if (Session["user"] != null)
-            {
-                Pessoa p = new Pessoa();
-                p = (Pessoa)Session["user"];
-                ViewBag.user = p.Nome;
-                ViewBag.Status = p.Status;
-            }
-            return View();
-        }
-
+        [Autoriza]
         public ActionResult createstep1()
         {
             if (Session["user"] != null)
@@ -37,6 +25,7 @@ namespace Intera.Controllers
             return View();
         }
 
+        [Autoriza]
         [HttpPost]
         public ActionResult createstep1(FormCollection form)
         {
@@ -66,6 +55,7 @@ namespace Intera.Controllers
             return RedirectToAction("createstep2");
         }
 
+        [Autoriza]
         public ActionResult createstep2()
         {
             if (Session["user"] != null)
@@ -86,6 +76,7 @@ namespace Intera.Controllers
             return View(lista);
         }
 
+        [Autoriza]
         public ActionResult addstudent()
         {
             List<Pessoa> lista = new List<Pessoa>();
@@ -97,6 +88,7 @@ namespace Intera.Controllers
             return View(lista);
         }
 
+        [Autoriza]
         public ActionResult addalunodata(int id)
         {
             Projeto projeto = new Projeto();
