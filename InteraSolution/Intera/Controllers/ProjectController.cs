@@ -148,6 +148,10 @@ namespace Intera.Controllers
             {
                 lista = model.ReadProjeto(Professor, NameProject, Status);
             }
+            using (PessoaModel teste = new PessoaModel())
+            {
+                ViewBag.Professor = teste.ReadProfessor();
+            }
             return View(lista);
         }
 

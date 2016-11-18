@@ -13,9 +13,10 @@
                             <label class="filter-col" style="margin-right:0;" for="pref-perpage">Professor:</label>
                             <select id="pref-perpage" class="form-control" name="Professor">
                                 <option selected="selected"></option>
-                                <option value=1>Vianna</option>
-                                <option value=2>Lucimar</option>
-
+                                @foreach (var u in ViewBag.Professor)
+                                {
+                                    <option value=@u.IdPessoa>@u.Nome</option>
+                                }
                             </select>
                         </div>
                         <div class="form-group">

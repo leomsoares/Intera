@@ -95,6 +95,22 @@ namespace Intera.Models
             }
             return lista;
         }
+        public List<Pessoa> ReadProfessor()
+        {
+            List<Pessoa> lista = new List<Pessoa>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 2";
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Pessoa p = new Pessoa();
+                p.IdPessoa = (int)reader["IdPessoa"];
+                p.Nome = (string)reader["Nome"];
+                lista.Add(p);
+            }
+            return lista;
+        }
 
         public int CreateAluno(Aluno aluno)
         {
