@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Professor>
 @{
     ViewBag.Title = "Create Step One";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -12,7 +12,14 @@
                 <input type="text" class="form-control" id="name" name="NomeProjeto" placeholder="Project Title" required>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="name" name="IdCoorientador" placeholder="Co-Advisor" required>
+                <label class="filter-col" style="margin-right:0;" for="pref-perpage">Co-Advidor:</label>
+                <select class="form-control" name="IdCoorientador" >
+                    <option value="0"></option>
+                    @foreach (var prof in Model)
+                    {
+                        <option value="@prof.IdPessoa">@prof.Rs - @prof.Nome</option>
+                    }
+                </select>
             </div>
             <div class="form-group">
                 <label>Type</label>

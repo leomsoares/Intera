@@ -22,7 +22,13 @@ namespace Intera.Controllers
                 ViewBag.Status = p.Status;
                 ViewBag.id = p.IdPessoa;
             }
-            return View();
+
+            List<Professor> lista = new List<Professor>();
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadProfessor();
+            }
+            return View(lista);
         }
 
         [Autoriza]
@@ -40,7 +46,10 @@ namespace Intera.Controllers
 
             Projeto projeto = new Projeto();
             projeto.IdProfessor = ViewBag.id;
-            projeto.IdCoorientador = Convert.ToInt32(form["IdCoorientador"]);
+            if (Convert.ToInt32(form["IdCoorientador"]) != 0)
+            {
+                projeto.IdCoorientador = Convert.ToInt32(form["IdCoorientador"]);
+            }
             projeto.IdTipo = Convert.ToInt32(form["Tipo"]);
             projeto.NomeProjeto = form["NomeProjeto"];
             projeto.DataInicio = DateTime.Today;
@@ -162,7 +171,7 @@ namespace Intera.Controllers
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
-                ViewBag.Status = p.Status; 
+                ViewBag.Status = p.Status;
             }
             List<Projeto> lista = new List<Projeto>();
 

@@ -13,110 +13,111 @@
 <body>
     @if (Session["user"] == null)
     {
-    <nav class="navbar navbar-inverse navbar-fixed-top ">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand"  href="/default/index"><img class="img-layout" src="http://i.imgur.com/Wdpspnv.png" /></a>
-            </div>
+        <nav class="navbar navbar-inverse navbar-fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/default/index"><img class="img-layout" src="http://i.imgur.com/Wdpspnv.png" /></a>
+                </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul id="menu" class="nav navbar-nav">
-                    <li class="active">
-                    @*<li><a href="/project/addproject">ADD PROJECT</a></li>*@
-                    <li><a href="/project/seekproject">PROJECTS</a></li>
-                    <li><a href="/default/scientificresearch">SCIENTIFIC RESEARCH</a></li>
-                    <li><a href="/default/about">ABOUT</a></li>
-                </ul>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul id="menu" class="nav navbar-nav">
+                        <li class="active">
+                        <li><a href="/project/seekproject">PROJECTS</a></li>
+                        <li><a href="/default/scientificresearch">SCIENTIFIC RESEARCH</a></li>
+                        <li><a href="/default/about">ABOUT</a></li>
+                    </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">LOGIN<span class="caret"></span></a>
-                        <ul id="login-dp" class="dropdown-menu">
-                            <li>
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <form class="form" role="form" method="post" action="/default/index" id="login-nav">
-                                            <div class="form-group">
-                                                <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                                                <input type="email" class="form-control" name="email"  placeholder="Email address" required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                                                <input type="password" class="form-control" name="senha" placeholder="Password" required>
-                                                <div class="help-block text-right"><a href="/default/forget">Forget my password ?</a></div>
-                                                @if(ViewBag.Mensagem != null)
-                                                {
-                                                    <script>
-                                                        function aviso()
-                                                        {
-                                                            alert("Usuário e/ou senha inválidos!");
-                                                        }
-                                                        aviso();
-                                                    </script>
-                                                }
-                                            </div>
-                                            <div class="form-group">
-                                                <button type="submit" class="btn btn-success btn-block">Sign in</button>
-                                            </div>
-                                        </form>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">LOGIN<span class="caret"></span></a>
+                            <ul id="login-dp" class="dropdown-menu">
+                                <li>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <form class="form" role="form" method="post" action="/default/index" id="login-nav">
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputEmail2">Email address</label>
+                                                    <input type="email" class="form-control" name="email" placeholder="Email address" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="sr-only" for="exampleInputPassword2">Password</label>
+                                                    <input type="password" class="form-control" name="senha" placeholder="Password" required>
+                                                    <div class="help-block text-right"><a href="/default/forget">Forget my password ?</a></div>
+                                                    @if (ViewBag.Mensagem != null)
+                                                    {
+                                                        <script>
+                                                            function aviso() {
+                                                                alert("Usuário e/ou senha inválidos!");
+                                                            }
+                                                            aviso();
+                                                        </script>
+                                                    }
+                                                </div>
+                                                <div class="form-group">
+                                                    <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     }
 
     else
-    { 
-    <nav class="navbar navbar-inverse navbar-fixed-top ">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/default/index"><img src="http://i.imgur.com/Wdpspnv.png" class="img-layout" /></a>
-            </div>
+    {
+        <nav class="navbar navbar-inverse navbar-fixed-top ">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/default/index"><img src="http://i.imgur.com/Wdpspnv.png" class="img-layout" /></a>
+                </div>
 
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul id="menu" class="nav navbar-nav">
-                    <li class="active">
-                    <li><a href="/project/seekproject">PROJECTS</a></li>
-                    <li><a href="/default/scientificresearch">SCIENTIFIC RESEARCH</a></li>
-                    <li><a href="/default/group">MY GROUP</a></li>
-                    <li><a href="/default/about">ABOUT</a></li>
-                </ul>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul id="menu" class="nav navbar-nav">
+                        <li class="active">
+                        <li><a href="/project/seekproject">PROJECTS</a></li>
+                        <li><a href="/default/scientificresearch">SCIENTIFIC RESEARCH</a></li>
+                        @if (ViewBag.Status != 3)
+                        {
+                            <li><a href="/default/group">MY GROUP</a></li>
+                        }
+                        <li><a href="/default/about">ABOUT</a></li>
+                    </ul>
 
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown" id="drop-user">
-                        <a href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.User<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
-                            <li><a href="/project/createstep1"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a></li>
-                            @if (ViewBag.Status == 3)
-                            {
-                                <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
-                            }
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/default/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown" id="drop-user">
+                            <a href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.User<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                                <li><a href="/project/createstep1"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a></li>
+                                @if (ViewBag.Status == 3)
+                                {
+                                    <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
+                                }
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/default/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     }
 
     <div class="container">
@@ -127,7 +128,7 @@
             <hr>
             <div class="col-lg-12">
                 <div class="col-md-8">
-                    <a href="#">Terms of Service</a> 
+                    <a href="#">Terms of Service</a>
                 </div>
                 <div class="col-md-4">
                     <p class="muted pull-left">© 2016 INTERA. All rights reserved</p>
@@ -143,17 +144,17 @@
     @* Add imagem *@
     <script src="~/scripts/jquery.MultiFile.js"></script>
     <script type="text/javascript">
-         $(document).ready(function () {
-             $('#file').MultiFile({
-                 accept: 'pdf|docx',
-                 max: 1,
-                 STRING: {
-                     remove: 'Remover',
-                     denied: 'Tipo do arquivo inválido $ext!',
-                     duplicate: 'Esse arquivo já foi selecionado:\n$file!'
-                 }
-             });
-         });
+        $(document).ready(function () {
+            $('#file').MultiFile({
+                accept: 'pdf|docx',
+                max: 1,
+                STRING: {
+                    remove: 'Remover',
+                    denied: 'Tipo do arquivo inválido $ext!',
+                    duplicate: 'Esse arquivo já foi selecionado:\n$file!'
+                }
+            });
+        });
     </script>
 </body>
 </html>

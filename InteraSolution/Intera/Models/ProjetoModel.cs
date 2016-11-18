@@ -13,7 +13,15 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT into Projeto values (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
+
+            if (projeto.IdCoorientador == 0)
+            {
+                cmd.CommandText = "INSERT into Projeto values (@idProfessor, null, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
+            }
+            else
+            {
+                cmd.CommandText = "INSERT into Projeto values (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
+            }
             cmd.Parameters.AddWithValue("@idProfessor", projeto.IdProfessor);
             cmd.Parameters.AddWithValue("@idCoorientador", projeto.IdCoorientador);
             cmd.Parameters.AddWithValue("@idTipo", projeto.IdTipo);
@@ -76,7 +84,7 @@ namespace Intera.Models
 
             cmd.Connection = connection;
             cmd.CommandText = "SELECT  IdProjeto, Professor_id, Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where IdProjeto = @IdProjeto";
-            
+
             cmd.Parameters.AddWithValue("@IdProjeto", IdProjeto);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -105,15 +113,15 @@ namespace Intera.Models
             cmd.Connection = connection;
             if (Professor == "" && Status == "")
             {
-                cmd.CommandText = "SELECT  IdProjeto, Professor_id, Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where NomeProjeto like '%' + @NameProject + '%' order by DataInicio desc"; //@OrderBy //and Status = @Status 
+                cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '') AS Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where NomeProjeto like '%' + @NameProject + '%' order by DataInicio desc"; //@OrderBy //and Status = @Status 
             }
             else if (Professor == "")
             {
-                cmd.CommandText = "SELECT  IdProjeto, Professor_id, Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where NomeProjeto like '%' + @NameProject + '%' and Status = @Status order by DataInicio desc"; //@OrderBy
+                cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '') AS Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where NomeProjeto like '%' + @NameProject + '%' and Status = @Status order by DataInicio desc"; //@OrderBy
             }
             else if (Status == "")
             {
-                cmd.CommandText = "SELECT  IdProjeto, Professor_id, Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where Professor_id = @Professor and NomeProjeto like '%' + @NameProject + '%' order by DataInicio desc"; //@OrderBy
+                cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '') AS Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where Professor_id = @Professor and NomeProjeto like '%' + @NameProject + '%' order by DataInicio desc"; //@OrderBy
             }
 
             cmd.Parameters.AddWithValue("@Professor", Professor);
@@ -213,6 +221,26 @@ namespace Intera.Models
             return lista;
         }
 
+        public List<Professor> ReadProfessor()
+        {
+            List<Professor> lista = new List<Professor>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT p.IdPessoa Id, p.Nome Nome, prof.Rs Rs FROM Pessoa AS p FULL OUTER JOIN Professor AS prof ON (p.IdPessoa = prof.Pessoa_id) WHERE p.Status = 2";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Professor prof = new Professor();
+                prof.IdPessoa = (int)reader["Id"];
+                prof.Nome = (string)reader["Nome"];
+                prof.Rs = (string)reader["Rs"];
+
+                lista.Add(prof);
+            }
+            return lista;
+        }
+
         public Pessoa GetAluno(int id)
         {
             Pessoa p = null;
@@ -228,6 +256,17 @@ namespace Intera.Models
                 p.Email = (string)reader["Email"];
             }
             return p;
+        }
+
+        private void CreateMensagem(Mensagem msg, int idProjeto)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "INSERT INTO Mensagem VALUES (@IdAluno, @IdProfessor, @IdProjeto, @Mensagem)";
+            cmd.Parameters.AddWithValue("@IdAluno", msg.IdPessoa);
+            cmd.Parameters.AddWithValue("@IdProjeto", idProjeto);
+            cmd.Parameters.AddWithValue("@Mensagem", msg.Mensagem);
+            cmd.ExecuteNonQuery();
         }
     }
 }

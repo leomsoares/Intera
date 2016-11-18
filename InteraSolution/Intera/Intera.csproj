@@ -157,6 +157,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Entity\Aluno.cs" />
     <Compile Include="Entity\AlunoProjeto.cs" />
+    <Compile Include="Entity\Mensagem.cs" />
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Professor.cs" />
     <Compile Include="Entity\Projeto.cs" />
@@ -190,6 +191,7 @@
     <Content Include="Views\Project\createstep1.cshtml" />
     <Content Include="Views\Project\addstudent.cshtml" />
     <Content Include="Views\User\Upload.cshtml" />
+    <Content Include="Views\Default\tracker.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
