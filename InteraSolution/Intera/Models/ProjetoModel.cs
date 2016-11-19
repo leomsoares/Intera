@@ -86,8 +86,31 @@ namespace Intera.Models
                 //aProjeto.DataSaida = (DateTime)reader["DataFinal"];
                 lista.Add(aProjeto);
             }
+            reader.Close();
             return lista;
         }
+
+        public List<Pessoa> ReadProfessorProjeto(int id)
+        {
+            List<Pessoa> lista = new List<Pessoa>();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Pessoa  WHERE IdPessoa = (Select Professor_id from Projeto where IdProjeto = @id)";
+            cmd.Parameters.AddWithValue("@id", id);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Pessoa Professor = new Pessoa();
+                Professor.Nome = (string)reader["Nome"];
+                lista.Add(Professor);
+            }
+            
+            reader.Close();
+            return lista;
+        }
+
         public List<Projeto> ReadProjeto(int IdProjeto)
         {
             List<Projeto> lista = new List<Projeto>();
@@ -114,6 +137,7 @@ namespace Intera.Models
                 Projeto.Descricao = (string)reader["Descricao"];
                 lista.Add(Projeto);
             }
+            reader.Close();
             return lista;
         }
         public List<Projeto> ReadProjeto(String Professor, String NameProject, String Status)

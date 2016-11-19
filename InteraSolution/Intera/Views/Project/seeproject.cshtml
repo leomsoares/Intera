@@ -12,16 +12,21 @@
     <div class="container" style="margin-top:10px;">
         <br />
         <div class="panel panel-default">
-            <div class="panel-heading" style="font-weight: 900; font-size:larger;"></div>
+            <div class="panel-heading" style="font-weight: 900; font-size:larger;">Name Project</div>
             <div class="panel-body"> @t.NomeProjeto</div>
 
 
             <div class="panel-heading" style="font-weight: 900; font-size:larger;">Authors</div>
-            <div class="panel-body"> Jonatas, Thelio, Heitor e Henrique.</div>
-
-
+            @foreach (var U in ViewBag.Membros)
+            {
+                <div class="panel-body">@U.Nome</div>
+            }
             <div class="panel-heading" style="font-weight: 900; font-size:larger;">Advisor</div>
-            <div class="panel-body"> @t.IdProfessor</div>
+            @foreach (var T in ViewBag.ProfessorNome)
+            {
+                <div class="panel-body">@T.Nome</div>
+            }
+            
 
 
             <div class="panel-heading" style="font-weight: 900; font-size:larger;">Summary</div>

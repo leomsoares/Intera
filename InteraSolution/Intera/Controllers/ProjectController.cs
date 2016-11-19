@@ -156,6 +156,8 @@ namespace Intera.Controllers
             Professor = form["Professor"];
             NameProject = form["NameProject"];
             Status = form["Status"];
+            ViewBag.NameProject = form["NameProject"];
+
             List<Projeto> lista = new List<Projeto>();
             if (Professor == null)
             {
@@ -195,6 +197,8 @@ namespace Intera.Controllers
             using (ProjetoModel model = new ProjetoModel())
             {
                 lista = model.ReadProjeto(id);
+                ViewBag.Membros = model.ReadAlunoProjeto(id);
+                ViewBag.ProfessorNome = model.ReadProfessorProjeto(id);
             }
             return View(lista);
 
