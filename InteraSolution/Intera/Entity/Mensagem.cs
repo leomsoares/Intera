@@ -8,6 +8,6 @@ namespace Intera.Entity
     public class Mensagem : Pessoa
     {
         public int IdMensagem { get; set; }
-        public string Mensagem { get; set; }
+        public string DescricaoMsg { get; set; }
     }
 }

@@ -182,5 +182,16 @@ namespace Intera.Controllers
             return View(lista);
 
         }
+
+        public ActionResult liststudent(string nome)
+        {
+            List<Pessoa> alunos = new List<Pessoa>();
+            using (PessoaModel model = new PessoaModel())
+            {
+                alunos = model.Read();
+            }
+
+            return PartialView(alunos);
+        }
     }
 }

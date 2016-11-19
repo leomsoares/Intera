@@ -7,7 +7,63 @@
 <h2 style="margin-top: 60px;">Create New Project - Step 2</h2>
 
 <div class="container">
-    <a href="/project/addstudent" class="btn btn-success"><i class="fa fa-user-plus"></i> Add Student</a>
+    <div class="row">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#studentsModal" id="btnAddStudent">
+            <i class="fa fa-user-plus"></i> Add Student
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="studentsModal" tabindex="-1" role="dialog" aria-labelledby="studentsModallLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="studentsModalLabel">Students</h4>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="col-md-12">
+                            <div id="custom-search-input">
+                                <div class="input-group col-md-12">
+                                    <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." id="search" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default btn-lg" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin:60px">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>NAME</th>
+                                    <th>E-MAIL</th>
+                                    <th>#</th>
+                                </tr>
+                                @foreach (var t in Model)
+                                {
+                                    <tr>
+                                        <td>@t.Nome</td>
+                                        <td>@t.Email</td>
+                                        <td>
+                                            <a href="/project/addalunodata/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></a>
+                                        </td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <table class="table table-hover">
         <tr>
             <th>NAME</th>

@@ -258,15 +258,44 @@ namespace Intera.Models
             return p;
         }
 
-        private void CreateMensagem(Mensagem msg, int idProjeto)
+        public void CreateMensagem(Mensagem msg, int idProjeto)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
             cmd.CommandText = "INSERT INTO Mensagem VALUES (@IdAluno, @IdProfessor, @IdProjeto, @Mensagem)";
             cmd.Parameters.AddWithValue("@IdAluno", msg.IdPessoa);
             cmd.Parameters.AddWithValue("@IdProjeto", idProjeto);
-            cmd.Parameters.AddWithValue("@Mensagem", msg.Mensagem);
+            cmd.Parameters.AddWithValue("@Mensagem", msg.DescricaoMsg);
             cmd.ExecuteNonQuery();
+        }
+
+        public void DeleteMensagem(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "DELETE FROM Mensagem WHERE IdMensagem = @IdMensagem";
+            cmd.Parameters.AddWithValue("@IdMensagem", id);
+            cmd.ExecuteNonQuery();
+        }
+
+        public List<Mensagem> ReadMensagem(int id)
+        {
+            List<Mensagem> lista = new List<Mensagem>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT m.IdMensagem IdMsg, m.Descricao Msg, p.IdPessoa IdPes, p.Nome NomePes FROM Mensagem AS m FULL OUTER JOIN Pessoa AS p ON (m.Pessoa_id = p.IdPessoa) WHERE m.Projeto_id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Mensagem msg = new Mensagem();
+                msg.IdMensagem = (int)reader["IdMsg"];
+                msg.DescricaoMsg = (string)reader["Msg"];
+                msg.IdPessoa = (int)reader["IdPes"];
+                msg.Nome = (string)reader["NomePes"];
+                lista.Add(msg);
+            }
+            return lista;
         }
     }
 }
