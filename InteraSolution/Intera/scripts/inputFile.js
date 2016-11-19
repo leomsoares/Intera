@@ -2,6 +2,6 @@
     var file = $(this).parent().parent().parent().find('.file');
     file.trigger('click');
 });
-$(document).on('change', '.file', function () {
+$(document).on('change', '#file', function () {
     $(this).parent().find('#btnFile').val($(this).val().replace(/C:\\fakepath\\/i, ''));
 });

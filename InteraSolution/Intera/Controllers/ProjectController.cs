@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Intera.Entity;
 using Intera.Models;
+using System.IO;
 
 namespace Intera.Controllers
 {
@@ -42,6 +43,20 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
                 ViewBag.id = p.IdPessoa;
+            }
+
+            int arquivosSalvos = 0;
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                HttpPostedFileBase arquivo = Request.Files[i];
+
+                if (arquivo.ContentLength > 0)
+                {
+                    var uploadPath = Server.MapPath("~/Imagens");
+                    string caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+                    arquivo.SaveAs(caminhoArquivo);
+                    arquivosSalvos++;
+                }
             }
 
             Projeto projeto = new Projeto();
