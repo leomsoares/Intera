@@ -14,18 +14,29 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
 
-            if (projeto.IdCoorientador == 0)
+            if (projeto.IdCoorientador == 0 && projeto.Link == null)
             {
                 cmd.CommandText = "INSERT into Projeto values (@idProfessor, null, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
             }
-            else
+            else if (projeto.IdCoorientador == 0 && projeto.Link != null)
+            {
+                cmd.CommandText = "INSERT into Projeto values (@idProfessor, null, @idTipo, @nome, 1, @link , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
+                cmd.Parameters.AddWithValue("@link", projeto.Link);
+            }
+            else if (projeto.IdCoorientador != 0 && projeto.Link == null)
             {
                 cmd.CommandText = "INSERT into Projeto values (@idProfessor, @idCoorientador, @idTipo, @nome, 1, null , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
+            }
+            else if (projeto.IdCoorientador != 0 && projeto.Link != null)
+            {
+                cmd.CommandText = "INSERT into Projeto values (@idProfessor, @idCoorientador, @idTipo, @nome, 1, @link , @dataInicio, null, @descricao) select SCOPE_IDENTITY()";
+                cmd.Parameters.AddWithValue("@link", projeto.Link);
             }
             cmd.Parameters.AddWithValue("@idProfessor", projeto.IdProfessor);
             cmd.Parameters.AddWithValue("@idCoorientador", projeto.IdCoorientador);
             cmd.Parameters.AddWithValue("@idTipo", projeto.IdTipo);
             cmd.Parameters.AddWithValue("@nome", projeto.NomeProjeto);
+
             cmd.Parameters.AddWithValue("@dataInicio", projeto.DataInicio);
             cmd.Parameters.AddWithValue("@descricao", projeto.Descricao);
 

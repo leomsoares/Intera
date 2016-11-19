@@ -6,7 +6,7 @@
 
 <div style="margin-top:60px;">
     <h2>Create New Project - Step One</h2>
-    <form role="form" action="/project/createstep1" method="post">
+    <form role="form" action="/project/createstep1" method="post" enctype="multipart/form-data">
         <div style="margin-top:20px;">
             <div class="form-group">
                 <input type="text" class="form-control" id="name" name="NomeProjeto" placeholder="Project Title" required>
@@ -42,14 +42,14 @@
                 <textarea class="form-control " name="Descricao" placeholder="Short description..." rows="4"></textarea>
             </div>
 
-            <input type="file" class="file" id="file">
+            <input type="file" class="file" id="file" >
             <div class="input-group col-xs-6">
-                <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file..." formenctype="multipart/form-data">
+                <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
                 <span class="input-group-btn">
                     <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
                 </span>
             </div>
-
+            
             <button type="submit" class="btn btn-default btn-lg pull-right"><i class="fa fa-arrow-right"></i> Next</button>
         </div>
     </form>

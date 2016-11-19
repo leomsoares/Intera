@@ -6,10 +6,15 @@
 
 <h2>Upload</h2>
 <div class="container">
-    <h3>@Html.Encode(ViewData["Message"])</h3>
+    @*<h3>@Html.Encode(ViewData["Message"])</h3>
     @Html.BeginForm("FileUpload", "User", FormMethod.Post, new { enctype = "multipart/form-data" })
     <fieldset>
         <input type="file" id="file" />
         <input type="submit" value="Enviar" />
-    </fieldset>
+    </fieldset>*@
+    <form action="/user/FileUpload" method="post" enctype="multipart/form-data">
+
+    <input type="file"  id="file" />
+    <input type="submit" value="Enviar " />
+    </form>
 </div>

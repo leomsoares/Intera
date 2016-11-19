@@ -44,22 +44,24 @@ namespace Intera.Controllers
                 ViewBag.Status = p.Status;
                 ViewBag.id = p.IdPessoa;
             }
+            Projeto projeto = new Projeto();
 
             int arquivosSalvos = 0;
             for (int i = 0; i < Request.Files.Count; i++)
             {
                 HttpPostedFileBase arquivo = Request.Files[i];
+                string caminhoArquivo = null;
 
                 if (arquivo.ContentLength > 0)
                 {
                     var uploadPath = Server.MapPath("~/Imagens");
-                    string caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+                    caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
                     arquivo.SaveAs(caminhoArquivo);
                     arquivosSalvos++;
                 }
+                projeto.Link = caminhoArquivo; 
             }
 
-            Projeto projeto = new Projeto();
             projeto.IdProfessor = ViewBag.id;
             if (Convert.ToInt32(form["IdCoorientador"]) != 0)
             {

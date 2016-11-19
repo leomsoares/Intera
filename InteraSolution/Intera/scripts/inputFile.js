@@ -1,5 +1,5 @@
 ﻿$(document).on('click', '.browse', function () {
-    var file = $(this).parent().parent().parent().find('.file');
+    var file = $(this).parent().parent().parent().find('#file');
     file.trigger('click');
 });
 $(document).on('change', '#file', function () {
