@@ -27,7 +27,7 @@
                         <div class="col-md-12">
                             <div id="custom-search-input">
                                 <div class="input-group col-md-12">
-                                    <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." id="search" required/>
+                                    <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." id="search" required />
                                     <span class="input-group-btn">
                                         <button class="btn btn-default btn-lg" type="submit">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -85,5 +85,14 @@
             </tr>
         }
     </table>
+
+    @if (ViewBag.Status == 1)
+    {
+        <a href="/project/group" class="btn btn-default"> Publish Project</a>
+    }
+    else
+    {
+        <a href="/project/group" class="btn btn-default">Finalize Project Creation </a>
+    }
 </div>
 

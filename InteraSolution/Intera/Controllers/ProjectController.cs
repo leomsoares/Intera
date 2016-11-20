@@ -102,17 +102,17 @@ namespace Intera.Controllers
             return View(lista);
         }
 
-        [Autoriza]
-        public ActionResult addstudent()
-        {
-            List<Pessoa> lista = new List<Pessoa>();
-            using (ProjetoModel model = new ProjetoModel())
-            {
-                //lista = model.ReadAluno();
-            }
+        //[Autoriza]
+        //public ActionResult addstudent()
+        //{
+        //    List<Pessoa> lista = new List<Pessoa>();
+        //    using (ProjetoModel model = new ProjetoModel())
+        //    {
+        //        //lista = model.ReadAluno();
+        //    }
 
-            return View(lista);
-        }
+        //    return View(lista);
+        //}
 
         [Autoriza]
         public ActionResult addalunodata(int id)

@@ -204,7 +204,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT  IdProjeto, Professor_id, Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto WHERE Professor_id = @idProfessor";
+            cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '0') Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto WHERE Professor_id = @idProfessor";
             cmd.Parameters.AddWithValue("@idProfessor", idProfessor);
 
             SqlDataReader reader = cmd.ExecuteReader();
