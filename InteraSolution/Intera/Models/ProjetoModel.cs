@@ -44,6 +44,23 @@ namespace Intera.Models
             return idProjeto;
         }
 
+        public int VerificarAluno(int idAluno, int idProjeto)
+        {
+            int cont = 0;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM AlunoData WHERE Aluno_id = @idAluno and Projeto_id = @idProjeto";
+            cmd.Parameters.AddWithValue("@idAluno", idAluno);
+            cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                cont++;
+            }
+            return cont;
+        }
+
         public void AddAluno(int idAluno, int idProjeto, DateTime data)
         {
             SqlCommand cmd = new SqlCommand();
@@ -236,12 +253,13 @@ namespace Intera.Models
             return lista;
         }
 
-        public List<Pessoa> ReadAluno()
+        public List<Pessoa> SearchAluno(string busca)
         {
             List<Pessoa> lista = new List<Pessoa>();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 1";
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 1 AND NOME LIKE '%' + @nome + '%'";
+            cmd.Parameters.AddWithValue("@nome", busca);
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())

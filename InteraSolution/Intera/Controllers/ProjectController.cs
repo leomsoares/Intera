@@ -59,7 +59,7 @@ namespace Intera.Controllers
                     arquivo.SaveAs(caminhoArquivo);
                     arquivosSalvos++;
                 }
-                projeto.Link = caminhoArquivo; 
+                projeto.Link = caminhoArquivo;
             }
 
             projeto.IdProfessor = ViewBag.id;
@@ -108,7 +108,7 @@ namespace Intera.Controllers
             List<Pessoa> lista = new List<Pessoa>();
             using (ProjetoModel model = new ProjetoModel())
             {
-                lista = model.ReadAluno();
+                //lista = model.ReadAluno();
             }
 
             return View(lista);
@@ -119,11 +119,19 @@ namespace Intera.Controllers
         {
             Projeto projeto = new Projeto();
             projeto = (Projeto)Session["idProjeto"];
-
-            using (ProjetoModel model = new ProjetoModel())
+            int cont = 0;
+            using (ProjetoModel modelcont = new ProjetoModel())
             {
-                model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
+                cont = modelcont.VerificarAluno(id, projeto.IdProjeto);
+            }
 
+            if (cont == 0)
+            {
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
+
+                }
             }
             return RedirectToAction("Createstep2");
         }
@@ -206,13 +214,15 @@ namespace Intera.Controllers
 
         public ActionResult liststudent(string nome)
         {
-            List<Pessoa> alunos = new List<Pessoa>();
-            using (PessoaModel model = new PessoaModel())
+            List<Pessoa> lista = new List<Pessoa>();
+            if (nome != "")
             {
-                alunos = model.Read();
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    lista = model.SearchAluno(nome);
+                }
             }
-
-            return PartialView(alunos);
+            return PartialView(lista);
         }
 
         public ActionResult group()
@@ -269,7 +279,7 @@ namespace Intera.Controllers
         [HttpPost]
         public ActionResult posts(FormCollection form, int id)
         {
-                Pessoa p = new Pessoa();
+            Pessoa p = new Pessoa();
             if (Session["user"] != null)
             {
                 p = (Pessoa)Session["user"];
