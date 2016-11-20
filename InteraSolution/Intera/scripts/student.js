@@ -28,3 +28,31 @@ $(document).on('click', '#studentsModal button[type=submit]', function () {
         }
     });
 });
+
+//MODAL DE ATUALIZAR A SENHA -- FUNCIONANDO
+$('#attsenha').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+//VERIFICAR SE AS SENHAS CONFEREM -- FUNCIONANDO
+
+//TODA ESSA FUNCTION FOI TROCADA POR UM "ONKEYUP" NO CÓDIGO DA PAGE EDITPROFILE!
+//$(document).ready(function () {
+//    $('#newpassword').keyup(checarSenha());
+//    $('#confirmpassword').keyup(checarSenha());
+//})
+
+function checarSenha() {
+    var password = $("#newpassword").val();
+    var confirmarPassword = $("#confirmpassword").val();
+    if (password == '' || '' == confirmarPassword) {
+        $("#divcheck").html("<span style='color:red'> Empty Field! </span>");
+        document.getElementById("changepassword").disabled = true;
+    } else if (password != confirmarPassword) {
+        $("#divcheck").html("<span style='color:red'> Invalid Password! </span>");
+        document.getElementById("changepassword").disabled = true;
+    } else {
+        $("#divcheck").html("<span style='color:green'> Valid Password! </span>");
+        document.getElementById("changepassword").disabled = false;
+    }
+}
