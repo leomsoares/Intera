@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<Intera.Entity.Projeto>
 @{
     ViewBag.Title = "Scientific Research";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -19,124 +19,42 @@
                             
                             <th>NAME</th>
                             <th>ADVISOR</th>
-                            <th>MEMBERS</th>
                             <th>INITIAL DATE</th>
                             <th>STATUS</th>
                             <th>JOIN</th>
                         </tr>
-                        <tr>
-                            
-                            <th>Seha</th>
-                            <th>Carlos</th>
-                            <th>Alberto, Davi, João e Thelio;</th>
-                            <th>29/08/2015</th>
-                            <th style="color:goldenrod;">
-                                IN PROGRESS
-                            </th>
-                            <th>
-                                <i class="fa fa-share" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
+                        @foreach (var T in Model)
+                        {
+                            <tr>
+                                <th>@T.NomeProjeto</th>
+                                <th>@T.Link</th>
+                                <th>@T.DataInicio</th>
+                                @if (T.Status == 1)
+                                {
+                                    <th style="color:goldenrod;">
+                                        IN PROGRESS
+                                    </th>
+                                    <th>
+                                        <form action="">
+                                            <button type="submit" class="btn btn-default filter-col top-right">
+                                                <span class="fa fa-share" title="An email is sent to the advisor of this project speaking your interest in join at
+                                   this project."></span>
+                                            </button>
+                                        </form>
+                                    </th>
+                                }
+                                @if (T.Status == 2)
+                                {
+                                    <th style="color:green;">
+                                        FINISHED
+                                    </th>
+                                    <th>
+                                        <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
                                    this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>FoodGo</th>
-                            <th>Maura</th>
-                            <th>William, Heitor, Henrique e Bruno;</th>
-                            <th>12/01/2014</th>
-                            <th style="color:green;">
-                                FINISHED
-                            </th>
-                            <th>
-                                <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>AgroTech</th>
-                            <th>Junior</th>
-                            <th>Jonatas, Elias, Bruna e José;</th>
-                            <th>21/04/2016</th>
-                            <th style="color:goldenrod;">
-                                IN PROGRESS
-                            </th>
-                            <th>
-                                <i class="fa fa-share" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>KINGamer</th>
-                            <th>Carlos</th>
-                            <th>Davi, Crisitano, Borel e Solano;</th>
-                            <th>11/06/2016</th>
-                            <th style="color:green;">
-                                FINISHED
-                            </th>
-                            <th>
-                                <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>Encana+</th>
-                            <th>Ducatti</th>
-                            <th>Luiz, Pedro, João e Thelio;</th>
-                            <th>07/08/2013</th>
-                            <th style="color:green;">
-                                FINISHED
-                            </th>
-                            <th>
-                                <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>DJALMA4EVER</th>
-                            <th>Edes</th>
-                            <th>Felipe, André, Dayane e Vinicius;</th>
-                            <th>12/09/2014</th>
-                            <th style="color:goldenrod;">
-                                IN PROGRESS
-                            </th>
-                            <th>
-                                <i class="fa fa-share" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>TOP10FicarRico</th>
-                            <th>Lucimar</th>
-                            <th>Alberto, Solano, João e Leonardo;</th>
-                            <th>29/08/2015</th>
-                            <th style="color:green;">
-                                FINISHED
-                            </th>
-                            <th>
-                                <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-                        <tr>
-
-                            <th>DerrubaNET</th>
-                            <th>Marildo</th>
-                            <th>Valter, Solano, Jonatas e Heitor;</th>
-                            <th>14/11/2015</th>
-                            <th style="color:green;">
-                                FINISHED
-                            </th>
-                            <th>
-                                <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
-                                   this project."></i>
-                            </th>
-                        </tr>
-
+                                    </th>
+                                }
+                            </tr>
+                        }
                     </table>
                 </div>
             </div>
