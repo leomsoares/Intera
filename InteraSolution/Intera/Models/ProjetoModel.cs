@@ -297,19 +297,10 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "INSERT INTO Mensagem VALUES (@IdAluno, @IdProfessor, @IdProjeto, @Mensagem)";
-            cmd.Parameters.AddWithValue("@IdAluno", msg.IdPessoa);
+            cmd.CommandText = "INSERT INTO Mensagem VALUES (@IdPessoa, @IdProjeto, @Mensagem)";
+            cmd.Parameters.AddWithValue("@IdPessoa", msg.IdPessoa);
             cmd.Parameters.AddWithValue("@IdProjeto", idProjeto);
             cmd.Parameters.AddWithValue("@Mensagem", msg.DescricaoMsg);
-            cmd.ExecuteNonQuery();
-        }
-
-        public void DeleteMensagem(int id)
-        {
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = connection;
-            cmd.CommandText = "DELETE FROM Mensagem WHERE IdMensagem = @IdMensagem";
-            cmd.Parameters.AddWithValue("@IdMensagem", id);
             cmd.ExecuteNonQuery();
         }
 

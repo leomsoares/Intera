@@ -214,5 +214,78 @@ namespace Intera.Controllers
 
             return PartialView(alunos);
         }
+
+        public ActionResult group()
+        {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+
+                List<Projeto> lista = new List<Projeto>();
+
+                if (p.Status == 1)
+                {
+                    using (ProjetoModel model = new ProjetoModel())
+                    {
+                        lista = model.ReadProjetoAluno(p.IdPessoa);
+                    }
+                    return View(lista);
+                }
+                if (p.Status == 2)
+                {
+                    using (ProjetoModel model = new ProjetoModel())
+                    {
+                        lista = model.ReadProjetoProfessor(p.IdPessoa);
+                    }
+                    return View(lista);
+                }
+            }
+            return View();
+        }
+
+        [Autoriza]
+        public ActionResult posts(int id)
+        {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+                ViewBag.IdPessoa = p.IdPessoa;
+            }
+            ViewBag.IdProjeto = id;
+            List<Mensagem> lista = new List<Mensagem>();
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadMensagem(id);
+            }
+            return View(lista);
+        }
+
+        [HttpPost]
+        public ActionResult posts(FormCollection form, int id)
+        {
+                Pessoa p = new Pessoa();
+            if (Session["user"] != null)
+            {
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+            }
+
+            Mensagem msg = new Mensagem();
+            msg.DescricaoMsg = form["Mensagem"];
+            msg.IdPessoa = p.IdPessoa;
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.CreateMensagem(msg, id);
+            }
+            return RedirectToAction("posts");
+        }
     }
 }

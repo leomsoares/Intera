@@ -144,7 +144,7 @@
     <Content Include="scripts\jquery.MultiFile.js" />
     <Content Include="scripts\student.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Default\group.cshtml" />
+    <Content Include="Views\Project\group.cshtml" />
     <Content Include="Views\Default\Index.cshtml" />
     <Content Include="Views\Default\scientificresearch.cshtml" />
     <Content Include="Views\User\profile.cshtml" />
@@ -194,6 +194,7 @@
     <Content Include="Views\User\Upload.cshtml" />
     <Content Include="Views\Default\tracker.cshtml" />
     <Content Include="Views\Project\liststudent.cshtml" />
+    <Content Include="Views\Project\posts.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -14,21 +14,21 @@
             <th>STATUS</th>
             <th></th>
         </tr>
-        @foreach (var t in Model)
+        @foreach (var item in Model)
             {
             <tr>
-                <td>@t.NomeProjeto</td>
+                <td>@item.NomeProjeto</td>
                 <td>Vai ser foda colocar os membro</td>
-                @if (@t.Status == 1)
+                @if (@item.Status == 1)
                 {
                     <td>Em andamento</td>
                 }
-                @if (@t.Status == 2)
+                @if (@item.Status == 2)
                 {
                     <td>Finalizado</td>
                 }
                 <td>
-                    <a href=""><i class="fa fa-eye" aria-hidden="true"></i> View</a>
+                    <a href="/project/posts/@item.IdProjeto"><i class="fa fa-commenting"></i> Posts</a>
                     <a href="" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
                 </td>
             </tr>

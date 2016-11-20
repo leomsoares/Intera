@@ -70,16 +70,6 @@ namespace Intera.Controllers
             }
             return RedirectToAction("Index");
         }
-        
-
-
-
-
-
-        public ActionResult professors()
-        {
-            return View();
-        }
 
         public ActionResult scientificresearch()
         {
@@ -93,10 +83,6 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult profile()
-        {
-            return View();
-        }
 
         public ActionResult group()
         {
@@ -129,15 +115,7 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult login()
-        {
-            return View();
-        }
 
-        public ActionResult contact()
-        {
-            return View();
-        }
         public ActionResult about()
         {
             if (Session["user"] != null)
@@ -147,10 +125,6 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
-            return View();
-        }
-        public ActionResult editmembers()
-        {
             return View();
         }
     }
