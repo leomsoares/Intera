@@ -133,6 +133,10 @@ namespace Intera.Controllers
 
                 }
             }
+            //else
+            //{
+            //    ViewBag.Error = "This student is already added to this project.";
+            //}
             return RedirectToAction("Createstep2");
         }
 

@@ -58,8 +58,8 @@
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-6">
-                <button type="button" class="btn col-sm-12" data-toggle="modal" data-target="#attsenha" id="btnEditSenha">
-                    <i class="fa fa-pencil"></i> Change Password
+                <button type="button" class="btn btn-block col-sm-12" data-toggle="modal" data-target="#attsenha" id="btnEditSenha">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Change Password
                 </button>
             </div>
             <!-- Modal -->
@@ -81,7 +81,7 @@
                                 <div class="form-group">
                                     <label for="newpassword" class="col-sm-3 control-label">New Password</label>
                                     <div class="col-sm-6">
-                                        <input type="password" id="newpassword" name="newpassword" placeholder="New Password" class="form-control input-register" onkeyup="checarSenha()" maxlength="20">
+                                        <input type="password" id="newpassword" name="Senha" placeholder="New Password" class="form-control input-register" onkeyup="checarSenha()" maxlength="20">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -98,7 +98,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                             <button type="submit" class="btn btn-success" id="changepassword" disabled>Change Password</button>
                         </div>
                     </div>
@@ -107,7 +107,27 @@
         </div>
         <div class="form-group">
             <div class="container col-sm-2 col-sm-offset-5">
-                <button type="submit" class="btn btn-success btn-block"> Save</button>
+                @*<button type="submit" class="btn btn-success btn-block"> Save</button>*@
+                <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#confirmEditProf"> Save</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="confirmEditProf" tabindex="-1" role="dialog" aria-labelledby="confirmEditProfLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content modal-sm">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="confirmEditProf"> Confirm Changes</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p> Are you sure you want to save edits?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"> Cancel</button>
+                                <button type="submit" class="btn btn-success btn-sm"> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </form>

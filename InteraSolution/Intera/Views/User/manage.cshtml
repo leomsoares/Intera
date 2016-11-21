@@ -54,7 +54,27 @@
                 <td>
                     <a href="/user/view/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a>
                     <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                    <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                    @*<a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>*@
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="confirmDelUser" tabindex="-1" role="dialog" aria-labelledby="confirmDelUserLabel">
+                        <div class="modal-dialog modal-sm" role="document">
+                            <div class="modal-content modal-sm">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="confirmDelUser"> Confirm Deletion</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p> Are you sure you want to delete?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
+                                    <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }

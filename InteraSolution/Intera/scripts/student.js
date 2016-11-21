@@ -10,6 +10,29 @@ $('#btnAddStudent').on('click', function () {
 })
 
 //COMANDO PARA PUXAR A TABELA e LIMPAR BOTÃO SEARCH -- FUNCIONANDO
+
+//COMANDO PARA BUSCAR A TABELA AO APERTAR ENTER
+$(document).keypress('#studentsModal button[type=submit]', function (e) {
+    if (e.which == 13 || e.keyCode == 13) {
+
+        var texto = $('#studentsModal [name$=Search]').val();
+
+        $.ajax({
+            url: '/project/liststudent?nome=' + texto,
+            method: 'Get',
+            dataType: 'html',
+            success: function (data) {
+                $('#studentsModal table').replaceWith(data);
+                $('#studentsModal input').val("").focus();
+            },
+            error: function () {
+                alert('error');
+            }
+        });
+    }
+});
+
+//COMANDO PARA BUSCAR A TABELA AO CLICAR NO BOTÃO
 $(document).on('click', '#studentsModal button[type=submit]', function () {
 
     var texto = $('#studentsModal [name$=Search]').val();
@@ -56,3 +79,18 @@ function checarSenha() {
         document.getElementById("changepassword").disabled = false;
     }
 }
+
+//MODAL DE CONFIRMAR EXCLUSÃO DE USUARIOS -- FUNCIONANDO
+$('#confirmDelUser').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+//MODAL DE CONFIRMAR EDIÇÕES -- FUNCIONANDO
+$('#confirmEditProf').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+////MODAL DE CONFIRMAR EXCLUSÃO NA PAGINA VIEW PROFILE -- FUNCIONANDO
+//$('#confirmDelUser2').on('shown.bs.modal', function () {
+//    $('#myInput').focus()
+//})

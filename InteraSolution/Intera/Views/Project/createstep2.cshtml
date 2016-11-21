@@ -54,6 +54,12 @@
                                     </tr>
                                 }
                             </table>
+                            @*@if (ViewBag.Error != null)
+                            {
+                                <script>
+                                    alert("This student is already added to this project.");
+                                </script>
+                            }*@
                         </div>
                     </div>
                     <div class="modal-footer">
