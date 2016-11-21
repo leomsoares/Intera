@@ -336,6 +336,22 @@ namespace Intera.Models
             return p;
         }
 
+        public bool UserProjeto(int idProjeto, int idAluno)
+        {
+            bool retorno = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT COUNT (Aluno_id) FROM AlunoData WHERE Aluno_id = @idAluno AND Projeto_id = @idProjeto";
+            cmd.Parameters.AddWithValue("@idAluno", idAluno);
+            cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
+            int i = Convert.ToInt32(cmd.ExecuteScalar());
+            if(i != 0)
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
         public void CreateMensagem(Mensagem msg, int idProjeto)
         {
             SqlCommand cmd = new SqlCommand();

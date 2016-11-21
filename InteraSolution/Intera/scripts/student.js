@@ -25,9 +25,6 @@ $(document).keypress('#studentsModal button[type=submit]', function (e) {
                 $('#studentsModal table').replaceWith(data);
                 $('#studentsModal input').val("").focus();
             },
-            error: function () {
-                alert('error');
-            }
         });
     }
 });

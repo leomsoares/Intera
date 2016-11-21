@@ -133,10 +133,6 @@ namespace Intera.Controllers
 
                 }
             }
-            //else
-            //{
-            //    ViewBag.Error = "This student is already added to this project.";
-            //}
             return RedirectToAction("Createstep2");
         }
 
@@ -263,9 +259,9 @@ namespace Intera.Controllers
         [Autoriza]
         public ActionResult posts(int id)
         {
+            Pessoa p = new Pessoa();
             if (Session["user"] != null)
             {
-                Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
@@ -273,11 +269,23 @@ namespace Intera.Controllers
             }
             ViewBag.IdProjeto = id;
             List<Mensagem> lista = new List<Mensagem>();
-            using (ProjetoModel model = new ProjetoModel())
+            bool i = false;
+
+            using (ProjetoModel modelv = new ProjetoModel())
             {
-                lista = model.ReadMensagem(id);
+                i = modelv.UserProjeto(id, p.IdPessoa);
             }
-            return View(lista);
+
+            if (i == true)
+            {
+
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    lista = model.ReadMensagem(id);
+                    return View(lista);
+                }
+            }
+            return RedirectToAction("group");
         }
 
         [HttpPost]
