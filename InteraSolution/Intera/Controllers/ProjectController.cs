@@ -227,9 +227,9 @@ namespace Intera.Controllers
 
         public ActionResult group()
         {
+            Pessoa p = new Pessoa();
             if (Session["user"] != null)
             {
-                Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
@@ -252,6 +252,10 @@ namespace Intera.Controllers
                     }
                     return View(lista);
                 }
+            }
+            if (p.Status == 3)
+            {
+                return new RedirectResult("/default/index");
             }
             return View();
         }
@@ -285,6 +289,10 @@ namespace Intera.Controllers
                     return View(lista);
                 }
             }
+            if (p.Status == 3)
+            {
+                return new RedirectResult("/default/index");
+            }
             return RedirectToAction("group");
         }
 
@@ -307,6 +315,7 @@ namespace Intera.Controllers
             {
                 model.CreateMensagem(msg, id);
             }
+
             return RedirectToAction("posts");
         }
     }
