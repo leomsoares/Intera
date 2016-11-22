@@ -54,14 +54,13 @@ $('#attsenha').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
 
-//VERIFICAR SE AS SENHAS CONFEREM -- FUNCIONANDO
-
 //TODA ESSA FUNCTION FOI TROCADA POR UM "ONKEYUP" NO CÓDIGO DA PAGE EDITPROFILE!
 //$(document).ready(function () {
 //    $('#newpassword').keyup(checarSenha());
 //    $('#confirmpassword').keyup(checarSenha());
 //})
 
+//COMANDO PARA VERIFICAR SE AS SENHAS CONFEREM
 function checarSenha() {
     var password = $("#newpassword").val();
     var confirmarPassword = $("#confirmpassword").val();
@@ -87,7 +86,7 @@ $('#confirmEditProf').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
 
-////MODAL DE CONFIRMAR EXCLUSÃO NA PAGINA VIEW PROFILE -- FUNCIONANDO
-//$('#confirmDelUser2').on('shown.bs.modal', function () {
-//    $('#myInput').focus()
-//})
+//MODAL DE ADICIONAR NOVO USUÁRIO -- FUNCIONANDO
+$('#createUser').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})

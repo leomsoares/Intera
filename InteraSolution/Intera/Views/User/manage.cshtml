@@ -27,7 +27,84 @@
 
 </div>
 <div style="margin:60px">
-    <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+    @*<a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>*@
+    
+    @*<div class="col-sm-6">*@
+        <button type="button" class="form-control btn btn-success" data-toggle="modal" data-target="#createUser">
+            <i class="fa fa-user-plus" aria-hidden="true"></i> Add User
+        </button>
+    @*</div>*@
+    <!-- Modal -->
+    <div class="modal fade" id="createUser" tabindex="-1" role="dialog" aria-labelledby="createUserLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="createUserLabel">Create User</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form class="form-horizontal" action="/user/create" method="post">
+
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">Full Name</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" maxlength="50" autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-sm-3 control-label">Email</label>
+                                <div class="col-sm-6">
+                                    <input type="email" name="Email" placeholder="Email" class="form-control input-register" maxlength="50">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" maxlength="15" autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName" class="col-sm-3 control-label">Curso</label>
+                                <div class="col-sm-6">
+                                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" maxlength="50" autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-sm-3 control-label">Password</label>
+                                <div class="col-sm-6">
+                                    <input type="password" name="Senha" placeholder="Password" class="form-control input-register" maxlength="20">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Type</label>
+                                <div class="col-sm-6">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="Type" value="1" checked>Student
+                                            </label>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="Type" value="2">Professor
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="container col-sm-2 col-sm-offset-5">
+                                    <button type="submit" class="btn btn-default btn-block"> Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <table class="table table-bordered">
         <tr>

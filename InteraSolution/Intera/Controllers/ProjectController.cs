@@ -132,7 +132,7 @@ namespace Intera.Controllers
                     model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
 
                 }
-            }
+            } 
             return RedirectToAction("Createstep2");
         }
 
