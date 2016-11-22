@@ -16,42 +16,54 @@
 
                     <table class="table table-bordered">
                         <tr>
-                            
+
                             <th>NAME</th>
                             <th>ADVISOR</th>
                             <th>INITIAL DATE</th>
                             <th>STATUS</th>
-                            <th>JOIN</th>
+                            @if (Session["user"] != null && ViewBag.Status == 1)
+                            {
+                                <th>JOIN</th>
+                            }
                         </tr>
                         @foreach (var T in Model)
                         {
                             <tr>
                                 <th>@T.NomeProjeto</th>
                                 <th>@T.Link</th>
-                                <th>@T.DataInicio</th>
+                                <th>@T.DataInicio.ToShortDateString()</th>
                                 @if (T.Status == 1)
                                 {
                                     <th style="color:goldenrod;">
                                         IN PROGRESS
                                     </th>
-                                    <th>
-                                        <form action="">
-                                            <button type="submit" class="btn btn-default filter-col top-right">
-                                                <span class="fa fa-share" title="An email is sent to the advisor of this project speaking your interest in join at
+
+                                    if (Session["user"] != null && ViewBag.Status == 1)
+                                    {
+                                        <th>
+                                            <form action="/default/scientificresearch/@T.IdProjeto">
+                                                <button type="submit" class="btn btn-default filter-col top-right">
+                                                    <span class="fa fa-share" title="An email is sent to the advisor of this project speaking your interest in join at
                                    this project."></span>
-                                            </button>
-                                        </form>
-                                    </th>
+                                                </button>
+                                            </form>
+                                        </th>
+                                    }
                                 }
+
                                 @if (T.Status == 2)
                                 {
+
                                     <th style="color:green;">
                                         FINISHED
                                     </th>
-                                    <th>
-                                        <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
+                                    if (Session["user"] != null && ViewBag.Status == 1)
+                                    {
+                                        <th>
+                                            <i class="glyphicon glyphicon-remove" aria-hidden="true" title="An email is sent to the advisor of this project speaking your interest in join at
                                    this project."></i>
-                                    </th>
+                                        </th>
+                                    }
                                 }
                             </tr>
                         }
