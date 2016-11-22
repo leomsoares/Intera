@@ -65,10 +65,27 @@
                     <td>Student</td>
                     <td>student@email.com</td>
                     <td>Student</td>
-                    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button></td>
+                    <td>
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button></td>
+            </table>
+            <a href="/user/create" class="form-control btn btn-success"><i class="glyphicon glyphicon-book" aria-hidden="true"></i> Add Reference</a>
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>REFERENCES</th>
+                    <th>OPTIONS</th>
+                    
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>TANENBAUM, Andrew. Sistemas operacionais modernos. 3 ed. São Paulo: São Paulo, 2009.</td>
+                   
+                    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button></td>
             </table>
 
-            <div class="row" style="height:50px; margin-top:15px">
+            <div class="row" style="height:50px; margin-top:35px">
                 <input type="file" class="file">
                 <div class="input-group col-xs-6">
                     <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
