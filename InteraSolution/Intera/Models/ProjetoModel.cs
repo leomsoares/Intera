@@ -382,5 +382,49 @@ namespace Intera.Models
             }
             return lista;
         }
+
+        public Projeto ReadEditProjeto(int id)
+        {
+            Projeto projeto = new Projeto();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Projeto WHERE IdProjeto = @idProjeto";
+            cmd.Parameters.AddWithValue("@idProjeto", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                projeto.IdProjeto = (int)reader["IdProjeto"];
+                projeto.IdProfessor = (int)reader["Professor_id"];
+                projeto.IdCoorientador = (int)reader["Coorientador_id"];
+                projeto.IdTipo = (int)reader["Tipo_id"];
+                projeto.NomeProjeto = (string)reader["NomeProjeto"];
+                projeto.Status = (int)reader["Status"];
+                projeto.Link = (string)reader["Link"];
+                projeto.DataInicio = (DateTime)reader["DataInicio"];
+                projeto.DataFinal = (DateTime)reader["DataFinal"];
+                projeto.Descricao = (string)reader["Descricao"];
+            }
+            return projeto;
+        }
+        //ReadAlunoProjeto
+
+        public List<Referencia> ReadReferencia(int id)
+        {
+            List<Referencia> lista = new List<Referencia>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "select r.IdReferencia, r.Descricao from Referencia r, Projeto p where r.Projeto_id = @id and p.IdProjeto = @idprojeto";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@idprojeto", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Referencia referencia = new Referencia();
+                referencia.IdReferencia = (int)reader["IdReferencia"];
+                referencia.DescricaoReferencia = (string)reader["Descricao"];
+                lista.Add(referencia);
+            }
+            return lista;
+        }
     }
 }

@@ -87,6 +87,6 @@ $('#confirmEditProf').on('shown.bs.modal', function () {
 })
 
 //MODAL DE ADICIONAR NOVO USUÁRIO -- FUNCIONANDO
-$('#createUser').on('shown.bs.modal', function () {
+$('#viewUser').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })

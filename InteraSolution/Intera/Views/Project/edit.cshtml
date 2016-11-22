@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>edit</h2>
+<div class="container">
+    <form action="/" method="post">
+        <label>Name Project</label>
+        <input type="text" value="" />
+
+        <label>Orientador</label>
+        <input type="text" disabled />
+
+        <label>Co-orientador</label>
+        <input type="text" disabled />
+
+        <label>Type</label>
+        <label>Scientific Research</label><input type="radio" name="Type" value="1" checked>
+        <label>Professor</label><input type="radio" name="Type" value="2">
+
+        <label>Arquivo</label>
+        <input type="text" disabled />
+        <input type="file" />
+
+        <label>descrição</label>
+        <textarea rows="10"></textarea>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>NAME</th>
+                <th>E-MAIL</th>
+                <th>#</th>
+            </tr>
+            <tr>
+                <td>nome</td>
+                <td>email</td>
+                <td>
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+        </table>
+
+        <a href="#">Add Aluno</a>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Descricao</th>
+                <th>#</th>
+            </tr>
+            <tr>
+                <td>descricao</td>
+                <td>
+                    <a href="#">Delete</a>
+                </td>
+            </tr>
+        </table>
+
+        <a href="#">add Referencia</a>
+        <button>Salvar</button>
+    </form>
+</div>

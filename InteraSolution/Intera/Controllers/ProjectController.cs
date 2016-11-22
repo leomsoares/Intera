@@ -318,5 +318,26 @@ namespace Intera.Controllers
 
             return RedirectToAction("posts");
         }
+
+        
+        public ActionResult edit()
+        {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+            }
+
+            //using (ProjetoModel model = new ProjetoModel())
+            //{
+            //    ViewBag.Projeto = model.ReadEditProjeto(id);
+            //    ViewBag.ListaAlunoProjeto = model.ReadAlunoProjeto(id);
+            //    ViewBag.ListaReferencia = model.ReadReferencia(id);
+            //}
+
+            return View();
+        }
     }
 }

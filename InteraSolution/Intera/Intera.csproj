@@ -162,6 +162,7 @@
     <Compile Include="Entity\Pessoa.cs" />
     <Compile Include="Entity\Professor.cs" />
     <Compile Include="Entity\Projeto.cs" />
+    <Compile Include="Entity\Referencia.cs" />
     <Compile Include="Entity\Social.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,6 +196,7 @@
     <Content Include="Views\Default\tracker.cshtml" />
     <Content Include="Views\Project\liststudent.cshtml" />
     <Content Include="Views\Project\posts.cshtml" />
+    <Content Include="Views\Project\edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
