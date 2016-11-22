@@ -1,63 +1,85 @@
 ﻿
 @{
-    ViewBag.Title = "edit";
+    ViewBag.Title = "Edit Project";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>edit</h2>
+<h2 style="margin-top:60px">Edit Project</h2>
 <div class="container">
-    <form action="/" method="post">
-        <label>Name Project</label>
-        <input type="text" value="" />
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Name</label>
+            <div class="col-sm-6">
+                <input type="email" name="Pname" placeholder="Project Name" class="form-control input-register" maxlength="50">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Advisor</label>
+            <div class="col-sm-6">
+                <input type="email" name="Advisor" placeholder="Advisor" class="form-control input-register" maxlength="50">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-3 control-label">Co-Advisor</label>
+            <div class="col-sm-6">
+                <input type="email" name="Coadvisor" placeholder="Co-Advisor" class="form-control input-register" maxlength="50">
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Type</label>
+            <div class="form-check">
 
-        <label>Orientador</label>
-        <input type="text" disabled />
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
+                    TCC
+                </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
+                    Scientific Research
+                </label>
+            </div>
+        </div>
 
-        <label>Co-orientador</label>
-        <input type="text" disabled />
+        <div>
+            <textarea class="form-control " name="Descricao" placeholder="Description..." rows="4"></textarea>
+        </div>
 
-        <label>Type</label>
-        <label>Scientific Research</label><input type="radio" name="Type" value="1" checked>
-        <label>Professor</label><input type="radio" name="Type" value="2">
+      
 
-        <label>Arquivo</label>
-        <input type="text" disabled />
-        <input type="file" />
+        <div style="margin:60px">
+            <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
 
-        <label>descrição</label>
-        <textarea rows="10"></textarea>
+            <table class="table table-bordered">
+                <tr>
+                    <th>#</th>
+                    <th>NAME</th>
+                    <th>E-MAIL</th>
+                    <th>STATUS</th>
+                    <th>OPTIONS</th>
+                </tr>
 
-        <table class="table table-bordered">
-            <tr>
-                <th>NAME</th>
-                <th>E-MAIL</th>
-                <th>#</th>
-            </tr>
-            <tr>
-                <td>nome</td>
-                <td>email</td>
-                <td>
-                    <a href="#">Delete</a>
-                </td>
-            </tr>
-        </table>
+                <tr>
+                    <td>1</td>
+                    <td>Student</td>
+                    <td>student@email.com</td>
+                    <td>Student</td>
+                    <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button></td>
+            </table>
 
-        <a href="#">Add Aluno</a>
-
-        <table class="table table-bordered">
-            <tr>
-                <th>Descricao</th>
-                <th>#</th>
-            </tr>
-            <tr>
-                <td>descricao</td>
-                <td>
-                    <a href="#">Delete</a>
-                </td>
-            </tr>
-        </table>
-
-        <a href="#">add Referencia</a>
-        <button>Salvar</button>
+            <div class="row" style="height:50px; margin-top:15px">
+                <input type="file" class="file">
+                <div class="input-group col-xs-6">
+                    <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
+                    <span class="input-group-btn">
+                        <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                    </span>
+                </div>
+                <a class="btn btn-default btn-lg pull-right btnProject" href="#"><span class="glyphicon glyphicon-send"></span> Send</a>
+            </div>
+        </div>
     </form>
 </div>
+
+        
