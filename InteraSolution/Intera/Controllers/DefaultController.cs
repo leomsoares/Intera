@@ -32,7 +32,7 @@ namespace Intera.Controllers
             using (PessoaModel model = new PessoaModel())
             {
                 Pessoa p = model.Login(email, senha);
-                if(p != null)
+                if (p != null)
                 {
                     Session["user"] = p;
                     return RedirectToAction("Index", "Default");
@@ -53,7 +53,7 @@ namespace Intera.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         public ActionResult forget(FormCollection form)
         {
@@ -85,10 +85,53 @@ namespace Intera.Controllers
             {
                 lista = model.ReadScientificResearch();
             }
-            
+
             return View(lista);
         }
+        [HttpPost]
+        public ActionResult scientificresearch(int id)
+        {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
 
+                Pessoa Professor = new Pessoa();
+                Pessoa Coorientador = new Pessoa();
+                Projeto Projeto = new Projeto();
+
+                using (ProjetoModel modelP = new ProjetoModel())
+                {
+                    Projeto = modelP.ReadProjeto2(id);
+                }
+                using (PessoaModel model1 = new PessoaModel())
+                {
+                    Professor = model1.ReadProfessor(Projeto.IdProfessor);
+                    if (Projeto.IdCoorientador != 0)
+                    {
+                        Coorientador = model1.ReadProfessor(Projeto.IdCoorientador);
+                    }
+                }
+                using (HomeModel email = new HomeModel())
+                {
+                    email.EnviarEmail(Professor, p, Projeto.NomeProjeto);
+                    if (Projeto.IdCoorientador != 0)
+                    {
+                        email.EnviarEmail(Coorientador, p, Projeto.NomeProjeto);
+                    }
+                }
+            }
+            List<Projeto> lista = new List<Projeto>();
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadScientificResearch();
+            }
+
+            return View(lista);
+        }
 
         public ActionResult group()
         {

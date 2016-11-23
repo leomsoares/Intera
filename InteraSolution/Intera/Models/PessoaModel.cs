@@ -111,7 +111,21 @@ namespace Intera.Models
             }
             return lista;
         }
+        public Pessoa ReadProfessor(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 2 and IdPessoa = @IdPessoa";
+            cmd.Parameters.AddWithValue("@IdPessoa", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            Pessoa p = new Pessoa();
+            p.IdPessoa = (int)reader["IdPessoa"];
+            p.Nome = (string)reader["Nome"];
+            p.Email = (string)reader["Email"];
 
+            return p;
+        }
         public int CreateAluno(Aluno aluno)
         {
             SqlCommand cmd = new SqlCommand();
