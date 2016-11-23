@@ -159,7 +159,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT  IdProjeto, Professor_id, Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where IdProjeto = @IdProjeto";
+            cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '0') as Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto where IdProjeto = @IdProjeto";
 
             cmd.Parameters.AddWithValue("@IdProjeto", IdProjeto);
 
@@ -256,7 +256,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id,0) Coorientador_idTipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto WHERE IdProjeto IN (SELECT  Projeto_id FROM AlunoData where Aluno_id = @idAluno) ";
+            cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id,'0') as Coorientador_id,TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto WHERE IdProjeto IN (SELECT  Projeto_id FROM AlunoData where Aluno_id = @idAluno) ";
             cmd.Parameters.AddWithValue("@idAluno", idAluno);
 
             SqlDataReader reader = cmd.ExecuteReader();
