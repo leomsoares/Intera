@@ -132,7 +132,7 @@ namespace Intera.Controllers
                     model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
 
                 }
-            } 
+            }
             return RedirectToAction("Createstep2");
         }
 
@@ -319,8 +319,8 @@ namespace Intera.Controllers
             return RedirectToAction("posts");
         }
 
-        
-        public ActionResult edit()
+
+        public ActionResult edit(int id)
         {
             if (Session["user"] != null)
             {
@@ -329,14 +329,31 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
+            Projeto projeto = new Projeto();
 
-            //using (ProjetoModel model = new ProjetoModel())
-            //{
-            //    ViewBag.Projeto = model.ReadEditProjeto(id);
-            //    ViewBag.ListaAlunoProjeto = model.ReadAlunoProjeto(id);
-            //    ViewBag.ListaReferencia = model.ReadReferencia(id);
-            //}
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                projeto = model.ReadEditProjeto(id);
+                ViewBag.ListaAlunoProjeto = model.ReadAlunoProjeto(id);
+                ViewBag.ListaReferencia = model.ReadReferencia(id);
+            }
 
+            using (PessoaModel model2 = new PessoaModel())
+            {
+                ViewBag.NomeOrientador = model2.UpdateReadProfessor(projeto.IdProfessor);
+                if (projeto.IdCoorientador != 0)
+                {
+                    ViewBag.NomeCoorientador = model2.UpdateReadProfessor(projeto.IdCoorientador);
+                }
+            }
+
+            ViewBag.IdProjeto = projeto.IdProfessor;
+            ViewBag.Tipo = projeto.IdTipo;
+            ViewBag.NomeProjeto = projeto.NomeProjeto;
+            ViewBag.StatusProjeto = projeto.Status;
+            ViewBag.DataInicial = projeto.DataInicio;
+            ViewBag.DataFinal = projeto.DataFinal;
+            ViewBag.Descricao = projeto.Descricao;
             return View();
         }
     }

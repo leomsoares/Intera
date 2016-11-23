@@ -10,43 +10,61 @@
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Name</label>
             <div class="col-sm-6">
-                <input type="email" name="Pname" placeholder="Project Name" class="form-control input-register" maxlength="50">
+                <input type="email" name="Pname" placeholder="Project Name" class="form-control input-register" value="@ViewBag.NomeProjeto" maxlength="50">
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Advisor</label>
             <div class="col-sm-6">
-                <input type="email" name="Advisor" placeholder="Advisor" class="form-control input-register" maxlength="50">
+                <input type="email" name="Advisor" placeholder="Advisor" class="form-control input-register" value="@ViewBag.NomeOrientador.Nome" disabled maxlength="50">
             </div>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-3 control-label">Co-Advisor</label>
             <div class="col-sm-6">
-                <input type="email" name="Coadvisor" placeholder="Co-Advisor" class="form-control input-register" maxlength="50">
+                <input type="email" name="Coadvisor" placeholder="Co-Advisor" value="@ViewBag.NomeCoorientador.Nome" disabled class="form-control input-register" maxlength="50">
             </div>
         </div>
         <div class="form-group">
-            <label>Type</label>
-            <div class="form-check">
-
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
-                    TCC
-                </label>
-            </div>
-            <div class="form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
-                    Scientific Research
-                </label>
-            </div>
+            @if (ViewBag.Tipo == 1)
+            {
+                <label>Type</label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
+                        TCC
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
+                        Scientific Research
+                    </label>
+                </div>
+            }
+            else if (ViewBag.Tipo == 2)
+            {
+                <label>Type</label>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1">
+                        TCC
+                    </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2" checked>
+                        Scientific Research
+                    </label>
+                </div>
+            }
         </div>
 
         <div>
-            <textarea class="form-control " name="Descricao" placeholder="Description..." rows="4"></textarea>
+            <textarea class="form-control " name="Descricao" placeholder="Description..." value="@ViewBag.Descricao" rows="4"></textarea>
         </div>
 
-      
+
 
         <div style="margin:60px">
             <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
@@ -66,7 +84,8 @@
                     <td>student@email.com</td>
                     <td>Student</td>
                     <td>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button></td>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                    </td>
             </table>
             <a href="/user/create" class="form-control btn btn-success"><i class="glyphicon glyphicon-book" aria-hidden="true"></i> Add Reference</a>
             <table class="table table-bordered">
@@ -74,15 +93,17 @@
                     <th>#</th>
                     <th>REFERENCES</th>
                     <th>OPTIONS</th>
-                    
+
                 </tr>
 
                 <tr>
                     <td>1</td>
                     <td>TANENBAUM, Andrew. Sistemas operacionais modernos. 3 ed. São Paulo: São Paulo, 2009.</td>
-                   
-                    <td><button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button></td>
+
+                    <td>
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                    </td>
             </table>
 
             <div class="row" style="height:50px; margin-top:35px">
@@ -100,4 +121,4 @@
     </form>
 </div>
 
-        
+

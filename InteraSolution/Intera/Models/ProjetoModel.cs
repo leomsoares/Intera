@@ -89,7 +89,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT ad.Projeto_id Projeto, p.IdPessoa IdAluno, p.Nome Nome, p.Email Email, ad.DataInicio DataInicio, ad.DataFinal DataFinal FROM Pessoa as p FULL OUTER JOIN AlunoData as ad ON(p.IdPessoa = ad.Aluno_id) WHERE ad.Projeto_id = @idProjeto";
+            cmd.CommandText = "SELECT ad.Projeto_id Projeto, p.IdPessoa IdAluno, p.Nome Nome, p.Email Email, ad.DataInicio DataInicio, ISNULL(ad.DataFinal, '') AS DataFinal FROM Pessoa as p FULL OUTER JOIN AlunoData as ad ON(p.IdPessoa = ad.Aluno_id) WHERE ad.Projeto_id = @idProjeto";
             cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -100,7 +100,7 @@ namespace Intera.Models
                 aProjeto.Nome = (string)reader["Nome"];
                 aProjeto.Email = (string)reader["Email"];
                 aProjeto.DataEntrada = (DateTime)reader["DataInicio"];
-                //aProjeto.DataSaida = (DateTime)reader["DataFinal"];
+                aProjeto.DataSaida = (DateTime)reader["DataFinal"];
                 lista.Add(aProjeto);
             }
             reader.Close();
@@ -416,7 +416,7 @@ namespace Intera.Models
             Projeto projeto = new Projeto();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Projeto WHERE IdProjeto = @idProjeto";
+            cmd.CommandText = "SELECT IdProjeto, Professor_id, ISNULL(Coorientador_id, '0') AS Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link, '') AS Link, DataInicio, ISNULL(DataFinal, '') AS DataFinal, Descricao FROM Projeto WHERE IdProjeto = @idProjeto";
             cmd.Parameters.AddWithValue("@idProjeto", id);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -424,7 +424,7 @@ namespace Intera.Models
                 projeto.IdProjeto = (int)reader["IdProjeto"];
                 projeto.IdProfessor = (int)reader["Professor_id"];
                 projeto.IdCoorientador = (int)reader["Coorientador_id"];
-                projeto.IdTipo = (int)reader["Tipo_id"];
+                projeto.IdTipo = (int)reader["TipoProjeto_id"];
                 projeto.NomeProjeto = (string)reader["NomeProjeto"];
                 projeto.Status = (int)reader["Status"];
                 projeto.Link = (string)reader["Link"];
@@ -432,6 +432,7 @@ namespace Intera.Models
                 projeto.DataFinal = (DateTime)reader["DataFinal"];
                 projeto.Descricao = (string)reader["Descricao"];
             }
+            reader.Close();
             return projeto;
         }
         //ReadAlunoProjeto
@@ -452,6 +453,7 @@ namespace Intera.Models
                 referencia.DescricaoReferencia = (string)reader["Descricao"];
                 lista.Add(referencia);
             }
+            reader.Close();
             return lista;
         }
     }

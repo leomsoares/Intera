@@ -228,6 +228,7 @@ namespace Intera.Models
                 prof.Senha = (string)reader["Senha"];
                 prof.Rs = (string)reader["Rs"];
             }
+            reader.Close();
             return prof;
         }
 

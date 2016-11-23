@@ -193,7 +193,6 @@
     <Content Include="Views\Project\createstep1.cshtml" />
     <Content Include="Views\Project\addstudent.cshtml" />
     <Content Include="Views\User\Upload.cshtml" />
-    <Content Include="Views\Default\tracker.cshtml" />
     <Content Include="Views\Project\liststudent.cshtml" />
     <Content Include="Views\Project\posts.cshtml" />
     <Content Include="Views\Project\edit.cshtml" />
