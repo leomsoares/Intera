@@ -20,7 +20,12 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
-            return View();
+            List<Projeto> lista = new List<Projeto>();
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadProjeto();
+            }
+            return View(lista);
         }
 
         [HttpPost]

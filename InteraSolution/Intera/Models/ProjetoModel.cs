@@ -154,6 +154,32 @@ namespace Intera.Models
             reader.Close();
             return lista;
         }
+        public List<Projeto> ReadProjeto()
+        {
+            List<Projeto> lista = new List<Projeto>();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT TOP 3 IdProjeto, Professor_id, ISNULL(Coorientador_id,0) Coorientador_id, NomeProjeto, P.Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao , Nome FROM Projeto as P inner join Pessoa as Pes on (Professor_id = IdPessoa) order by DataInicio desc";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Projeto Projeto = new Projeto();
+                Projeto.IdProjeto = (int)reader["IdProjeto"];
+                Projeto.IdProfessor = (int)reader["Professor_id"];
+                Projeto.IdCoorientador = (int)reader["Coorientador_id"];
+                Projeto.NomeProjeto = (string)reader["NomeProjeto"];
+                Projeto.Status = (int)reader["Status"];
+                Projeto.Link = (string)reader["Nome"];
+                Projeto.DataInicio = (DateTime)reader["DataInicio"];
+                Projeto.DataFinal = (DateTime)reader["DataFinal"];
+                Projeto.Descricao = (string)reader["Descricao"];
+                lista.Add(Projeto);
+            }
+            reader.Close();
+            return lista;
+        }
         public List<Projeto> ReadProjeto(int IdProjeto)
         {
             List<Projeto> lista = new List<Projeto>();
