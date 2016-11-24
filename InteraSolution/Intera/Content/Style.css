@@ -442,3 +442,35 @@ ul {
     border:0;
     background:transparent;
 }
+
+html, body {
+  height: 100%;
+}
+ 
+.wrap {
+  height: 70vh;
+  display: flex;
+}
+main {
+  flex: 1;
+  display: flex;
+}
+ 
+aside, article {
+  overflow-y: scroll;
+  padding: 2em;
+}
+ 
+aside {
+  flex: 1;
+}
+ 
+article {
+  flex: 2;
+}
+
+@media (max-width: 500px) {
+  main {
+    flex-direction: column;
+  }
+}

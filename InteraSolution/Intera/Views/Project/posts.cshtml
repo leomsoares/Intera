@@ -3,20 +3,33 @@
     ViewBag.Title = "Posts";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="col-lg-6">
-    <div class="container col-lg-6" style="margin:60px">
-        @foreach (var item in Model)
-        {
-            <div>
-                <label>@item.Nome: </label>
-                <label> @item.DescricaoMsg</label>
-            </div>
-        }
-    </div>
-    <div class="form-inline">
+<div style="margin-top:60px">
+    
+</div>
+<div class="wrap">
+    <h2 style="background-color:#f2f2f2">Message History</h2>
+    <main>
+        <article>
+        
+            <p>
+                @foreach (var item in Model)
+                {
+                    <div>
+                        <label>@item.Nome: </label>
+                        <label> @item.DescricaoMsg</label>
+                    </div>
+                }
+            </p>
+        </article>
+
+    </main>
+
+</div>
+
+    <div class="form-group">
         <form action="/project/posts/@ViewBag.IdProjeto" method="post">
-            <textarea class="form-control" placeholder="Enter your message..." rows="2" cols="45"   name="Mensagem" autofocus required></textarea>
-            <button type="submit" class="btn btn-default"><i class="fa fa-paper-plane"></i> Send</button>
+            <textarea class="form-control" placeholder="Enter your message..." rows="2   name="Mensagem" autofocus required></textarea>
+            <button type="submit" class="form-control btn btn-default"><i class="fa fa-paper-plane"></i> Send</button>
         </form>
     </div>
-</div>
+
