@@ -192,23 +192,23 @@ namespace Intera.Controllers
             {
                 if (p.Status == 1)
                 {
-                    Aluno a = model2.UpdateReadAluno(id);
-                    ViewBag.IdPessoa = a.IdPessoa;
-                    ViewBag.Nome = a.Nome;
-                    ViewBag.Status = a.Status;
-                    ViewBag.Email = a.Email;
-                    ViewBag.Senha = a.Senha;
-                    ViewBag.RaRs = a.Ra;
-                    ViewBag.Curso = a.Curso;
-                    return View(a);
+                    Session["Aluno"] = model2.UpdateReadAluno(id);
+                    //ViewBag.IdPessoa = a.IdPessoa;
+                    //ViewBag.Nome = a.Nome;
+                    //ViewBag.Status = a.Status;
+                    //ViewBag.Email = a.Email;
+                    //ViewBag.Senha = a.Senha;
+                    //ViewBag.RaRs = a.Ra;
+                    //ViewBag.Curso = a.Curso;
+                    //return View(a);
                 }
                 Professor pr = model2.UpdateReadProfessor(id);
-                ViewBag.IdPessoa = pr.IdPessoa;
-                ViewBag.Nome = pr.Nome;
-                ViewBag.Status = pr.Status;
-                ViewBag.Email = pr.Email;
-                ViewBag.Senha = pr.Senha;
-                ViewBag.RaRs = pr.Rs;
+                Session["ProfessorIdPessoa"] = pr.IdPessoa;
+                Session["ProfessorNome"] = pr.Nome;
+                Session["ProfessorStatus"] = pr.Status;
+                Session["ProfessorEmail"] = pr.Email;
+                Session["ProfessorSenha"] = pr.Senha;
+                Session["ProfessorRaRs"] = pr.Rs;
                 return View(pr);
             }
         }
