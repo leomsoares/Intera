@@ -58,11 +58,12 @@
         <div class="form-group">
             <label for="password" class="col-sm-3 control-label">Password</label>
             <div class="col-sm-6">
+                <!-- BOTÃO QUE ABRE O MODAL DE TROCAR A SENHA DO PERFIL -->
                 <button type="button" class="btn btn-block col-sm-12" data-toggle="modal" data-target="#attsenha" id="btnEditSenha">
                     <i class="fa fa-pencil" aria-hidden="true"></i> Change Password
                 </button>
             </div>
-            <!-- Modal -->
+            <!-- MODAL COM AS ABAS DE TROCAR SENHA DO PERFIL -->
             <div class="modal fade" id="attsenha" tabindex="-1" role="dialog" aria-labelledby="attsenhaLabel">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -92,13 +93,13 @@
                                 </div>
                                 <div class="form-group-sm">
                                     <div class="col-sm-5" id="divcheck">
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                            <!-- BOTÃO QUE EFETUA A TROCA DE SENHA -->
                             <button type="submit" class="btn btn-success" id="changepassword" disabled>Change Password</button>
                         </div>
                     </div>
@@ -107,15 +108,17 @@
         </div>
         <div class="form-group">
             <div class="container col-sm-2 col-sm-offset-5">
-                @*<button type="submit" class="btn btn-success btn-block"> Save</button>*@
+                <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES REALIZADAS NO PERFIL -->
                 <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#confirmEditProf"> Save</button>
 
-                <!-- Modal -->
+                <!-- MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES -->
                 <div class="modal fade" id="confirmEditProf" tabindex="-1" role="dialog" aria-labelledby="confirmEditProfLabel">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content modal-sm">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                                 <h4 class="modal-title" id="confirmEditProf"> Confirm Changes</h4>
                             </div>
                             <div class="modal-body">
@@ -123,6 +126,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"> Cancel</button>
+                                <!-- BOTÃO QUE SALVA AS ALTERAÇÕES REALIZADAS -->
                                 <button type="submit" class="btn btn-success btn-sm"> Save</button>
                             </div>
                         </div>

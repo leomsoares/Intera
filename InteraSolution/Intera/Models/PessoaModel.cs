@@ -100,30 +100,58 @@ namespace Intera.Models
             List<Pessoa> lista = new List<Pessoa>();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 2";
+            cmd.CommandText = "select pe.*, p.Rs from Pessoa pe inner join Professor p on pe.IdPessoa = p.Pessoa_id where pe.Status = 2";
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                Pessoa p = new Pessoa();
+                Professor p = new Professor();
                 p.IdPessoa = (int)reader["IdPessoa"];
                 p.Nome = (string)reader["Nome"];
+                p.Email = (string)reader["Email"];
+                p.Status = (int)reader["Status"];
+                p.Rs = (string)reader["Rs"];
+
                 lista.Add(p);
             }
+            reader.Close();
             return lista;
         }
         public Pessoa ReadProfessor(int id)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT * FROM Pessoa WHERE Status = 2 and IdPessoa = @IdPessoa";
+            cmd.CommandText = "select pe.*, p.Rs from Pessoa pe inner join Professor p on pe.IdPessoa = p.Pessoa_id where pe.Status = 2 and IdPessoa = @IdPessoa";
             cmd.Parameters.AddWithValue("@IdPessoa", id);
             SqlDataReader reader = cmd.ExecuteReader();
             reader.Read();
-            Pessoa p = new Pessoa();
+
+            Professor p = new Professor();
             p.IdPessoa = (int)reader["IdPessoa"];
             p.Nome = (string)reader["Nome"];
             p.Email = (string)reader["Email"];
+            p.Status = (int)reader["Status"];
+            p.Rs = (string)reader["Rs"];
+            reader.Close();
+            return p;
+        }
 
+        public Pessoa ReadAluno(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "select pe.*, a.Ra, a.Curso from Pessoa pe inner join Aluno a on pe.IdPessoa = a.Pessoa_id where pe.Status = 1 and IdPessoa = @IdPessoa";
+            cmd.Parameters.AddWithValue("@IdPessoa", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            Aluno p = new Aluno();
+            p.IdPessoa = (int)reader["IdPessoa"];
+            p.Nome = (string)reader["Nome"];
+            p.Email = (string)reader["Email"];
+            p.Status = (int)reader["Status"];
+            p.Ra = (string)reader["Ra"];
+            p.Curso = (string)reader["Curso"];
+            reader.Close();
             return p;
         }
         public int CreateAluno(Aluno aluno)

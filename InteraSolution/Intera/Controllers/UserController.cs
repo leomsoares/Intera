@@ -33,7 +33,29 @@ namespace Intera.Controllers
             {
                 lista = model.Search(busca);
             }
-            return View(lista);
+
+
+            List<Pessoa> listManage = new List<Pessoa>();
+            foreach (var item in lista)
+            {
+                switch (item.Status)
+                {
+                    case 1:
+                        using (PessoaModel model = new PessoaModel())
+                        {
+                            listManage.Add((Aluno)model.ReadAluno(item.IdPessoa));
+                        }
+                        break;
+                    case 2:
+                        using (PessoaModel model = new PessoaModel())
+                        {
+                            listManage.Add((Professor)model.ReadProfessor(item.IdPessoa));
+                        }
+                        break;
+                }
+            }
+
+            return View(listManage);
         }
 
         public ActionResult Delete(int id)
@@ -192,23 +214,23 @@ namespace Intera.Controllers
             {
                 if (p.Status == 1)
                 {
-                    Session["Aluno"] = model2.UpdateReadAluno(id);
-                    //ViewBag.IdPessoa = a.IdPessoa;
-                    //ViewBag.Nome = a.Nome;
-                    //ViewBag.Status = a.Status;
-                    //ViewBag.Email = a.Email;
-                    //ViewBag.Senha = a.Senha;
-                    //ViewBag.RaRs = a.Ra;
-                    //ViewBag.Curso = a.Curso;
-                    //return View(a);
+                    Aluno a = model2.UpdateReadAluno(id);
+                    ViewBag.IdPessoa = a.IdPessoa;
+                    ViewBag.Nome = a.Nome;
+                    ViewBag.Status = a.Status;
+                    ViewBag.Email = a.Email;
+                    ViewBag.Senha = a.Senha;
+                    ViewBag.RaRs = a.Ra;
+                    ViewBag.Curso = a.Curso;
+                    return View(a);
                 }
                 Professor pr = model2.UpdateReadProfessor(id);
-                Session["ProfessorIdPessoa"] = pr.IdPessoa;
-                Session["ProfessorNome"] = pr.Nome;
-                Session["ProfessorStatus"] = pr.Status;
-                Session["ProfessorEmail"] = pr.Email;
-                Session["ProfessorSenha"] = pr.Senha;
-                Session["ProfessorRaRs"] = pr.Rs;
+                ViewBag.IdPessoa = pr.IdPessoa;
+                ViewBag.Nome = pr.Nome;
+                ViewBag.Status = pr.Status;
+                ViewBag.Email = pr.Email;
+                ViewBag.Senha = pr.Senha;
+                ViewBag.RaRs = pr.Rs;
                 return View(pr);
             }
         }

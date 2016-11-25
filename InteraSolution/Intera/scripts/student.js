@@ -86,7 +86,17 @@ $('#confirmEditProf').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
 
-//MODAL DE ADICIONAR NOVO USUÁRIO -- FUNCIONANDO
+//MODAL DE VISUALIZAR DADOS DO USUÁRIO -- FUNCIONANDO
 $('#viewUser').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+//MODAL DE ADICIONAR NOVA REFERÊNCIA -- FUNCIONANDO
+$('#addReferencia').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+//MODAL DE EDITAR REFERÊNCIA -- FUNCIONANDO
+$('#editReferencia').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })

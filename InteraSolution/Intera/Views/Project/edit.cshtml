@@ -2,6 +2,8 @@
 @{
     ViewBag.Title = "Edit Project";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int editproj = 1;
+    int reference = 1;
 }
 
 <h2 style="margin-top:60px">Edit Project</h2>
@@ -64,61 +66,268 @@
             <textarea class="form-control " name="Descricao" placeholder="Description..." value="@ViewBag.Descricao" rows="4"></textarea>
         </div>
 
-
-
         <div style="margin:60px">
-            <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+            <!-- BOTÃO DE ABRIR MODAL DE ADICIONAR ALUNOS NO PROJETO -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#studentsModal" id="btnAddStudent">
+                <i class="fa fa-user-plus"></i> Add Student
+            </button>
+            <!-- MODAL QUE MOSTRA A TABELA COM OS ALUNOS CADASTRADOS NO SERVIDOR -->
+            <div class="modal fade" id="studentsModal" tabindex="-1" role="dialog" aria-labelledby="studentsModallLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="studentsModalLabel">Students</h4>
+                        </div>
 
-            <table class="table table-bordered">
+                        <div class="modal-body">
+                            <div class="col-md-12">
+                                <div id="custom-search-input">
+                                    <div class="input-group col-md-12">
+                                        <!-- BOTÃO DE EFETUAR PESQUISA DE ALUNOS PARA INSERIR NO PROJETO -->
+                                        <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." id="search" required />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default btn-lg" type="submit">
+                                                <i class="glyphicon glyphicon-search"></i>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="margin:60px">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>NAME</th>
+                                        <th>E-MAIL</th>
+                                        <th>#</th>
+                                    </tr>
+                                    @foreach (var t in ViewBag.ListaAlunoProjeto)
+                                    {
+                                        <tr>
+                                            <td>@t.Nome</td>
+                                            <td>@t.Email</td>
+                                            <td>
+                                                <!-- BOTÃO DE INSERIR ALUNOS NO PROJETO -->
+                                                <a href="/project/addalunodata/@t.IdPessoa" class="btn btn-default btn-sm">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover">
                 <tr>
-                    <th>#</th>
                     <th>NAME</th>
-                    <th>E-MAIL</th>
-                    <th>STATUS</th>
-                    <th>OPTIONS</th>
+                    <th>EMAIL</th>
+                    <th>INITIAL DATE</th>
+                    <th>FINAL DATE</th>
+                    <th>#</th>
                 </tr>
+                @foreach (var aluno in ViewBag.ListaAlunoProjeto)
+                {
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.DataEntrada.ToShortDateString()</td>
+                        <td>--</td>
+                        <td>
+                            <!-- BOTÃO DE DELETAR ALUNOS DO PROJETO NO PROJETO -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser_@editproj">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                            </button>
 
-                <tr>
-                    <td>1</td>
-                    <td>Student</td>
-                    <td>student@email.com</td>
-                    <td>Student</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                    </td>
+                            <!-- MODAL DE CONFIRMAÇÃO DE DELETAR USUÁRIO DO SISTEMA -->
+                            <div class="modal fade" id="confirmDelUser_@editproj" tabindex="-1" role="dialog" aria-labelledby="confirmDelUserLabel">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content modal-sm">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title" id="confirmDelUser"> Confirm Deletion</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p> Are you sure you want to delete?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
+                                            <!-- BOTÃO DE CONFIRMAR EXCLUSÃO DO ALUNO DO PROJETO -->
+                                            <a href="/project/delalunodata/@aluno.IdPessoa" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    {
+                        editproj++;
+                    }
+                }
             </table>
-            <a href="/user/create" class="form-control btn btn-success"><i class="glyphicon glyphicon-book" aria-hidden="true"></i> Add Reference</a>
+            @*<a href="/user/create" class="form-control btn btn-success">
+                    <i class="glyphicon glyphicon-book" aria-hidden="true"></i> Add Reference
+                </a>*@
+            <!-- BOTÃO DE ABRIR MODAL DE ADICIONAR ALUNOS NO PROJETO -->
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addReferencia">
+                <i class="fa fa-user-plus"></i> Add Reference
+            </button>
+            <!-- MODAL QUE MOSTRA A TABELA COM OS ALUNOS CADASTRADOS NO SERVIDOR -->
+            <div class="modal fade" id="addReferencia" tabindex="-1" role="dialog" aria-labelledby="addReferencialLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title" id="addReferenciaLabel">References</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-sm-6">
+                                        <input type="text" name="referenceName" placeholder="Reference Name" class="form-control input-register" maxlength="60">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                            <a href="#" class="btn btn-success btn-sm"> Save</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <table class="table table-bordered">
                 <tr>
                     <th>#</th>
                     <th>REFERENCES</th>
                     <th>OPTIONS</th>
-
                 </tr>
+                @foreach (var referencia in ViewBag.ListaReferencia)
+                {
+                    <tr>
+                        <td>@ViewBag.ListaReferencia.IdReferencia</td>
+                        <td>@ViewBag.ListaReferencia.DescricaoReferencia</td>
+                        <td>
+                            <!-- BOTÃO QUE ABRE O MODAL DE EDIÇÃO REFERÊNCIA DO PROJETO -->
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#editReferencia_@reference">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                            </button>
+                            <!-- MODAL QUE MOSTRA A TABELA COM OS ALUNOS CADASTRADOS NO SERVIDOR -->
+                            <div class="modal fade" id="editReferencia_@reference" tabindex="-1" role="dialog" aria-labelledby="editReferencialLabel">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title" id="editReferenciaLabel">Edit References</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="form-group">
+                                                    <div class="col-sm-6">
+                                                        <input type="text" name="referenceName" placeholder="Reference Name" class="form-control input-register" value="@ViewBag.ListaReferencia.DescricaoReferencia" maxlength="60">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
+                                            <a href="#" class="btn btn-success btn-sm"> Save</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DE DELETAR REFERÊNCIA DO PROJETO -->
+                            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser_@reference">
+                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                            </button>
 
-                <tr>
-                    <td>1</td>
-                    <td>TANENBAUM, Andrew. Sistemas operacionais modernos. 3 ed. São Paulo: São Paulo, 2009.</td>
+                            <!-- MODAL DE CONFIRMAÇÃO DE DELETAR REFERÊNCIA DO PROJETO -->
+                            <div class="modal fade" id="confirmDelUser_@reference" tabindex="-1" role="dialog" aria-labelledby="confirmDelUserLabel">
+                                <div class="modal-dialog modal-sm" role="document">
+                                    <div class="modal-content modal-sm">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            <h4 class="modal-title" id="confirmDelUser"> Confirm Reference Deletion</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p> Are you sure you want to delete reference?</p>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
+                                            <!-- BOTÃO DE CONFIRMAR EXCLUSÃO DE REFERÊNCIA -->
+                                            <a href="/project/delete/@ViewBag.ListaReferencia.IdReferencia" class="btn btn-danger btn-sm">
+                                                <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
 
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</button>
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                    </td>
+                    {
+                        reference++;
+                    }
+                }
             </table>
-
             <div class="row" style="height:50px; margin-top:35px">
                 <input type="file" class="file">
                 <div class="input-group col-xs-6">
                     <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
                     <span class="input-group-btn">
-                        <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                        <!-- BOTÃO DE ADICIONAR ARQUIVO AO PROJETO -->
+                        <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button">
+                            <i class="glyphicon glyphicon-search"></i> Browse
+                        </button>
                     </span>
                 </div>
-                <a class="btn btn-default btn-lg pull-right btnProject" href="#"><span class="glyphicon glyphicon-check"></span> Save Changes</a>
+                <!-- BOTÃO DE SALVAR MUDANÇAS -->
+                @*<a class="btn btn-default btn-lg pull-right btnProject" href="#">
+                    <span class="glyphicon glyphicon-check"></span> Save Changes
+                </a>*@
+                <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES REALIZADAS NO PROJETO -->
+                <button type="button" class="btn btn-default btn-lg pull-right btnProject" data-toggle="modal" data-target="#confirmEditProf"> Save Changes</button>
+
+                <!-- MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES -->
+                <div class="modal fade" id="confirmEditProf" tabindex="-1" role="dialog" aria-labelledby="confirmEditProfLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content modal-sm">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="confirmEditProf"> Confirm Changes</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p> Are you sure you want to save edits?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"> Cancel</button>
+                                <!-- BOTÃO QUE SALVA AS ALTERAÇÕES REALIZADAS -->
+                                <button type="submit" class="btn btn-success btn-sm"> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-
     </form>
 </div>
-
 

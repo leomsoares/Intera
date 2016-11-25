@@ -2,6 +2,10 @@
 @{
     ViewBag.Title = "Manage Users";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int manageuser = 1;
+
+    Intera.Entity.Aluno aluno = null;
+    Intera.Entity.Professor professor = null;
 }
 <div style="margin-top:60px;">
     <h2>Manage Users</h2>
@@ -26,7 +30,9 @@
 </div>
 
 <div style="margin:60px">
-    <a href="/user/create" class="form-control btn btn-success"><i class="fa fa-user-plus" aria-hidden="true"></i> Add User</a>
+    <a href="/user/create" class="form-control btn btn-success">
+        <i class="fa fa-user-plus" aria-hidden="true"></i> Add User
+    </a>
     
     <table class="table table-bordered">
         <tr>
@@ -45,55 +51,57 @@
                 @if (t.Status == 1)
                 {
                     <td>Aluno</td>
+                    aluno = (Intera.Entity.Aluno)t;
                 }
                 else if (t.Status == 2)
                 {
                     <td>Professor</td>
+                    professor = (Intera.Entity.Professor)t;
                 }
                 <td>
-                    
-                    @*<a href="/user/view/@t.IdPessoa" class="btn btn-default btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</a>*@
-                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewUser"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
+                    <!-- BOTÃO QUE ABRE O MODAL DE EXIBIÇÃO DE DADOS DO USUÁRIO -->
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewUser_@manageuser">
+                        <i class="fa fa-eye" aria-hidden="true"></i> View
+                    </button>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="viewUser" tabindex="-1" role="dialog" aria-labelledby="viewUserLabel">
+                    <!-- MODAL DE EXIBIÇÃO DE DADOS DO USUÁRIO -->
+                    <div class="modal fade" id="viewUser_@manageuser" tabindex="-1" role="dialog" aria-labelledby="viewUserLabel">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <h4 class="modal-title" id="viewUser"> View User</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-horizontal" action="/user/view/@Session["ProfessorIdPessoa"]" method="post">
-
+                                    <form class="form-horizontal" action="/user/view" method="post">
                                         <div class="form-group">
                                             <label for="firstName" class="col-sm-3 control-label">Full Name</label>
                                             <div class="col-sm-6">
-                                                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@Session["ProfessorNome"]" disabled>
+                                                <input type="text" name="Nome" placeholder="Full Name" class="form-control input-register" value="@t.Nome" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="email" class="col-sm-3 control-label">Email</label>
                                             <div class="col-sm-6">
-                                                <input type="email" name="Email" placeholder="Email" class="form-control input-register" value="@Session["ProfessorEmail"]" disabled>
+                                                <input type="email" name="Email" placeholder="Email" class="form-control input-register" value="@t.Email" disabled>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="firstName" class="col-sm-3 control-label">RA / RS</label>
-                                            <div class="col-sm-6">
-                                                <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" value="@Session["ProfessorRs"]" disabled>
-                                            </div>
-                                        </div>
-
-                                        @if (Convert.ToInt32(Session["ProfessorStatus"]) == 1)
+                                        @if (t.Status == 1)
                                         {
+                                            <div class="form-group">
+                                                <label for="firstName" class="col-sm-3 control-label"> RA</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" value="@aluno.Ra" disabled>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label for="firstName" class="col-sm-3 control-label">Curso</label>
                                                 <div class="col-sm-6">
-                                                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" value="@ViewBag.Curso" disabled>
+                                                    <input type="text" name="Curso" placeholder="ex: ADS" class="form-control input-register" value="@aluno.Curso" disabled>
                                                 </div>
                                             </div>
-
                                             <div class="form-group">
                                                 <label class="control-label col-sm-3">Type</label>
                                                 <div class="col-sm-6">
@@ -113,8 +121,15 @@
                                                 </div>
                                             </div>
                                         }
-                                        else if (Convert.ToInt32(Session["ProfessorStatus"]) == 2)
+                                        else if (t.Status == 2)
                                         {
+
+                                            <div class="form-group">
+                                                <label for="firstName" class="col-sm-3 control-label"> RS</label>
+                                                <div class="col-sm-6">
+                                                    <input type="text" name="RaRs" placeholder="ex: 1210481512033" class="form-control input-register" value="@professor.Rs" disabled>
+                                                </div>
+                                            </div>
                                             <div class="form-group">
                                                 <label class="control-label col-sm-3">Type</label>
                                                 <div class="col-sm-6">
@@ -124,7 +139,6 @@
                                                                 <input type="radio" name="Type" value="1" disabled>Student
                                                             </label>
                                                         </div>
-
                                                         <div class="col-sm-4">
                                                             <label class="radio-inline">
                                                                 <input type="radio" name="Type" value="2" checked disabled>Professor
@@ -143,42 +157,36 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-                                    <button type="button" class="btn btn-danger btn" data-toggle="modal" data-target="#confirmDelUser"><span class="glyphicon glyphicon-trash"></span> Delete</button>
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="confirmDelUser" tabindex="-1" role="dialog" aria-labelledby="confirmDelUserLabel">
-                                        <div class="modal-dialog modal-sm" role="document">
-                                            <div class="modal-content modal-sm">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                    <h4 class="modal-title" id="confirmDelUser"> Confirm Deletion</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p> Are you sure you want to delete?</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
-                                                    <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span> Delete</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <!-- BOTÃO QUE REDIRECIONA PARA A PÁGINA DE EDITAR USUÁRIO DO SISTEMA -->
+                                    <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn">
+                                        <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </a>
+                                    <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DE DELETAR USUÁRIO DO SISTEMA -->
+                                    <button type="button" class="btn btn-danger btn" data-toggle="modal" data-target="#confirmDelUser_@manageuser">
+                                        <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- BOTÃO QUE REDIRECIONA PARA A PÁGINA DE EDITAR USUÁRIO DO SISTEMA -->
+                    <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                    </a>
+                    <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DE DELETAR USUÁRIO DO SISTEMA -->
+                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser_@manageuser">
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                    </button>
 
-                    <a href="/user/update/@t.IdPessoa" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</a>
-                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="confirmDelUser" tabindex="-1" role="dialog" aria-labelledby="confirmDelUserLabel">
+                    <!-- MODAL DE CONFIRMAÇÃO DE DELETAR USUÁRIO DO SISTEMA -->
+                    <div class="modal fade" id="confirmDelUser_@manageuser" tabindex="-1" role="dialog" aria-labelledby="confirmDelUserLabel">
                         <div class="modal-dialog modal-sm" role="document">
                             <div class="modal-content modal-sm">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
                                     <h4 class="modal-title" id="confirmDelUser"> Confirm Deletion</h4>
                                 </div>
                                 <div class="modal-body">
@@ -186,13 +194,21 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
-                                    <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
+                                    <!-- BOTÃO DE CONFIRMAR EXCLUSÃO DO ALUNO -->
+                                    <a href="/user/delete/@t.IdPessoa" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                    </a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </td>
             </tr>
+            {
+                manageuser++;
+            }
         }
     </table>
 </div>
+
+

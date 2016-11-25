@@ -482,5 +482,15 @@ namespace Intera.Models
             reader.Close();
             return lista;
         }
+
+        public void AlterarAlunoProjeto(int idAluno, int idProjeto)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE AlunoData SET DataFinal = GETDATE() WHERE Aluno_id = @idAluno AND Projeto_id = @idProjeto";
+            cmd.Parameters.AddWithValue("@idAluno", idAluno);
+            cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
+            cmd.ExecuteNonQuery();
+        }
     }
 }
