@@ -3,17 +3,49 @@
     ViewBag.Title = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div>
 
-<div class="jumbotron">
-    <h1>INTERA Project</h1>
-    <p>
-        The web design application Intera's main function is to aid the development of projects for completion of the course and scientific initiations. Having focused on the interaction between the teacher and the student who perform their development.
-        The completion of course work that are in the college library will have a better use, ie, will be available online for viewing and download.
-    </p>
-    <p><a class="btn btn-danger btn-lg" href="/default/about" role="button">More</a></p>
+    <div class="jumbotron">
+        <h1 class="display-3">About Intera</h1>
+        <p class="lead text-justify">
+            The web design application Intera's main function is to aid the development of projects for completion of the course and scientific initiations. Having focused on the interaction between the teacher and the student who perform their development.
+            The completion of course work that are in the college library will have a better use, ie, will be available online for viewing and download.
+        </p>
+        <hr class="my-2">
+        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p class="lead">
+
+        <p><a class="btn btn-danger btn-lg" href="/default/about" role="button">More Information</a></p>
+
+    </div>
+
+    <div style="margin-top:100px">
+        <h1 style="text-decoration:unset">Last Add Projects</h1>
+    </div>
+    <div class="row " style="margin-top:50px">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 teste-shadow" >
+
+                <h2>@item.NomeProjeto</h2>
+
+                <p>Advisor:@item.Link</p>
+                <hr class="hrProject">
+                <p class="text-justify">
+                    O apoio de Renan ao presidente da República se dá em meio ao episódio da demissão de 2 ministros de Estado, Marcelo Calero (Cultura) e Geddel Vieira Lima (Secretaria de Governo). Calero saiu da cadeira acusando Temer de tê-lo enquadrado numa disputa com Geddel a respeito da liberação ou não da construção de 1 edifício numa área tombada de Salvador (BA).
+
+                    “As alegações do ex-ministro da Cultura não afetam o presidente Michel Temer, que reúne todas as condições para levar adiante o processo de transição. As mexidas ministeriais tampouco afetarão o calendário de votações do Senado, que inclui a PEC do limite de gastos e o projeto de abuso de autoridades”, declara Renan em sua nota.
+
+                    Renan esteve ontem no final do dia com Michel Temer. Tem se aproximado gradativamente do presidente da República.
+                </p>
+                <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" style="margin-bottom:25px" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
+                <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
+            </div>
+        }
+
+    </div>
 </div>
-<h2>Last Add Projects</h2>
-<div class="conteudo">
+@*<div class="conteudo">
     <div class="row">
         @foreach (var item in Model)
         {
@@ -35,7 +67,7 @@
             </div>
         }
     </div>
-</div>
+</div>*@
 @*<nav aria-label="Page navigation">
         <ul class="pagination">
             <li>
