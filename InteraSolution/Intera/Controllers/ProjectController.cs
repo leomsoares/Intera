@@ -95,7 +95,7 @@ namespace Intera.Controllers
             projeto = (Projeto)Session["idProjeto"];
             List<AlunoProjeto> lista = new List<AlunoProjeto>();
 
-            using (ProjetoModel model = new ProjetoModel())
+            using (ProjetoModel model = new ProjetoModel()) 
             {
                 lista = model.ReadAlunoProjeto(projeto.IdProjeto);
             }
@@ -319,7 +319,6 @@ namespace Intera.Controllers
             return RedirectToAction("posts");
         }
 
-
         public ActionResult edit(int id)
         {
             if (Session["user"] != null)
@@ -333,17 +332,17 @@ namespace Intera.Controllers
 
             using (ProjetoModel model = new ProjetoModel())
             {
-                projeto = model.ReadEditProjeto(id);
+                ViewBag.Projeto = model.ReadEditProjeto(id);
                 ViewBag.ListaAlunoProjeto = model.ReadAlunoProjeto(id);
                 ViewBag.ListaReferencia = model.ReadReferencia(id);
             }
 
             using (PessoaModel model2 = new PessoaModel())
             {
-                ViewBag.NomeOrientador = model2.UpdateReadProfessor(projeto.IdProfessor);
-                if (projeto.IdCoorientador != 0)
+                ViewBag.NomeOrientador = model2.UpdateReadProfessor(ViewBag.Projeto.IdProfessor);
+                if (ViewBag.Projeto.IdCoorientador != 0)
                 {
-                    ViewBag.NomeCoorientador = model2.UpdateReadProfessor(projeto.IdCoorientador);
+                    ViewBag.NomeCoorientador = model2.UpdateReadProfessor(ViewBag.Projeto.IdCoorientador);
                 }
             }
 
@@ -355,6 +354,15 @@ namespace Intera.Controllers
             ViewBag.DataFinal = projeto.DataFinal;
             ViewBag.Descricao = projeto.Descricao;
             return View();
+        }
+
+        public ActionResult alterarAlunoData(int id)
+        {
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.AlterarAlunoProjeto(id, 3);
+            }
+            return RedirectToAction("edit");
         }
     }
 }
