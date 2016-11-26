@@ -5,23 +5,62 @@
 }
 <div>
 
-    <div class="jumbotron">
+    <div class="jumbotron lead text-justify">
         <h1 class="display-3">About Intera</h1>
-        <p class="lead text-justify">
+        <p>
             The web design application Intera's main function is to aid the development of projects for completion of the course and scientific initiations. Having focused on the interaction between the teacher and the student who perform their development.
             The completion of course work that are in the college library will have a better use, ie, will be available online for viewing and download.
         </p>
         <hr class="my-2">
-        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+        <p>
+            Here you can register you account if you are a student of the University (FATEC), before you can enjoy in a
+            project that is ongoing or create a group to start a new one.
+        </p>
         <p class="lead">
 
-        <p><a class="btn btn-danger btn-lg" href="/default/about" role="button">More Information</a></p>
 
+
+
+
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+
+                <div class="carousel-inner">
+
+                    <div class="item active" >
+                        <img style="height:720px; width:1200px" src="~/Imagens/1.jpg">
+
+                    </div>
+
+                    <div class="item">
+                        <img style="height:720px; width:1200px"  src="~/Imagens/image.jpg">
+
+                    </div>
+
+                    <div class="item">
+                        <img style="height:720px; width:1200px" src="~/Imagens/image2.jpg">
+
+                    </div>
+
+
+                </div>
+                </div>
+                
+
+        <p><a class="btn btn-danger btn-lg" href="/default/about" style="margin-top:30px" role="button">More Information</a></p>
+    </div>
     </div>
 
-    <div style="margin-top:100px">
+ 
+
+
+
+    <div style="margin-top:40px">
         <h1 style="text-decoration:unset">Last Add Projects</h1>
     </div>
+
+
     <div class="row " style="margin-top:50px">
         @foreach (var item in Model)
         {
@@ -41,9 +80,10 @@
                 <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" style="margin-bottom:25px" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
                 <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
             </div>
+
         }
 
-    </div>
+    
 </div>
 @*<div class="conteudo">
     <div class="row">
