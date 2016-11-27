@@ -163,7 +163,6 @@ namespace Intera.Models
 
             cmd.Parameters.AddWithValue("@nome", aluno.Nome);
             cmd.Parameters.AddWithValue("@email", aluno.Email);
-            cmd.Parameters.AddWithValue("@senha", aluno.Senha);
             cmd.Parameters.AddWithValue("@ra", aluno.Ra);
             cmd.Parameters.AddWithValue("@curso", aluno.Curso);
 
@@ -180,7 +179,6 @@ namespace Intera.Models
 
             cmd.Parameters.AddWithValue("@nome", professor.Nome);
             cmd.Parameters.AddWithValue("@email", professor.Email);
-            cmd.Parameters.AddWithValue("@senha", professor.Senha);
             cmd.Parameters.AddWithValue("@rs", professor.Rs);
 
             int idPessoa = Convert.ToInt32(cmd.ExecuteScalar());
