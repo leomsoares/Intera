@@ -17,24 +17,18 @@
             project that is ongoing or create a group to start a new one.
         </p>
         <p class="lead">
-
-
-
-
-
-
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
 
                 <div class="carousel-inner">
 
-                    <div class="item active" >
+                    <div class="item active">
                         <img style="height:720px; width:1200px" src="~/Imagens/1.jpg">
 
                     </div>
 
                     <div class="item">
-                        <img style="height:720px; width:1200px"  src="~/Imagens/image.jpg">
+                        <img style="height:720px; width:1200px" src="~/Imagens/image.jpg">
 
                     </div>
 
@@ -45,69 +39,65 @@
 
 
                 </div>
-                </div>
-                
+            </div>
+
 
         <p><a class="btn btn-danger btn-lg" href="/default/about" style="margin-top:30px" role="button">More Information</a></p>
     </div>
-    </div>
+</div>
 
- 
-
-
-
-    <div style="margin-top:40px">
-        <h1 style="text-decoration:unset">Last Add Projects</h1>
-    </div>
+<div style="margin-top:40px">
+    <h1 style="text-decoration:unset">Last Add Projects</h1>
+</div>
 
 
-    <div class="row " style="margin-top:50px">
-        @foreach (var item in Model)
-        {
-            <div class="col-lg-4 teste-shadow" >
+<div class="row " style="margin-top:50px">
+    @foreach (var item in Model)
+    {
+        <div class="col-lg-4 teste-shadow">
 
-                <h2>@item.NomeProjeto</h2>
+            <h2>@item.NomeProjeto</h2>
 
-                <p>Advisor:@item.Link</p>
-                <hr class="hrProject">
-                <p class="text-justify">
-                    O apoio de Renan ao presidente da República se dá em meio ao episódio da demissão de 2 ministros de Estado, Marcelo Calero (Cultura) e Geddel Vieira Lima (Secretaria de Governo). Calero saiu da cadeira acusando Temer de tê-lo enquadrado numa disputa com Geddel a respeito da liberação ou não da construção de 1 edifício numa área tombada de Salvador (BA).
+            <p>Advisor:@item.Link</p>
+            <hr class="hrProject">
+            <p class="text-justify">
+                O apoio de Renan ao presidente da República se dá em meio ao episódio da demissão de 2 ministros de Estado, Marcelo Calero (Cultura) e Geddel Vieira Lima (Secretaria de Governo). Calero saiu da cadeira acusando Temer de tê-lo enquadrado numa disputa com Geddel a respeito da liberação ou não da construção de 1 edifício numa área tombada de Salvador (BA).
 
-                    “As alegações do ex-ministro da Cultura não afetam o presidente Michel Temer, que reúne todas as condições para levar adiante o processo de transição. As mexidas ministeriais tampouco afetarão o calendário de votações do Senado, que inclui a PEC do limite de gastos e o projeto de abuso de autoridades”, declara Renan em sua nota.
+                “As alegações do ex-ministro da Cultura não afetam o presidente Michel Temer, que reúne todas as condições para levar adiante o processo de transição. As mexidas ministeriais tampouco afetarão o calendário de votações do Senado, que inclui a PEC do limite de gastos e o projeto de abuso de autoridades”, declara Renan em sua nota.
 
-                    Renan esteve ontem no final do dia com Michel Temer. Tem se aproximado gradativamente do presidente da República.
-                </p>
-                <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" style="margin-bottom:25px" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
-                <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
-            </div>
+                Renan esteve ontem no final do dia com Michel Temer. Tem se aproximado gradativamente do presidente da República.
+            </p>
+            <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" style="margin-bottom:25px" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
+            <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
+        </div>
 
-        }
+    }
 
-    
+
 </div>
 @*<div class="conteudo">
-    <div class="row">
-        @foreach (var item in Model)
-        {
+        <div class="row">
+            @foreach (var item in Model)
+            {
 
 
-            <div class="col-sm-6 col-md-4">
-                <div class="thumbnail teste-shadow">
-                    <img src="~/Imagens/INTERA.jpg" alt="logo">
-                    <div class="caption">
-                        <h3>@item.NomeProjeto</h3>
-                        <p>@item.Link</p>
-                        <p>@item.Descricao</p>
-                        <p>
-                            <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
-                            <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
-                        </p>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail teste-shadow">
+                        <img src="~/Imagens/INTERA.jpg" alt="logo">
+                        <div class="caption">
+                            <h3>@item.NomeProjeto</h3>
+                            <p>@item.Link</p>
+                            <p>@item.Descricao</p>
+                            <p>
+                                <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
+                                <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        }
-    </div>
-</div>*@
+            }
+        </div>
+    </div>*@
 @*<nav aria-label="Page navigation">
         <ul class="pagination">
             <li>

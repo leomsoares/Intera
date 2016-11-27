@@ -45,7 +45,12 @@ namespace Intera.Controllers
             }
 
             ViewBag.Mensagem = "Usuário e/ou senha inválidos!";
-            return View();
+            List<Projeto> lista = new List<Projeto>();
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                lista = model.ReadProjeto();
+            }
+            return View(lista);
         }
 
         public ActionResult Logout()

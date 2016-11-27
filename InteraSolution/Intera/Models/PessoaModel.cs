@@ -338,6 +338,7 @@ namespace Intera.Models
                 social.IdSocial = (int)reader["Social_id"];
                 lista.Add(social);
             }
+            reader.Close();
             return lista;
         }
 
@@ -362,6 +363,61 @@ namespace Intera.Models
                 cmdSocial.Parameters.AddWithValue("@socialId", social.IdSocial);
                 cmdSocial.ExecuteNonQuery();
             }
+        }
+
+        public List<Projeto> ReadProjetoProfileProf(int id)
+        {
+            List<Projeto> lista = new List<Projeto>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "select IdProjeto, Professor_id, ISNULL(Coorientador_id, '0') as Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link, '') as Link, DataInicio, ISNULL(DataFinal, '') as DataFinal, Descricao from Projeto where Professor_id = @id or Coorientador_id = @id2";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@id2", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Projeto projeto = new Projeto();
+                projeto.IdProjeto = (int)reader["IdProjeto"];
+                projeto.IdProfessor = (int)reader["Professor_id"];
+                projeto.IdCoorientador = (int)reader["Coorientador_id"];
+                projeto.IdTipo = (int)reader["TipoProjeto_id"];
+                projeto.NomeProjeto = (string)reader["NomeProjeto"];
+                projeto.Status = (int)reader["Status"];
+                projeto.Link = (string)reader["Link"];
+                projeto.DataInicio = (DateTime)reader["DataInicio"];
+                projeto.DataFinal = (DateTime)reader["DataFinal"];
+                projeto.Descricao = (string)reader["Descricao"];
+                lista.Add(projeto);
+            }
+            reader.Close();
+            return lista;
+        }
+
+        public List<Projeto> ReadProjetoProfileAluno(int id)
+        {
+            List<Projeto> lista = new List<Projeto>();
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "select p.IdProjeto, p.Professor_id, ISNULL(p.Coorientador_id, '0') as Coorientador_id, p.TipoProjeto_id, p.NomeProjeto, p.Status, ISNULL(p.Link, '') as Link, p.DataInicio, ISNULL(p.DataFinal, '') as DataFinal, p.Descricao from Projeto as p full outer join AlunoData as a on(p.IdProjeto = a.Projeto_id) where a.Aluno_id = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Projeto projeto = new Projeto();
+                projeto.IdProjeto = (int)reader["IdProjeto"];
+                projeto.IdProfessor = (int)reader["Professor_id"];
+                projeto.IdCoorientador = (int)reader["Coorientador_id"];
+                projeto.IdTipo = (int)reader["TipoProjeto_id"];
+                projeto.NomeProjeto = (string)reader["NomeProjeto"];
+                projeto.Status = (int)reader["Status"];
+                projeto.Link = (string)reader["Link"];
+                projeto.DataInicio = (DateTime)reader["DataInicio"];
+                projeto.DataFinal = (DateTime)reader["DataFinal"];
+                projeto.Descricao = (string)reader["Descricao"];
+                lista.Add(projeto);
+            }
+            reader.Close();
+            return lista;
         }
     }
 }

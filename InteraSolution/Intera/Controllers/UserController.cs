@@ -249,6 +249,18 @@ namespace Intera.Controllers
             using (PessoaModel model = new PessoaModel())
             {
                 lista = model.ReadSocialAluno(p.IdPessoa);
+                if (p.Status == 1)
+                {
+                    ViewBag.Projetos = model.ReadProjetoProfileAluno(p.IdPessoa);
+                }
+                else if(p.Status == 2)
+                {
+                    ViewBag.Projetos = model.ReadProjetoProfileProf(p.IdPessoa);
+                }
+                else if (p.Status == 3)
+                {
+                    ViewBag.Projetos = null;
+                }
             }
 
             return View(lista);

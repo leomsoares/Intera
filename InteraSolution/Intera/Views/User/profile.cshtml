@@ -53,8 +53,10 @@
                 </div>
                 <div style="margin-top:60px">
                     <label class="list-group-item disabled"> My Projects</label>
-                    <a href="#" class="list-group-item"> Project 1 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
-                    <a href="#" class="list-group-item"> Project 2 <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                    @foreach (var item in ViewBag.Projetos)
+                    {
+                        <a href="#" class="list-group-item"> @item.NomeProjeto <i class="fa fa-arrow-right"></i></a>
+                    }
                 </div>
             </div>
 
