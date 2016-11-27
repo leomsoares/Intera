@@ -55,7 +55,7 @@
                     <label class="list-group-item disabled"> My Projects</label>
                     @foreach (var item in ViewBag.Projetos)
                     {
-                        <a href="#" class="list-group-item"> @item.NomeProjeto <i class="fa fa-arrow-right"></i></a>
+                        <a href="/project/seeproject/@item.IdProjeto" class="list-group-item"> @item.NomeProjeto <i class="fa fa-arrow-right"></i></a>
                     }
                 </div>
             </div>

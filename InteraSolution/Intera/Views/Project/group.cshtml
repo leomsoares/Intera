@@ -27,9 +27,12 @@
                 {
                     <td>Finalizado</td>
                 }
-                <td >
+                <td>
                     <a href="/project/posts/@item.IdProjeto"><i class="fa fa-commenting"></i> Posts</a>
-                    <a href="/project/edit/@item.IdProjeto"><i class="fa fa-pencil"></i> Edit</a>
+                    @if (ViewBag.Status == 2)
+                    {
+                        <a href="/project/edit/@item.IdProjeto"><i class="fa fa-pencil"></i> Edit</a>
+                    }
                 </td>
             </tr>
         }

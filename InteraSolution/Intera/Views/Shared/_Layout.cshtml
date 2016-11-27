@@ -104,7 +104,10 @@
                         <li class="dropdown" id="drop-user">
                             <a href="" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle">@ViewBag.User<span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                                @if (ViewBag.Status != 3)
+                                {
+                                    <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                                }
                                 <li><a href="/project/createstep1"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a></li>
                                 @if (ViewBag.Status == 3)
                                 {
@@ -147,7 +150,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#file').MultiFile({
-                accept: 'pdf|docx',
+                accept: 'pdf',
                 max: 1,
                 STRING: {
                     remove: 'Remover',
