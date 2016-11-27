@@ -211,6 +211,7 @@ namespace Intera.Models
             {
                 p.Status = (int)reader["Status"];
             }
+            reader.Close();
 
             return p.Status;
         }
@@ -234,6 +235,7 @@ namespace Intera.Models
                 a.Ra = (string)reader["Ra"];
                 a.Curso = (string)reader["Curso"];
             }
+            reader.Close();
             return a;
         }
 

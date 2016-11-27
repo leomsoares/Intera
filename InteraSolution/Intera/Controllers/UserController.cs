@@ -134,30 +134,25 @@ namespace Intera.Controllers
             {
                 if (p.Status == 1)
                 {
-                    Aluno a = model2.UpdateReadAluno(id);
-                    ViewBag.IdPessoa = a.IdPessoa;
-                    ViewBag.Nome = a.Nome;
-                    ViewBag.Status = a.Status;
-                    ViewBag.Email = a.Email;
-                    ViewBag.Senha = a.Senha;
-                    ViewBag.RaRs = a.Ra;
-                    ViewBag.Curso = a.Curso;
-                    return View(a);
+                    ViewBag.Update = model2.UpdateReadAluno(id);
+                    return View();
                 }
-                Professor pr = model2.UpdateReadProfessor(id);
-                ViewBag.IdPessoa = pr.IdPessoa;
-                ViewBag.Nome = pr.Nome;
-                ViewBag.Status = pr.Status;
-                ViewBag.Email = pr.Email;
-                ViewBag.Senha = pr.Senha;
-                ViewBag.RaRs = pr.Rs;
-                return View(pr);
+                ViewBag.Update = model2.UpdateReadProfessor(id);
+                return View();
             }
         }
 
         [HttpPost]
         public ActionResult update(int id, FormCollection form)
         {
+            if (Session["user"] != null)
+            {
+                Pessoa u = new Pessoa();
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Status = u.Status;
+            }
+
             int verificar = 0;
             verificar = Convert.ToInt32(form["Type"]);
             Aluno a = new Aluno();
@@ -189,7 +184,7 @@ namespace Intera.Controllers
                 {
                     if (oldSenha != "")
                     {
-                        bool retorno = model.VerificarSenha(oldSenha, a.IdPessoa);
+                        bool retorno = model.VerificarSenha(oldSenha, id);
                         if (retorno)
                         {
                             model.UpdateAluno(a);
@@ -198,7 +193,12 @@ namespace Intera.Controllers
                         else
                         {
                             ViewBag.MensagemSenha = "Invalid old password!";
-                            return RedirectToAction("update");
+                            //int status = model.UpdateReadPessoa(a.IdPessoa);
+                            //if (status == 1)
+                            //{
+                                ViewBag.Update = model.UpdateReadAluno(a.IdPessoa);
+                            //}
+                            return View();
                         }
                     }
                     else
@@ -219,7 +219,8 @@ namespace Intera.Controllers
                         else
                         {
                             ViewBag.MensagemSenha = "Invalid old password!";
-                            return RedirectToAction("update");
+                            ViewBag.Update = model.UpdateReadProfessor(p.IdPessoa);
+                            return View();
                         }
                     }
                     else
@@ -333,6 +334,12 @@ namespace Intera.Controllers
 
             string oldSenha = form["oldPassword"];
             pessoa = (Pessoa)Session["user"];
+            ViewBag.IdPessoa = pessoa.IdPessoa;
+            ViewBag.user = pessoa.Nome;
+            ViewBag.Email = pessoa.Email;
+            ViewBag.Status = pessoa.Status;
+            ViewBag.Senha = pessoa.Senha;
+
 
             pessoa.Email = form["Email"];
             pessoa.Senha = form["Senha"];
@@ -355,7 +362,8 @@ namespace Intera.Controllers
                     else
                     {
                         ViewBag.MensagemSenha = "Invalid old password!";
-                        return RedirectToAction("editprofile");
+                        List<Social> listaErro = model.ReadSocial(pessoa.IdPessoa);
+                        return View(listaErro);
                     }
                 }
                 else
