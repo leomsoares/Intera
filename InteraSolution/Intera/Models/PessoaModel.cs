@@ -369,9 +369,8 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE Pessoa SET Email = @email, Senha = @senha WHERE IdPessoa = @idPessoa";
+            cmd.CommandText = "UPDATE Pessoa SET Email = @email WHERE IdPessoa = @idPessoa";
             cmd.Parameters.AddWithValue("@email", pessoa.Email);
-            cmd.Parameters.AddWithValue("@senha", pessoa.Senha);
             cmd.Parameters.AddWithValue("@idPessoa", pessoa.IdPessoa);
             cmd.ExecuteNonQuery();
 

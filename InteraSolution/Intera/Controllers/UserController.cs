@@ -331,6 +331,7 @@ namespace Intera.Controllers
             Pessoa pessoa = new Pessoa();
             List<Social> lista = new List<Social>();
 
+            string oldSenha = form["oldPassword"];
             pessoa = (Pessoa)Session["user"];
 
             pessoa.Email = form["Email"];
@@ -343,7 +344,24 @@ namespace Intera.Controllers
 
             using (PessoaModel model = new PessoaModel())
             {
-                model.UpdateProfile(pessoa, lista);
+                if (oldSenha != "")
+                {
+                    bool retorno = model.VerificarSenha(oldSenha, pessoa.IdPessoa);
+                    if (retorno)
+                    {
+                        model.UpdateProfile(pessoa, lista);
+                        model.TrocarSenha(pessoa.Senha, pessoa.IdPessoa);
+                    }
+                    else
+                    {
+                        ViewBag.MensagemSenha = "Invalid old password!";
+                        return RedirectToAction("editprofile");
+                    }
+                }
+                else
+                {
+                    model.UpdateProfile(pessoa, lista);
+                }
             }
 
             return RedirectToAction("Profile");
