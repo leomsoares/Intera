@@ -97,9 +97,9 @@ namespace Intera.Controllers
 
             using (ProjetoModel model = new ProjetoModel()) 
             {
-                lista = model.ReadAlunoProjeto(projeto.IdProjeto);
+                ViewBag.AlunoProjeto = model.ReadAlunoProjeto(projeto.IdProjeto);
             }
-            return View(lista);
+            return View();
         }
 
         //[Autoriza]
@@ -219,10 +219,10 @@ namespace Intera.Controllers
             {
                 using (ProjetoModel model = new ProjetoModel())
                 {
-                    lista = model.SearchAluno(nome);
+                    ViewBag.AlunoProjetoModal = model.SearchAluno(nome);
                 }
             }
-            return PartialView(lista);
+            return PartialView();
         }
 
         public ActionResult group()

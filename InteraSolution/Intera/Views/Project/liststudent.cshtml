@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Intera.Entity.Pessoa>
+﻿@*@model IEnumerable<Intera.Entity.Pessoa>*@
 
 <table class="table table-bordered">
     <tr>
@@ -6,7 +6,7 @@
         <th>E-MAIL</th>
         <th>#</th>
     </tr>
-    @foreach (var item in Model)
+    @foreach (var item in ViewBag.AlunoProjetoModal)
     {
         <tr>
             <td>@item.Nome</td>
