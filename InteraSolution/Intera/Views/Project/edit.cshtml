@@ -179,13 +179,13 @@
             @*<a href="/user/create" class="form-control btn btn-success">
                     <i class="glyphicon glyphicon-book" aria-hidden="true"></i> Add Reference
                 </a>*@
-            <!-- BOTÃO DE ABRIR MODAL DE ADICIONAR ALUNOS NO PROJETO -->
+            <!-- BOTÃO DE ABRIR MODAL DE ADICIONAR REFERENCIA NO PROJETO -->
             <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addReferencia">
                 <i class="fa fa-user-plus"></i> Add Reference
             </button>
-            <!-- MODAL QUE MOSTRA A TABELA COM OS ALUNOS CADASTRADOS NO SERVIDOR -->
-            <div class="modal fade" id="addReferencia" tabindex="-1" role="dialog" aria-labelledby="addReferencialLabel">
-                <div class="modal-dialog" role="document">
+            <!-- MODAL PARA ADICIONAR REFERENCIA NO PROJETO -->
+            <div class="modal fade bs-example-modal-lg" id="addReferencia" tabindex="-1" role="dialog" aria-labelledby="addReferencialLabel">
+                <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -196,8 +196,10 @@
                         <div class="modal-body">
                             <div class="row">
                                 <div class="form-group">
-                                    <div class="col-sm-6">
-                                        <input type="text" name="referenceName" placeholder="Reference Name" class="form-control input-register" maxlength="60">
+                                    <div class="col-md-12">
+                                        <label class="col-md-12">
+                                            <input type="text" name="referenceName" placeholder="Reference Name" class="form-control input-register" maxlength="60">
+                                        </label>
                                     </div>
                                 </div>
                             </div>

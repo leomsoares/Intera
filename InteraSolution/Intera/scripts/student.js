@@ -14,6 +14,7 @@ $('#btnAddStudent').on('click', function () {
 //COMANDO PARA BUSCAR A TABELA AO APERTAR ENTER
 $(document).keypress('#studentsModal button[type=submit]', function (e) {
     if (e.which == 13 || e.keyCode == 13) {
+        
 
         var texto = $('#studentsModal [name$=Search]').val();
 
@@ -26,6 +27,7 @@ $(document).keypress('#studentsModal button[type=submit]', function (e) {
                 $('#studentsModal input').val("").focus();
             },
         });
+        e.preventDefault();
     }
 });
 
