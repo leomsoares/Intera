@@ -162,6 +162,7 @@ namespace Intera.Controllers
             verificar = Convert.ToInt32(form["Type"]);
             Aluno a = new Aluno();
             Professor p = new Professor();
+            string oldSenha = form["oldPassword"];
 
             if (verificar == 1)
             {
@@ -183,13 +184,48 @@ namespace Intera.Controllers
 
             using (PessoaModel model = new PessoaModel())
             {
+                Session["Mensagem"] = null;
                 if (verificar == 1)
                 {
-                    model.UpdateAluno(a);
+                    if (oldSenha != "")
+                    {
+                        bool retorno = model.VerificarSenha(oldSenha, a.IdPessoa);
+                        if (retorno)
+                        {
+                            model.UpdateAluno(a);
+                            model.TrocarSenha(a.Senha, a.IdPessoa);
+                        }
+                        else
+                        {
+                            ViewBag.MensagemSenha = "Invalid old password!";
+                            return RedirectToAction("update");
+                        }
+                    }
+                    else
+                    {
+                        model.UpdateAluno(a);
+                    }
                 }
                 else if (verificar == 2)
                 {
-                    model.UpdateProfessor(p);
+                    if (oldSenha != "")
+                    {
+                        bool retorno = model.VerificarSenha(oldSenha, p.IdPessoa);
+                        if (retorno)
+                        {
+                            model.UpdateProfessor(p);
+                            model.TrocarSenha(p.Senha, p.IdPessoa);
+                        }
+                        else
+                        {
+                            ViewBag.MensagemSenha = "Invalid old password!";
+                            return RedirectToAction("update");
+                        }
+                    }
+                    else
+                    {
+                        model.UpdateProfessor(p);
+                    }
                 }
             }
             return RedirectToAction("Manage");
@@ -253,7 +289,7 @@ namespace Intera.Controllers
                 {
                     ViewBag.Projetos = model.ReadProjetoProfileAluno(p.IdPessoa);
                 }
-                else if(p.Status == 2)
+                else if (p.Status == 2)
                 {
                     ViewBag.Projetos = model.ReadProjetoProfileProf(p.IdPessoa);
                 }

@@ -258,6 +258,33 @@ namespace Intera.Models
             return prof;
         }
 
+        public bool VerificarSenha(string senha, int id)
+        {
+            bool retorno = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Senha = @senha and IdPessoa = @id";
+            cmd.Parameters.AddWithValue("@senha", senha);
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                retorno = true;
+            }
+            reader.Close();
+            return retorno;
+        }
+
+        public void TrocarSenha(string senha, int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE Pessoa SET Senha = @senha WHERE IdPessoa = @id";
+            cmd.Parameters.AddWithValue("@senha", senha);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
+
         public void UpdateAluno(Aluno a)
         {
             SqlCommand cmd = new SqlCommand();
@@ -267,7 +294,6 @@ namespace Intera.Models
             cmd.Parameters.AddWithValue("@idPessoa", a.IdPessoa);
             cmd.Parameters.AddWithValue("@nome", a.Nome);
             cmd.Parameters.AddWithValue("@email", a.Email);
-            cmd.Parameters.AddWithValue("@senha", a.Senha);
             cmd.Parameters.AddWithValue("@ra", a.Ra);
             cmd.Parameters.AddWithValue("@Curso", a.Curso);
             cmd.ExecuteNonQuery();
@@ -282,7 +308,6 @@ namespace Intera.Models
             cmd.Parameters.AddWithValue("@idPessoa", p.IdPessoa);
             cmd.Parameters.AddWithValue("@nome", p.Nome);
             cmd.Parameters.AddWithValue("@email", p.Email);
-            cmd.Parameters.AddWithValue("@senha", p.Senha);
             cmd.Parameters.AddWithValue("@rs", p.Rs);
             cmd.ExecuteNonQuery();
         }
