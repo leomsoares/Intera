@@ -182,7 +182,14 @@
                     <td>@aluno.Nome</td>
                     <td>@aluno.Email</td>
                     <td>@aluno.DataEntrada.ToShortDateString()</td>
-                    <td>--</td>
+                    @if (@aluno.DataSaida.ToShortDateString() != "01/01/1900")
+                    {
+                        <td>@aluno.DataSaida.ToShortDateString()</td>
+                    }
+                    else
+                    {
+                        <td>--</td>
+                    }
                     <td>
                         <!-- BOTÃO DE DELETAR ALUNOS DO PROJETO NO PROJETO -->
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser_@editproj">

@@ -173,16 +173,25 @@ namespace Intera.Controllers
 
         public ActionResult delalunodataedit(int id)
         {
-            Projeto projeto = new Projeto();
-            projeto = (Projeto)Session["idProjeto"];
+            int idproj = (int)Session["idProj"];
 
             using (ProjetoModel model = new ProjetoModel())
             {
-                model.DelAluno(id, projeto.IdProjeto);
+                model.AlterarAlunoProjeto(id, idproj);
             }
 
-            return RedirectToAction("Edit");
+            return RedirectToAction("edit/" + idproj);
         }
+
+        //public ActionResult alterarAlunoData(int id)
+        //{
+        //    int idproj = (int)Session["idProj"];
+        //    using (ProjetoModel model = new ProjetoModel())
+        //    {
+        //        model.AlterarAlunoProjeto(id, 3);
+        //    }
+        //    return RedirectToAction("edit");
+        //}
 
         [HttpPost]
         public ActionResult addreferenciaprojeto(FormCollection form)
@@ -455,13 +464,6 @@ namespace Intera.Controllers
             return View();
         }
 
-        public ActionResult alterarAlunoData(int id)
-        {
-            using (ProjetoModel model = new ProjetoModel())
-            {
-                model.AlterarAlunoProjeto(id, 3);
-            }
-            return RedirectToAction("edit");
-        }
+        
     }
 }
