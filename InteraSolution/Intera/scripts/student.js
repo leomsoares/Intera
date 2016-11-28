@@ -14,7 +14,6 @@ $('#btnAddStudent').on('click', function () {
 //COMANDO PARA BUSCAR A TABELA AO APERTAR ENTER
 $(document).keypress('#studentsModal button[type=submit]', function (e) {
     if (e.which == 13 || e.keyCode == 13) {
-        
 
         var texto = $('#studentsModal [name$=Search]').val();
 
@@ -80,6 +79,10 @@ function checarSenha() {
 
 //MODAL DE CONFIRMAR EXCLUSÃO DE USUARIOS -- FUNCIONANDO
 $('#confirmDelUser').on('shown.bs.modal', function () {
+    $('#myInput').focus()
+})
+
+$('#confirmDelRef').on('show.bs.modal', function () {
     $('#myInput').focus()
 })
 

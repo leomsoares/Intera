@@ -98,6 +98,7 @@ namespace Intera.Controllers
             using (ProjetoModel model = new ProjetoModel()) 
             {
                 ViewBag.AlunoProjeto = model.ReadAlunoProjeto(projeto.IdProjeto);
+                ViewBag.Referencia = model.ReadReferencia(projeto.IdProjeto);
             }
             return View();
         }
@@ -147,6 +148,32 @@ namespace Intera.Controllers
             }
 
             return RedirectToAction("Createstep2");
+        }
+
+        [HttpPost]
+        public ActionResult addreferenciaprojeto(FormCollection form)
+        {
+            Referencia referencia = new Referencia();
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+
+            referencia.DescricaoReferencia = form["referenceName"];
+            referencia.IdProjeto = projeto.IdProjeto;
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.AddReferencia(referencia);
+            }
+            return RedirectToAction("createstep2");
+        }
+
+        public ActionResult delreferenciaprojeto(int id)
+        {
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.DelReferencia(id);
+            }
+            return RedirectToAction("createstep2");
         }
 
         public ActionResult seekproject(FormCollection form)
@@ -346,13 +373,6 @@ namespace Intera.Controllers
                 }
             }
 
-            ViewBag.IdProjeto = projeto.IdProfessor;
-            ViewBag.Tipo = projeto.IdTipo;
-            ViewBag.NomeProjeto = projeto.NomeProjeto;
-            ViewBag.StatusProjeto = projeto.Status;
-            ViewBag.DataInicial = projeto.DataInicio;
-            ViewBag.DataFinal = projeto.DataFinal;
-            ViewBag.Descricao = projeto.Descricao;
             return View();
         }
 

@@ -483,6 +483,25 @@ namespace Intera.Models
             return lista;
         }
 
+        public void AddReferencia(Referencia referencia)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "INSERT INTO Referencia VALUES (@Projeto_id, @Descricao)";
+            cmd.Parameters.AddWithValue("@Projeto_id", referencia.IdProjeto);
+            cmd.Parameters.AddWithValue("@Descricao", referencia.DescricaoReferencia);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void DelReferencia(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "DELETE FROM Referencia WHERE IdReferencia = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
+
         public void AlterarAlunoProjeto(int idAluno, int idProjeto)
         {
             SqlCommand cmd = new SqlCommand();
