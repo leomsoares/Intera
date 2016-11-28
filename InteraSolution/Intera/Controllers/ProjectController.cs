@@ -140,22 +140,22 @@ namespace Intera.Controllers
         public ActionResult addalunodataedit(int id)
         {
             Projeto projeto = new Projeto();
-            projeto = (Projeto)Session["idProjeto"];
+            int idproj = (int)Session["idProj"];
             int cont = 0;
             using (ProjetoModel modelcont = new ProjetoModel())
             {
-                cont = modelcont.VerificarAluno(id, projeto.IdProjeto);
+                cont = modelcont.VerificarAluno(id, idproj);
             }
 
             if (cont == 0)
             {
                 using (ProjetoModel model = new ProjetoModel())
                 {
-                    model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
+                    model.AddAluno(id, idproj, DateTime.Today);
 
                 }
             }
-            return RedirectToAction("Edit");
+            return RedirectToAction("edit/" + idproj);
         }
 
         public ActionResult delalunodata(int id)
@@ -205,17 +205,16 @@ namespace Intera.Controllers
         public ActionResult addreferenciaprojetoedit(FormCollection form)
         {
             Referencia referencia = new Referencia();
-            Projeto projeto = new Projeto();
-            projeto = (Projeto)Session["idProjeto"];
+            int idproj = (int)Session["idProj"];
 
             referencia.DescricaoReferencia = form["referenceName"];
-            referencia.IdProjeto = projeto.IdProjeto;
+            referencia.IdProjeto = idproj;
 
             using (ProjetoModel model = new ProjetoModel())
             {
                 model.AddReferencia(referencia);
             }
-            return RedirectToAction("edit");
+            return RedirectToAction("edit/" + idproj);
         }
 
         public ActionResult delreferenciaprojeto(int id)
@@ -229,11 +228,12 @@ namespace Intera.Controllers
 
         public ActionResult delreferenciaprojetoedit(int id)
         {
+            int idproj = (int)Session["idProj"];
             using (ProjetoModel model = new ProjetoModel())
             {
                 model.DelReferencia(id);
             }
-            return RedirectToAction("edit");
+            return RedirectToAction("edit/" + idproj);
         }
 
         public ActionResult seekproject(FormCollection form)
@@ -300,6 +300,19 @@ namespace Intera.Controllers
         }
 
         public ActionResult liststudent(string nome)
+        {
+            List<Pessoa> lista = new List<Pessoa>();
+            if (nome != "")
+            {
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    ViewBag.AlunoProjetoModal = model.SearchAluno(nome);
+                }
+            }
+            return PartialView();
+        }
+
+        public ActionResult liststudentedit(string nome)
         {
             List<Pessoa> lista = new List<Pessoa>();
             if (nome != "")
@@ -437,6 +450,7 @@ namespace Intera.Controllers
                     }
                 }
             }
+            Session["idProj"] = id;
 
             return View();
         }

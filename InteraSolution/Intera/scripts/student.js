@@ -105,3 +105,55 @@ $('#addReferencia').on('shown.bs.modal', function () {
 $('#editReferencia').on('shown.bs.modal', function () {
     $('#myInput').focus()
 })
+
+//MODAL DO ADD STUDENT NO PROJETO - ATUALIZADO
+$('#stundetseditModal').on('shown.bs.modal', function () {
+    $('#myInput').focus();
+})
+
+//COMANDO PARA LIMPAR A TABLE DO MODAL -- FUNCIONANDO
+$('#btnAddStudentedit').on('click', function () {
+    $('#myInput').focus();
+    $('#studentsModal table').children().remove();
+})
+
+//COMANDO PARA PUXAR A TABELA e LIMPAR BOTÃO SEARCH -- FUNCIONANDO
+
+//COMANDO PARA BUSCAR A TABELA AO APERTAR ENTER
+$(document).keypress('#studentseditModal button', function (e) {
+    if (e.which == 13 || e.keyCode == 13) {
+
+        var texto = $('#studentseditModal [name$=Search]').val();
+
+        $.ajax({
+            url: '/project/liststudentedit?nome=' + texto,
+            method: 'Get',
+            dataType: 'html',
+            success: function (data) {
+                $('#studentseditModal table').replaceWith(data);
+                $('#studentseditModal input').val("").focus();
+            },
+        });
+
+    }
+});
+
+//COMANDO PARA BUSCAR A TABELA AO CLICAR NO BOTÃO
+$(document).on('click', '#studentseditModal button', function () {
+
+    var texto = $('#studentseditModal [name$=Search]').val();
+
+    $.ajax({
+        url: '/project/liststudentedit?nome=' + texto,
+        method: 'Get',
+        dataType: 'html',
+        success: function (data) {
+            $('#studentseditModal table').replaceWith(data);
+            //$('#studentsModal button[type=submit]').val("").focus();
+            $('#studentseditModal input').val("").focus();
+        },
+        error: function () {
+            alert('error');
+        }
+    });
+});
