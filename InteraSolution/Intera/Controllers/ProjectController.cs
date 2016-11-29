@@ -95,7 +95,7 @@ namespace Intera.Controllers
             projeto = (Projeto)Session["idProjeto"];
             List<AlunoProjeto> lista = new List<AlunoProjeto>();
 
-            using (ProjetoModel model = new ProjetoModel()) 
+            using (ProjetoModel model = new ProjetoModel())
             {
                 ViewBag.AlunoProjeto = model.ReadAlunoProjeto(projeto.IdProjeto);
                 ViewBag.Referencia = model.ReadReferencia(projeto.IdProjeto);
@@ -137,6 +137,27 @@ namespace Intera.Controllers
             return RedirectToAction("Createstep2");
         }
 
+        public ActionResult addalunodataedit(int id)
+        {
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+            int cont = 0;
+            using (ProjetoModel modelcont = new ProjetoModel())
+            {
+                cont = modelcont.VerificarAluno(id, projeto.IdProjeto);
+            }
+
+            if (cont == 0)
+            {
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
+
+                }
+            }
+            return RedirectToAction("Edit");
+        }
+
         public ActionResult delalunodata(int id)
         {
             Projeto projeto = new Projeto();
@@ -148,6 +169,19 @@ namespace Intera.Controllers
             }
 
             return RedirectToAction("Createstep2");
+        }
+
+        public ActionResult delalunodataedit(int id)
+        {
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.DelAluno(id, projeto.IdProjeto);
+            }
+
+            return RedirectToAction("Edit");
         }
 
         [HttpPost]
@@ -167,6 +201,23 @@ namespace Intera.Controllers
             return RedirectToAction("createstep2");
         }
 
+        [HttpPost]
+        public ActionResult addreferenciaprojetoedit(FormCollection form)
+        {
+            Referencia referencia = new Referencia();
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+
+            referencia.DescricaoReferencia = form["referenceName"];
+            referencia.IdProjeto = projeto.IdProjeto;
+
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.AddReferencia(referencia);
+            }
+            return RedirectToAction("edit");
+        }
+
         public ActionResult delreferenciaprojeto(int id)
         {
             using (ProjetoModel model = new ProjetoModel())
@@ -174,6 +225,15 @@ namespace Intera.Controllers
                 model.DelReferencia(id);
             }
             return RedirectToAction("createstep2");
+        }
+
+        public ActionResult delreferenciaprojetoedit(int id)
+        {
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.DelReferencia(id);
+            }
+            return RedirectToAction("edit");
         }
 
         public ActionResult seekproject(FormCollection form)
@@ -367,9 +427,14 @@ namespace Intera.Controllers
             using (PessoaModel model2 = new PessoaModel())
             {
                 ViewBag.NomeOrientador = model2.UpdateReadProfessor(ViewBag.Projeto.IdProfessor);
+                ViewBag.NomeCoorientador = "";
                 if (ViewBag.Projeto.IdCoorientador != 0)
                 {
-                    ViewBag.NomeCoorientador = model2.UpdateReadProfessor(ViewBag.Projeto.IdCoorientador);
+                    string nome = model2.UpdateReadProfessor(ViewBag.Projeto.IdCoorientador);
+                    if (!String.IsNullOrEmpty(nome))
+                    {
+                        ViewBag.NomeCoorientador = nome;
+                    }
                 }
             }
 

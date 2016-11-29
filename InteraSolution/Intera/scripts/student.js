@@ -12,7 +12,7 @@ $('#btnAddStudent').on('click', function () {
 //COMANDO PARA PUXAR A TABELA e LIMPAR BOTÃO SEARCH -- FUNCIONANDO
 
 //COMANDO PARA BUSCAR A TABELA AO APERTAR ENTER
-$(document).keypress('#studentsModal button[type=submit]', function (e) {
+$(document).keypress('#studentsModal button', function (e) {
     if (e.which == 13 || e.keyCode == 13) {
 
         var texto = $('#studentsModal [name$=Search]').val();
@@ -26,12 +26,12 @@ $(document).keypress('#studentsModal button[type=submit]', function (e) {
                 $('#studentsModal input').val("").focus();
             },
         });
-        e.preventDefault();
+        
     }
 });
 
 //COMANDO PARA BUSCAR A TABELA AO CLICAR NO BOTÃO
-$(document).on('click', '#studentsModal button[type=submit]', function () {
+$(document).on('click', '#studentsModal button', function () {
 
     var texto = $('#studentsModal [name$=Search]').val();
 
