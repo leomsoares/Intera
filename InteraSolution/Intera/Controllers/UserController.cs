@@ -82,34 +82,51 @@ namespace Intera.Controllers
         [HttpPost]
         public ActionResult create(FormCollection form)
         {
+            if (Session["user"] != null)
+            {
+                Pessoa u = new Pessoa();
+                u = (Pessoa)Session["user"];
+                ViewBag.user = u.Nome;
+                ViewBag.Status = u.Status;
+            }
             int verificar = 0;
             verificar = Convert.ToInt32(form["Type"]);
 
             Aluno a = new Aluno();
             Professor p = new Professor();
-
-            a.Nome = form["Nome"];
-            a.Email = form["Email"];
-            a.Senha = form["Senha"];
-            a.Ra = form["RaRs"];
-            a.Curso = form["Curso"];
-
-            p.Nome = form["Nome"];
-            p.Email = form["Email"];
-            p.Senha = form["Senha"];
-            p.Rs = form["RaRs"];
-
+            string email = form["Email"];
             using (PessoaModel model = new PessoaModel())
             {
-                if (verificar == 1)
+                bool retorno = false;
+                retorno = model.VerificarEmail(email);
+                if (retorno)
                 {
-                    int id = model.CreateAluno(a);
-                    model.CreateSocial(id);
+                    ViewBag.MensagemErroEmail = "This email is already in use";
+                    return View();
                 }
-                else if (verificar == 2)
+                else
                 {
-                    int id = model.CreateProfessor(p);
-                    model.CreateSocial(id);
+                    if (verificar == 1)
+                    {
+                        a.Nome = form["Nome"];
+                        a.Email = form["Email"];
+                        a.Senha = form["Senha"];
+                        a.Ra = form["RaRs"];
+                        a.Curso = form["Curso"];
+
+                        int id = model.CreateAluno(a);
+                        model.CreateSocial(id);
+                    }
+                    else if (verificar == 2)
+                    {
+                        p.Nome = form["Nome"];
+                        p.Email = form["Email"];
+                        p.Senha = form["Senha"];
+                        p.Rs = form["RaRs"];
+
+                        int id = model.CreateProfessor(p);
+                        model.CreateSocial(id);
+                    }
                 }
             }
             return RedirectToAction("Manage");
@@ -158,6 +175,7 @@ namespace Intera.Controllers
             Aluno a = new Aluno();
             Professor p = new Professor();
             string oldSenha = form["oldPassword"];
+            string email = form["Email"];
 
             if (verificar == 1)
             {
@@ -180,55 +198,69 @@ namespace Intera.Controllers
             using (PessoaModel model = new PessoaModel())
             {
                 Session["Mensagem"] = null;
-                if (verificar == 1)
+                bool retornoEmail = false;
+
+                string emailAntigo = model.GetEmail(id);
+                if (emailAntigo != email)
                 {
-                    if (oldSenha != "")
+                    retornoEmail = model.VerificarEmail(email);
+                }
+
+                if (retornoEmail == false)
+                {
+                    if (verificar == 1)
                     {
-                        bool retorno = model.VerificarSenha(oldSenha, id);
-                        if (retorno)
+                        if (oldSenha != "")
+                        {
+                            bool retornoSenha = model.VerificarSenha(oldSenha, id);
+                            if (retornoSenha)
+                            {
+                                model.UpdateAluno(a);
+                                model.TrocarSenha(a.Senha, a.IdPessoa);
+                            }
+                            else
+                            {
+                                ViewBag.MensagemSenha = "Invalid old password!";
+                                ViewBag.Update = model.UpdateReadAluno(a.IdPessoa);
+                                return View();
+                            }
+                        }
+                        else
                         {
                             model.UpdateAluno(a);
-                            model.TrocarSenha(a.Senha, a.IdPessoa);
+                        }
+                    }
+                    else if (verificar == 2)
+                    {
+                        if (oldSenha != "")
+                        {
+                            bool retorno = model.VerificarSenha(oldSenha, p.IdPessoa);
+                            if (retorno)
+                            {
+                                model.UpdateProfessor(p);
+                                model.TrocarSenha(p.Senha, p.IdPessoa);
+                            }
+                            else
+                            {
+                                ViewBag.MensagemSenha = "Invalid old password!";
+                                ViewBag.Update = model.UpdateReadProfessor(p.IdPessoa);
+                                return View();
+                            }
                         }
                         else
-                        {
-                            ViewBag.MensagemSenha = "Invalid old password!";
-                            //int status = model.UpdateReadPessoa(a.IdPessoa);
-                            //if (status == 1)
-                            //{
-                                ViewBag.Update = model.UpdateReadAluno(a.IdPessoa);
-                            //}
-                            return View();
-                        }
-                    }
-                    else
-                    {
-                        model.UpdateAluno(a);
-                    }
-                }
-                else if (verificar == 2)
-                {
-                    if (oldSenha != "")
-                    {
-                        bool retorno = model.VerificarSenha(oldSenha, p.IdPessoa);
-                        if (retorno)
                         {
                             model.UpdateProfessor(p);
-                            model.TrocarSenha(p.Senha, p.IdPessoa);
                         }
-                        else
-                        {
-                            ViewBag.MensagemSenha = "Invalid old password!";
-                            ViewBag.Update = model.UpdateReadProfessor(p.IdPessoa);
-                            return View();
-                        }
-                    }
-                    else
-                    {
-                        model.UpdateProfessor(p);
                     }
                 }
+                else
+                {
+                    ViewBag.MensagemErroEmail = "This email is already in use";
+                    ViewBag.Update = model.UpdateReadAluno(id);
+                    return View();
+                }
             }
+
             return RedirectToAction("Manage");
         }
 

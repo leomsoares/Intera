@@ -8,7 +8,13 @@
     @if (ViewBag.MensagemSenha != null)
     {
         <div class="alert alert-danger" role="alert">
-            @ViewBag.MensagemSenha;
+            @ViewBag.MensagemSenha
+        </div>
+    }
+    @if (ViewBag.MensagemErroEmail != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.MensagemErroEmail
         </div>
     }
     <form class="form-horizontal" action="/user/update/@ViewBag.Update.IdPessoa" method="post">

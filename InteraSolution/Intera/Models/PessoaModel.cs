@@ -154,6 +154,39 @@ namespace Intera.Models
             reader.Close();
             return p;
         }
+
+        public string GetEmail(int id)
+        {
+            string email = null;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT Email FROM Pessoa WHERE IdPessoa = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                email = (string)reader["Email"];
+            }
+            reader.Close();
+            return email;
+        }
+
+        public bool VerificarEmail(string email)
+        {
+            bool retorno = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Pessoa WHERE Email = @email";
+            cmd.Parameters.AddWithValue("@email", email);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                retorno = true;
+            }
+            reader.Close();
+            return retorno;
+        }
+
         public int CreateAluno(Aluno aluno)
         {
             SqlCommand cmd = new SqlCommand();
