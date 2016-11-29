@@ -3,7 +3,7 @@
     ViewBag.Title = "Projects";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="margin-top:60px" ; class="container">
+<div style="margin-top:60px" class="container">
     <div class="row">
         <div id="filter-panel" class="collapse filter-panel">
             <div class="panel panel-default">
@@ -48,7 +48,7 @@
 </div>
 @foreach (var t in Model)
 {
-    <div class="col-lg-9 pull-right">
+    <div class="row pull-right">
         <ul class="media-list main-list">
             <li class="media">
                 <a class="pull-left" href="/Project/seeproject/@t.IdProjeto">
