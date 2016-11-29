@@ -8,7 +8,14 @@
     <div class="container">
         <div>
             <div>
-                <img src="~/Imagens/User.png" class="img-circle" />
+                @if (ViewBag.Status == 1)
+                {
+                    <img src="~/Imagens/student.png" class="img-circle" />
+                }
+                else
+                {
+                    <img src="~/Imagens/professor.png" class="img-circle" />
+                }
                 <label class="info-title">@ViewBag.User</label>
 
                 <div class="col-md-offset-2" style="margin-left:20px;">

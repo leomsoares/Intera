@@ -8,6 +8,12 @@
 <h2 style="margin-top: 60px;">Create New Project - Step 2</h2>
 
 <div class="container">
+    @if(ViewBag.MensagemErroAluno != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.MensagemErroAluno
+        </div>
+    }
     <div class="row">
         <!-- BOTÃO DE ABRIR MODAL DE ADICIONAR ALUNOS NO PROJETO -->
         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#studentsModal" id="btnAddStudent">
@@ -201,6 +207,18 @@
             }
         }
     </table>
+
+    <form action="/project/salvararquivo" method="post" enctype="multipart/form-data">
+        <input type="file" class="file" id="file">
+        <div class="input-group col-xs-6">
+            <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
+            <span class="input-group-btn">
+                <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+            </span>
+        </div>
+
+        <button class="btn btn-default" type="submit">Finalize Project Creation</button>
+    </form>
 
     @if (ViewBag.Status == 1)
     {

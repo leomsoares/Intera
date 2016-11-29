@@ -91,6 +91,7 @@ namespace Intera.Controllers
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
             }
+            ViewBag.MensagemErroAluno = Session["MensagemErroAluno"];
             Projeto projeto = new Projeto();
             projeto = (Projeto)Session["idProjeto"];
             List<AlunoProjeto> lista = new List<AlunoProjeto>();
@@ -101,6 +102,21 @@ namespace Intera.Controllers
                 ViewBag.Referencia = model.ReadReferencia(projeto.IdProjeto);
             }
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult salvararquivo()
+        {
+            HttpPostedFileBase arquivo = Request.Files[0];
+            string caminhoArquivo = null;
+
+            if (arquivo.ContentLength > 0)
+            {
+                var uploadPath = Server.MapPath("~/Imagens");
+                caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+                arquivo.SaveAs(caminhoArquivo);
+            }
+            return RedirectToAction("createstep2");
         }
 
         //[Autoriza]
@@ -118,6 +134,7 @@ namespace Intera.Controllers
         [Autoriza]
         public ActionResult addalunodata(int id)
         {
+            Session["MensagemErroAluno"] = null;
             Projeto projeto = new Projeto();
             projeto = (Projeto)Session["idProjeto"];
             int cont = 0;
@@ -131,9 +148,10 @@ namespace Intera.Controllers
                 using (ProjetoModel model = new ProjetoModel())
                 {
                     model.AddAluno(id, projeto.IdProjeto, DateTime.Today);
-
+                    return RedirectToAction("Createstep2");
                 }
             }
+            Session["MensagemErroAluno"] = "Student is already in the project";
             return RedirectToAction("Createstep2");
         }
 
@@ -160,6 +178,7 @@ namespace Intera.Controllers
 
         public ActionResult delalunodata(int id)
         {
+            Session["MensagemErroAluno"] = null;
             Projeto projeto = new Projeto();
             projeto = (Projeto)Session["idProjeto"];
 
@@ -464,6 +483,6 @@ namespace Intera.Controllers
             return View();
         }
 
-        
+
     }
 }
