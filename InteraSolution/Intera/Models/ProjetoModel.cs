@@ -44,6 +44,25 @@ namespace Intera.Models
             return idProjeto;
         }
 
+        public void UpProjectLink(string link, int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE FROM Projeto SET Link = @link WHERE IdProjeto = @id";
+            cmd.Parameters.AddWithValue("@link", link);
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
+
+        public void EndProject(int id)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "UPDATE FROM Projeto SET DataFinal = GETDATE() WHERE IdProjeto = @id";
+            cmd.Parameters.AddWithValue("@id", id);
+            cmd.ExecuteNonQuery();
+        }
+
         public int VerificarAluno(int idAluno, int idProjeto)
         {
             int cont = 0;

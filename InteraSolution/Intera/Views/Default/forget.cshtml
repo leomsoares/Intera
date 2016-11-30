@@ -4,9 +4,14 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
 <div style="margin-top:60px;">
+    @if (ViewBag.MsgErroForgot != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.MsgErroForgot
+        </div>
+    }
+
     <hr>
     <div class="container">
         <div class="row">

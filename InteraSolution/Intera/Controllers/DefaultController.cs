@@ -71,7 +71,16 @@ namespace Intera.Controllers
             Pessoa p = new Pessoa();
             using (PessoaModel modelp = new PessoaModel())
             {
-                p = modelp.ResgatarSenha(email);
+                bool retorno = modelp.VerificarEmail(email);
+                if (retorno)
+                {
+                    p = modelp.ResgatarSenha(email);
+                }
+                else
+                {
+                    ViewBag.MsgErroForgot = "Email invalid";
+                    return View();
+                }
             }
 
             using (HomeModel modelh = new HomeModel())
