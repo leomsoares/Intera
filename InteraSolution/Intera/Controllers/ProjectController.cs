@@ -331,7 +331,15 @@ namespace Intera.Controllers
             return View(lista);
 
         }
-
+        [HttpPost]
+        public FileResult seeproject()
+        {
+            string nome = (string)Session["caminho"];
+            string contentType = "application/pdf";
+            //return File(nome, contentType, nome.Substring(9, nome.Length));
+            return File(nome, contentType, "Projeto.pdf");
+            //return File(caminho, contentType, "reporte.pdf");
+        }
         public ActionResult liststudent(string nome)
         {
             List<Pessoa> lista = new List<Pessoa>();
