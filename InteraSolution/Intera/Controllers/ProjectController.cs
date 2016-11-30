@@ -45,22 +45,6 @@ namespace Intera.Controllers
                 ViewBag.id = p.IdPessoa;
             }
             Projeto projeto = new Projeto();
-
-            //int arquivosSalvos = 0;
-            //for (int i = 0; i < Request.Files.Count; i++)
-            //{
-            //    HttpPostedFileBase arquivo = Request.Files[i];
-            //    string caminhoArquivo = null;
-
-            //    if (arquivo.ContentLength > 0)
-            //    {
-            //        var uploadPath = Server.MapPath("~/Imagens");
-            //        caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
-            //        arquivo.SaveAs(caminhoArquivo);
-            //        arquivosSalvos++;
-            //    }
-            //    projeto.Link = caminhoArquivo;
-            //}
             projeto.IdProfessor = ViewBag.id;
             if (Convert.ToInt32(form["IdCoorientador"]) != 0)
             {
@@ -122,11 +106,21 @@ namespace Intera.Controllers
 
             if (arquivo.ContentLength > 0)
             {
-                var uploadPath = Server.MapPath("~/Imagens");
+                var uploadPath = Server.MapPath("~/Arquivos");
                 caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
                 arquivo.SaveAs(caminhoArquivo);
+
+                string link = "~/Arquivos" + Path.GetFileName(arquivo.FileName);
+
+                Projeto projeto = new Projeto();
+                projeto = (Projeto)Session["idProjeto"];
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    model.UpProjectLink(link, projeto.IdProjeto);
+                }
+
             }
-            return RedirectToAction("createstep2");
+            return RedirectToAction("group");
         }
 
         //[Autoriza]

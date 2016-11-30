@@ -225,9 +225,8 @@
             <input type="file" name="arquivo" required />
         </div>
         <div>
-            <button class="btn btn-default" type="submit">Save</button>
+            @*<button class="btn btn-default" type="submit">Save</button>*@
         </div>
-    </form>
 
     @if (ViewBag.Status == 1)
     {
@@ -237,7 +236,8 @@
     else
     {
         <!-- BOTÃO DE FINALIZAR A CRIAÇÃO DO PROJETO -->
-        <a href="/project/group" class="btn btn-default">Finalize Project Creation </a>
+        <button class="btn btn-default" type="submit">Save</button>
     }
+    </form>
 </div>
 

@@ -48,7 +48,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE FROM Projeto SET Link = @link WHERE IdProjeto = @id";
+            cmd.CommandText = "UPDATE Projeto SET Link = @link WHERE IdProjeto = @id";
             cmd.Parameters.AddWithValue("@link", link);
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
@@ -58,7 +58,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UPDATE FROM Projeto SET DataFinal = GETDATE() WHERE IdProjeto = @id";
+            cmd.CommandText = "UPDATE Projeto SET DataFinal = GETDATE() WHERE IdProjeto = @id";
             cmd.Parameters.AddWithValue("@id", id);
             cmd.ExecuteNonQuery();
         }
