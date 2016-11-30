@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "DashBoard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div style="margin-top:60px;">
+    <p>Statistics of registries</p>
+    <p>Students: @ViewBag.CountAluno </p>
+    <p>Professors: @ViewBag.CountProfessor </p>
+    <p>Projects: @ViewBag.CountProjeto </p>
+    <div class="panel panel-heading">
+        <div style="margin-top:30px;">
+            <div class="container">
+                <div style="margin:20px">
+                    <table class="table table-bordered">
+                        All projects and your members.
+                        @foreach (var item in ViewBag.Projetos)
+                        {
+                            <tr>
+                                <th class="panel-heading">Project: @item.NomeProjeto</th>
+                            </tr>
+                            foreach (var T in ViewBag.AlunosProjeto)
+                            {
+                                if (item.IdProjeto == T.IdProjeto)
+                                {
+                                    <tr>
+                                        <th>@T.Nome</th>
+                                    </tr>
+                                }
+
+                            }
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

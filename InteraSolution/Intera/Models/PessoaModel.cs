@@ -134,7 +134,25 @@ namespace Intera.Models
             reader.Close();
             return p;
         }
+        public Pessoa ReadAluno()
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "select pe.*, a.Ra, a.Curso from Pessoa pe inner join Aluno a on pe.IdPessoa = a.Pessoa_id where pe.Status = 1";
 
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+
+            Aluno p = new Aluno();
+            p.IdPessoa = (int)reader["IdPessoa"];
+            p.Nome = (string)reader["Nome"];
+            p.Email = (string)reader["Email"];
+            p.Status = (int)reader["Status"];
+            p.Ra = (string)reader["Ra"];
+            p.Curso = (string)reader["Curso"];
+            reader.Close();
+            return p;
+        }
         public Pessoa ReadAluno(int id)
         {
             SqlCommand cmd = new SqlCommand();

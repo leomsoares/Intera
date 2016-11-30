@@ -322,6 +322,7 @@ namespace Intera.Controllers
                 lista = model.ReadProjeto(id);
                 ViewBag.Membros = model.ReadAlunoProjeto(id);
                 ViewBag.ProfessorNome = model.ReadProfessorProjeto(id);
+                ViewBag.Refencia = model.ReadReferencia(id);
             }
             return View(lista);
 
@@ -369,6 +370,7 @@ namespace Intera.Controllers
                     using (ProjetoModel model = new ProjetoModel())
                     {
                         lista = model.ReadProjetoAluno(p.IdPessoa);
+                        ViewBag.Professores = model.ReadProfessor();
                     }
                     return View(lista);
                 }
@@ -377,6 +379,7 @@ namespace Intera.Controllers
                     using (ProjetoModel model = new ProjetoModel())
                     {
                         lista = model.ReadProjetoProfessor(p.IdPessoa);
+                        ViewBag.Professores = model.ReadProfessor();
                     }
                     return View(lista);
                 }

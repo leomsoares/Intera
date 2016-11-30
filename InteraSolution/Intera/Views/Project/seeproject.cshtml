@@ -26,7 +26,11 @@
             {
                 <div class="panel-body">@T.Nome</div>
             }
-            
+            <div class="panel-heading" style="font-weight: 900; font-size:larger;">References</div>
+            @foreach (var item in ViewBag.Refencia)
+            {
+                <div class="panel-body">@item.DescricaoReferencia</div>
+            }
 
 
             <div class="panel-heading" style="font-weight: 900; font-size:larger;">Summary</div>

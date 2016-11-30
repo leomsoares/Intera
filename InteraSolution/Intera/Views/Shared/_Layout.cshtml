@@ -113,6 +113,10 @@
                                 {
                                     <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
                                 }
+                                @if (ViewBag.Status == 3)
+                                {
+                                    <li><a href="/Default/Dashboard"><span class="glyphicon glyphicon-eye-open"></span> DashBoard</a></li>
+                                }
                                 <li role="separator" class="divider"></li>
                                 <li><a href="/default/Logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a></li>
                             </ul>

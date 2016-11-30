@@ -10,7 +10,8 @@
     <table class="table table-bordered text-center">
         <tr>
             <th>NAME</th>
-            <th>MEMBERS</th>
+            <th>ADVISOR</th>
+            <th>CO-ADVISOR</th>
             <th>STATUS</th>
             <th></th>
         </tr>
@@ -18,10 +19,33 @@
             {
             <tr>
                 <td>@item.NomeProjeto</td>
-                <td>Members</td>
+                @foreach (var U in ViewBag.Professores)
+                {
+                    if (item.IdProfessor == U.IdPessoa)
+                    {
+                        <td>@U.Nome</td>
+                    }
+                }
+                @if (item.IdCoorientador == 0)
+                {
+                    <td></td>
+                }
+                else
+                {
+                    foreach (var U in ViewBag.Professores)
+                    {
+                        if (item.IdCoorientador == U.IdPessoa)
+                        {
+                            <td>@U.Nome</td>
+                        }
+                    }
+                }
+
+
+
                 @if (@item.Status == 1)
                 {
-                    <td>In Progress</td>
+                    <td>Em andamento</td>
                 }
                 @if (@item.Status == 2)
                 {

@@ -23,7 +23,7 @@ namespace Intera.Controllers
             List<Projeto> lista = new List<Projeto>();
             using (ProjetoModel model = new ProjetoModel())
             {
-                lista = model.ReadProjeto();
+                lista = model.ReadProjetoLastAdd();
             }
             return View(lista);
         }
@@ -48,7 +48,7 @@ namespace Intera.Controllers
             List<Projeto> lista = new List<Projeto>();
             using (ProjetoModel model = new ProjetoModel())
             {
-                lista = model.ReadProjeto();
+                lista = model.ReadProjetoLastAdd();
             }
             return View(lista);
         }
@@ -183,6 +183,30 @@ namespace Intera.Controllers
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
                 ViewBag.Status = p.Status;
+            }
+            return View();
+        }
+        public ActionResult Dashboard()
+        {
+            if (Session["user"] != null)
+            {
+                Pessoa p = new Pessoa();
+                p = (Pessoa)Session["user"];
+                ViewBag.user = p.Nome;
+                ViewBag.Status = p.Status;
+            }
+            using (PessoaModel pessoa = new PessoaModel())
+            {
+                ViewBag.Professor = pessoa.ReadProfessor();
+                ViewBag.Aluno = pessoa.ReadAluno();
+            }
+            using (ProjetoModel projeto = new ProjetoModel())
+            {
+                ViewBag.Projetos = projeto.ReadProjeto();
+                ViewBag.AlunosProjeto = projeto.ReadAlunoData();
+                ViewBag.CountAluno = projeto.Count(1);
+                ViewBag.CountProfessor = projeto.Count(2);
+                ViewBag.CountProjeto = projeto.Count(4);
             }
             return View();
         }

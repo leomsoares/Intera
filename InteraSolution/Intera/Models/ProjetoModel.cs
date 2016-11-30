@@ -106,7 +106,58 @@ namespace Intera.Models
             reader.Close();
             return lista;
         }
+        public List<AlunoProjeto> ReadAlunoData()
+        {
+            List<AlunoProjeto> lista = new List<AlunoProjeto>();
+            SqlCommand cmd = new SqlCommand();
 
+            cmd.Connection = connection;
+            cmd.CommandText = "select A.Aluno_id, P.Nome ,A.Projeto_id, A.DataInicio, ISNULL(DataFinal,'') DataFinal from AlunoData as A inner join Pessoa as P on (A.Aluno_id = P.IdPessoa)";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                AlunoProjeto Aluno = new AlunoProjeto();
+                Aluno.IdPessoa = (int)reader["Aluno_id"];
+                Aluno.Nome = (string)reader["Nome"];
+                Aluno.IdProjeto = (int)reader["Projeto_id"];
+                Aluno.DataEntrada = (DateTime)reader["DataInicio"];
+                Aluno.DataSaida = (DateTime)reader["DataFinal"];
+                lista.Add(Aluno);
+            }
+            reader.Close();
+            return lista;
+        }
+        public int Count(int tipo)
+        {
+            SqlCommand cmd = new SqlCommand();
+            int qtd;
+            cmd.Connection = connection;
+            if (tipo == 1)
+            {
+                cmd.CommandText = "select count(*) as quantidade from Pessoa where Status = 1";
+            }
+            else if (tipo == 2)
+            {
+                cmd.CommandText = "select count(*) as quantidade from Pessoa where Status = 2";
+            }
+            else if (tipo == 3)
+            {
+                cmd.CommandText = "select count(*) as quantidade from Pessoa where Status = 3";
+            }
+            else if (tipo == 4)
+            {
+                cmd.CommandText = "select count(*) as quantidade from projeto";
+            }
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            reader.Read();
+            qtd = (int)reader["quantidade"];
+
+
+            reader.Close();
+            return qtd;
+        }
         public List<Pessoa> ReadProfessorProjeto(int id)
         {
             List<Pessoa> lista = new List<Pessoa>();
@@ -155,6 +206,32 @@ namespace Intera.Models
             return lista;
         }
         public List<Projeto> ReadProjeto()
+        {
+            List<Projeto> lista = new List<Projeto>();
+            SqlCommand cmd = new SqlCommand();
+
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT IdProjeto, Professor_id, ISNULL(Coorientador_id,0) Coorientador_id, NomeProjeto, P.Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao , Nome FROM Projeto as P inner join Pessoa as Pes on (Professor_id = IdPessoa) order by DataInicio desc";
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                Projeto Projeto = new Projeto();
+                Projeto.IdProjeto = (int)reader["IdProjeto"];
+                Projeto.IdProfessor = (int)reader["Professor_id"];
+                Projeto.IdCoorientador = (int)reader["Coorientador_id"];
+                Projeto.NomeProjeto = (string)reader["NomeProjeto"];
+                Projeto.Status = (int)reader["Status"];
+                Projeto.Link = (string)reader["Nome"];
+                Projeto.DataInicio = (DateTime)reader["DataInicio"];
+                Projeto.DataFinal = (DateTime)reader["DataFinal"];
+                Projeto.Descricao = (string)reader["Descricao"];
+                lista.Add(Projeto);
+            }
+            reader.Close();
+            return lista;
+        }
+        public List<Projeto> ReadProjetoLastAdd()
         {
             List<Projeto> lista = new List<Projeto>();
             SqlCommand cmd = new SqlCommand();
@@ -283,7 +360,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '0') Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto WHERE Professor_id = @idProfessor";
+            cmd.CommandText = "SELECT  IdProjeto, Professor_id, ISNULL(Coorientador_id, '0') Coorientador_id, TipoProjeto_id, NomeProjeto, Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao FROM Projeto WHERE Professor_id = @idProfessor or Coorientador_id = @idProfessor";
             cmd.Parameters.AddWithValue("@idProfessor", idProfessor);
 
             SqlDataReader reader = cmd.ExecuteReader();
@@ -302,6 +379,7 @@ namespace Intera.Models
                 Projeto.Descricao = (string)reader["Descricao"];
                 lista.Add(Projeto);
             }
+            reader.Close();
             return lista;
         }
         public List<Projeto> ReadProjetoAluno(int idAluno)
@@ -329,6 +407,7 @@ namespace Intera.Models
                 Projeto.Descricao = (string)reader["Descricao"];
                 lista.Add(Projeto);
             }
+            reader.Close();
             return lista;
         }
 
