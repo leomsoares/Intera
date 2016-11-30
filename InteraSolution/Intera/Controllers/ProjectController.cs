@@ -46,21 +46,21 @@ namespace Intera.Controllers
             }
             Projeto projeto = new Projeto();
 
-            int arquivosSalvos = 0;
-            for (int i = 0; i < Request.Files.Count; i++)
-            {
-                HttpPostedFileBase arquivo = Request.Files[i];
-                string caminhoArquivo = null;
+            //int arquivosSalvos = 0;
+            //for (int i = 0; i < Request.Files.Count; i++)
+            //{
+            //    HttpPostedFileBase arquivo = Request.Files[i];
+            //    string caminhoArquivo = null;
 
-                if (arquivo.ContentLength > 0)
-                {
-                    var uploadPath = Server.MapPath("~/Imagens");
-                    caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
-                    arquivo.SaveAs(caminhoArquivo);
-                    arquivosSalvos++;
-                }
-                projeto.Link = caminhoArquivo;
-            }
+            //    if (arquivo.ContentLength > 0)
+            //    {
+            //        var uploadPath = Server.MapPath("~/Imagens");
+            //        caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+            //        arquivo.SaveAs(caminhoArquivo);
+            //        arquivosSalvos++;
+            //    }
+            //    projeto.Link = caminhoArquivo;
+            //}
 
             projeto.IdProfessor = ViewBag.id;
             if (Convert.ToInt32(form["IdCoorientador"]) != 0)
@@ -71,6 +71,17 @@ namespace Intera.Controllers
             projeto.NomeProjeto = form["NomeProjeto"];
             projeto.DataInicio = DateTime.Today;
             projeto.Descricao = form["Descricao"];
+
+            if (ViewBag.Id == projeto.IdCoorientador)
+            {
+                ViewBag.MensagemCoorientador = "Coorientador inválido";
+                List<Professor> lista = new List<Professor>();
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    lista = model.ReadProfessor();
+                }
+                return View(lista);
+            }
 
             using (ProjetoModel model = new ProjetoModel())
             {

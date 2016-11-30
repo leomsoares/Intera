@@ -6,6 +6,13 @@
 
 <div style="margin-top:60px;">
     <h2>Create New Project - Step One</h2>
+    @if (ViewBag.MensagemCoorientador != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @ViewBag.MensagemCoorientador
+        </div>
+    }
+
     <form role="form" action="/project/createstep1" method="post" enctype="multipart/form-data">
         <div style="margin-top:20px;">
             <div class="form-group">
