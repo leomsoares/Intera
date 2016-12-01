@@ -310,15 +310,15 @@ ul {
 }
 
 #tudo {
-	width: 60%;
+	width: 75%;
 	
 	
 }
 
 #tudo2 {
 	position: relative;
-	width: 200px;
-	height: 200px;
+	width: 50%;
+	height: 100px;
 	
 	float: left;
 }
