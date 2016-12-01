@@ -16,8 +16,7 @@ namespace Intera.Models
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "Login";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "select * from Pessoa where Email = @email and Senha = @senha and Status <> 0 ";
 
             cmd.Parameters.AddWithValue("@email", email);
             cmd.Parameters.AddWithValue("@senha", senha);
@@ -209,8 +208,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"AddAluno";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "insert into Pessoa values(@nome, 1, @email, 'fatec123') select scope_identity() insert into Aluno values(@@IDENTITY, @ra, @curso)";
 
             cmd.Parameters.AddWithValue("@nome", aluno.Nome);
             cmd.Parameters.AddWithValue("@email", aluno.Email);
@@ -225,8 +223,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = @"AddProfessor";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "insert into Pessoa values(@nome, 2, @email, 'fatec123') select scope_identity() insert into Professor values(@@IDENTITY, @rs)";
 
             cmd.Parameters.AddWithValue("@nome", professor.Nome);
             cmd.Parameters.AddWithValue("@email", professor.Email);
@@ -342,8 +339,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UpAluno";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "UPDATE Pessoa set Nome = @nome, Email = @email WHERE IdPessoa = @idPessoa UPDATE Aluno set Ra = @ra, Curso = @curso WHERE Pessoa_id = @idPessoa ";
             cmd.Parameters.AddWithValue("@idPessoa", a.IdPessoa);
             cmd.Parameters.AddWithValue("@nome", a.Nome);
             cmd.Parameters.AddWithValue("@email", a.Email);
@@ -356,8 +352,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "UpProf";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "UPDATE Pessoa SET Nome = @nome, Email = @email WHERE IdPessoa = @idPessoa UPDATE Professor    SET Rs = @rs WHERE Pessoa_id = @idPessoa";
             cmd.Parameters.AddWithValue("@idPessoa", p.IdPessoa);
             cmd.Parameters.AddWithValue("@nome", p.Nome);
             cmd.Parameters.AddWithValue("@email", p.Email);
@@ -369,8 +364,7 @@ namespace Intera.Models
         {
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = connection;
-            cmd.CommandText = "DelPessoa";
-            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "UPDATE Pessoa set Status = 0 WHERE IdPessoa = @idPessoa";
             cmd.Parameters.AddWithValue("@idPessoa", IdPessoa);
 
             cmd.ExecuteNonQuery();
