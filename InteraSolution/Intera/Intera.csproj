@@ -197,7 +197,7 @@
     <Content Include="Views\Project\posts.cshtml" />
     <Content Include="Views\Project\edit.cshtml" />
     <Content Include="Views\Project\liststudentedit.cshtml" />
-    <Content Include="Views\Default\dashboard.cshtml" />
+    <Content Include="Views\Default\reports.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -195,7 +195,8 @@ namespace Intera.Controllers
             }
             return View();
         }
-        public ActionResult Dashboard()
+
+        public ActionResult reports()
         {
             if (Session["user"] != null)
             {

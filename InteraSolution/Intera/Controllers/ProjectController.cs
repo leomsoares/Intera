@@ -488,10 +488,10 @@ namespace Intera.Controllers
                 ViewBag.NomeCoorientador = "";
                 if (ViewBag.Projeto.IdCoorientador != 0)
                 {
-                    string nome = model2.UpdateReadProfessor(ViewBag.Projeto.IdCoorientador);
-                    if (!String.IsNullOrEmpty(nome))
+                    Pessoa p = model2.UpdateReadProfessor(ViewBag.Projeto.IdCoorientador);
+                    if (!String.IsNullOrEmpty(p.Nome))
                     {
-                        ViewBag.NomeCoorientador = nome;
+                        ViewBag.NomeCoorientador = p.Nome;
                     }
                 }
             }
@@ -499,7 +499,6 @@ namespace Intera.Controllers
 
             return View();
         }
-
-
+        
     }
 }
