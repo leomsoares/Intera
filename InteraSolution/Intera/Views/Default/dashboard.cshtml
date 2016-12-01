@@ -3,13 +3,13 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="margin-top:60px;">
-    <p>Statistics of registries</p>
+    <h1>Statistics of registries</h1>
     <p>Students: @ViewBag.CountAluno </p>
     <p>Professors: @ViewBag.CountProfessor </p>
     <p>Projects: @ViewBag.CountProjeto </p>
     <div class="panel panel-heading">
         <div style="margin-top:30px;">
-            <div class="container">
+            @*<div class="container">
                 <div style="margin:20px">
                     <table class="table table-bordered">
                         All projects and your members.
@@ -31,6 +31,37 @@
                         }
                     </table>
                 </div>
+            </div>*@
+            <div class="container">
+                <h2>Registered Projects</h2>
+                <p></p>
+                <table class="table table-hover">
+                
+
+                        <tr>
+                            <th>Project</th>
+                            <th>Members</th>
+                            
+                        </tr>
+@foreach (var item in ViewBag.Projetos)
+{
+
+    foreach (var T in ViewBag.AlunosProjeto)
+    {
+        if (item.IdProjeto == T.IdProjeto)
+        {
+                        <tr>
+                            <td>@item.NomeProjeto</td>
+
+                            <td>@T.Nome</td>
+                            
+                        </tr>
+
+        }
+
+    }
+}
+                </table>
             </div>
         </div>
     </div>
