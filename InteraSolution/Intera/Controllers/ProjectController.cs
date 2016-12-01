@@ -422,7 +422,14 @@ namespace Intera.Controllers
 
             using (ProjetoModel modelv = new ProjetoModel())
             {
-                i = modelv.UserProjeto(id, p.IdPessoa);
+                if (p.Status == 1)
+                {
+                    i = modelv.UserProjeto(id, p.IdPessoa);
+                }
+                else
+                {
+                    i = modelv.ProfProjeto(id, p.IdPessoa);
+                }
             }
 
             if (i == true)

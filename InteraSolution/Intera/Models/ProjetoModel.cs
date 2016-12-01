@@ -266,7 +266,7 @@ namespace Intera.Models
             SqlCommand cmd = new SqlCommand();
 
             cmd.Connection = connection;
-            cmd.CommandText = "SELECT TOP 3 IdProjeto, Professor_id, ISNULL(Coorientador_id,0) Coorientador_id, NomeProjeto, P.Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao , Nome FROM Projeto as P inner join Pessoa as Pes on (Professor_id = IdPessoa) order by DataInicio desc";
+            cmd.CommandText = "SELECT TOP 3 IdProjeto, Professor_id, ISNULL(Coorientador_id,0) Coorientador_id, NomeProjeto, P.Status, ISNULL(Link,'') AS Link, DataInicio, ISNULL(DataFinal,'') AS DataFinal, Descricao , Nome FROM Projeto as P inner join Pessoa as Pes on (Professor_id = IdPessoa) order by IdProjeto desc";
 
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -505,6 +505,22 @@ namespace Intera.Models
             cmd.Connection = connection;
             cmd.CommandText = "SELECT COUNT (Aluno_id) FROM AlunoData WHERE Aluno_id = @idAluno AND Projeto_id = @idProjeto";
             cmd.Parameters.AddWithValue("@idAluno", idAluno);
+            cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
+            int i = Convert.ToInt32(cmd.ExecuteScalar());
+            if (i != 0)
+            {
+                retorno = true;
+            }
+            return retorno;
+        }
+
+        public bool ProfProjeto(int idProjeto, int idProf)
+        {
+            bool retorno = false;
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT COUNT (Professor_id) FROM Projeto WHERE Professor_id = @idProf AND IdProjeto = @idProjeto";
+            cmd.Parameters.AddWithValue("@idProf", idProf);
             cmd.Parameters.AddWithValue("@idProjeto", idProjeto);
             int i = Convert.ToInt32(cmd.ExecuteScalar());
             if (i != 0)

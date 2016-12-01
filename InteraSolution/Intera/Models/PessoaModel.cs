@@ -122,14 +122,15 @@ namespace Intera.Models
             cmd.CommandText = "select pe.*, p.Rs from Pessoa pe inner join Professor p on pe.IdPessoa = p.Pessoa_id where pe.Status = 2 and IdPessoa = @IdPessoa";
             cmd.Parameters.AddWithValue("@IdPessoa", id);
             SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-
             Professor p = new Professor();
-            p.IdPessoa = (int)reader["IdPessoa"];
-            p.Nome = (string)reader["Nome"];
-            p.Email = (string)reader["Email"];
-            p.Status = (int)reader["Status"];
-            p.Rs = (string)reader["Rs"];
+            if (reader.Read())
+            {
+                p.IdPessoa = (int)reader["IdPessoa"];
+                p.Nome = (string)reader["Nome"];
+                p.Email = (string)reader["Email"];
+                p.Status = (int)reader["Status"];
+                p.Rs = (string)reader["Rs"];
+            }
             reader.Close();
             return p;
         }
@@ -140,15 +141,16 @@ namespace Intera.Models
             cmd.CommandText = "select pe.*, a.Ra, a.Curso from Pessoa pe inner join Aluno a on pe.IdPessoa = a.Pessoa_id where pe.Status = 1";
 
             SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-
             Aluno p = new Aluno();
-            p.IdPessoa = (int)reader["IdPessoa"];
-            p.Nome = (string)reader["Nome"];
-            p.Email = (string)reader["Email"];
-            p.Status = (int)reader["Status"];
-            p.Ra = (string)reader["Ra"];
-            p.Curso = (string)reader["Curso"];
+            if (reader.Read())
+            {
+                p.IdPessoa = (int)reader["IdPessoa"];
+                p.Nome = (string)reader["Nome"];
+                p.Email = (string)reader["Email"];
+                p.Status = (int)reader["Status"];
+                p.Ra = (string)reader["Ra"];
+                p.Curso = (string)reader["Curso"];
+            }
             reader.Close();
             return p;
         }
@@ -159,16 +161,17 @@ namespace Intera.Models
             cmd.CommandText = "select pe.*, a.Ra, a.Curso from Pessoa pe inner join Aluno a on pe.IdPessoa = a.Pessoa_id where pe.Status = 1 and IdPessoa = @IdPessoa";
             cmd.Parameters.AddWithValue("@IdPessoa", id);
             SqlDataReader reader = cmd.ExecuteReader();
-            reader.Read();
-
             Aluno p = new Aluno();
-            p.IdPessoa = (int)reader["IdPessoa"];
-            p.Nome = (string)reader["Nome"];
-            p.Email = (string)reader["Email"];
-            p.Status = (int)reader["Status"];
-            p.Ra = (string)reader["Ra"];
-            p.Curso = (string)reader["Curso"];
-            reader.Close();
+            if (reader.Read())
+            {
+                p.IdPessoa = (int)reader["IdPessoa"];
+                p.Nome = (string)reader["Nome"];
+                p.Email = (string)reader["Email"];
+                p.Status = (int)reader["Status"];
+                p.Ra = (string)reader["Ra"];
+                p.Curso = (string)reader["Curso"];
+                reader.Close();
+            }
             return p;
         }
 

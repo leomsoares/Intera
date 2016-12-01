@@ -107,8 +107,8 @@
                                 @if (ViewBag.Status != 3)
                                 {
                                     <li><a href="/user/profile"><i class="fa fa-user" aria-hidden="true"></i> My Profile</a></li>
+                                    <li><a href="/project/createstep1"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a></li>
                                 }
-                                <li><a href="/project/createstep1"><i class="fa fa-plus" aria-hidden="true"></i> Create Project</a></li>
                                 @if (ViewBag.Status == 3)
                                 {
                                     <li><a href="/user/manage"><span class="glyphicon glyphicon-edit"></span> Manage Users</a></li>
@@ -152,17 +152,17 @@
     @* Add imagem *@
     <script src="~/scripts/jquery.MultiFile.js"></script>
     @*<script type="text/javascript">
-        $(document).ready(function () {
-            $('#file').MultiFile({
-                accept: 'pdf',
-                max: 1,
-                STRING: {
-                    remove: 'Remover',
-                    denied: 'Tipo do arquivo inválido $ext!',
-                    duplicate: 'Esse arquivo já foi selecionado:\n$file!'
-                }
+            $(document).ready(function () {
+                $('#file').MultiFile({
+                    accept: 'pdf',
+                    max: 1,
+                    STRING: {
+                        remove: 'Remover',
+                        denied: 'Tipo do arquivo inválido $ext!',
+                        duplicate: 'Esse arquivo já foi selecionado:\n$file!'
+                    }
+                });
             });
-        });
-    </script>*@
+        </script>*@
 </body>
 </html>
