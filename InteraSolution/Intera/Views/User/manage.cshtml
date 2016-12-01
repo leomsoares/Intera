@@ -43,7 +43,11 @@
             <th>OPTIONS</th>
         </tr>
         @foreach (var t in Model)
+        {
+            if (t.IdPessoa != 0)
             {
+
+
             <tr>
                 <td>@t.IdPessoa</td>
                 <td>@t.Nome</td>
@@ -204,6 +208,7 @@
                     </div>
                 </td>
             </tr>
+            }
             {
                 manageuser++;
             }
