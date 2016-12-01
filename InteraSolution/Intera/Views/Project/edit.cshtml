@@ -6,62 +6,10 @@
     int referencia = 1;
 }
 
-<h2 style="margin-top:60px">Edit Project</h2>
+<h2 style="margin-top:60px">Edit Project - @ViewBag.Projeto.NomeProjeto</h2>
 <div class="container">
     <form class="form-horizontal">
-        <div class="form-group">
-            <label for="Pname" class="col-sm-3 control-label">Name</label>
-            <div class="col-sm-6">
-                <input type="text" id="Pname" name="Pname" placeholder="Project Name" class="form-control input-register" value="@ViewBag.Projeto.NomeProjeto" maxlength="50">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="Advisor" class="col-sm-3 control-label">Advisor</label>
-            <div class="col-sm-6">
-                <input type="text" id="Advisor" name="Advisor" placeholder="Advisor" class="form-control input-register" value="@ViewBag.NomeOrientador.Nome" disabled maxlength="50">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="Coadvisor" class="col-sm-3 control-label">Co-Advisor</label>
-            <div class="col-sm-6">
-                <input type="text" id="Coadvisor" name="Coadvisor" placeholder="Co-Advisor" value="@ViewBag.NomeCoorientador" disabled class="form-control input-register" maxlength="50">
-            </div>
-        </div>
-        <div class="form-group">
-            @if (ViewBag.Projeto.IdTipo == 1)
-            {
-                <label>Type</label>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1" checked>
-                        Final Paper
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2">
-                        Scientific Research
-                    </label>
-                </div>
-            }
-            else if (ViewBag.Projeto.IdTipo == 2)
-            {
-                <label>Type</label>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios1" value="1">
-                        Final Paper
-                    </label>
-                </div>
-                <div class="form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" type="radio" name="Tipo" id="gridRadios2" value="2" checked>
-                        Scientific Research
-                    </label>
-                </div>
-            }
-        </div>
-
+       
         <div class="row" style="height:50px; margin-top:35px">
             <input type="file" class="file">
             <div class="input-group col-xs-6">

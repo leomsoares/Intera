@@ -110,7 +110,9 @@ namespace Intera.Controllers
                 caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
                 arquivo.SaveAs(caminhoArquivo);
 
-                string link = "~/Arquivos" + Path.GetFileName(arquivo.FileName);
+                var linkPath = "~\\Arquivos\\";
+
+                string link = Path.Combine(linkPath, Path.GetFileName(arquivo.FileName));
 
                 Projeto projeto = new Projeto();
                 projeto = (Projeto)Session["idProjeto"];
