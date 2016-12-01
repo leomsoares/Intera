@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div style="margin-top:60px;">
+    @if (ViewBag.MsgErroForgot != null)
+    {
+        <div class="alert alert-success" role="alert">
+            @ViewBag.MsgErroForgot
+        </div>
+    }
     <h2>Scientific Research Projects</h2>
     <div class="panel panel-heading">
         <!-- Default panel contents -->

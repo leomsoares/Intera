@@ -112,6 +112,8 @@ namespace Intera.Controllers
         {
             if (Session["user"] != null)
             {
+                ViewBag.MsgErroForgot = 1;
+                @ViewBag.MsgErroForgot = "Email enviado com sucesso";
                 Pessoa p = new Pessoa();
                 p = (Pessoa)Session["user"];
                 ViewBag.user = p.Nome;
