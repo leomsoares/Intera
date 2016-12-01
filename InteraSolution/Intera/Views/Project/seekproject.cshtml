@@ -24,7 +24,7 @@
                             <input type="text" class="form-control input-sm-" id="pref-search" name="NameProject">
                         </div>
                         <div class="form-group">
-                            <label class="filter-col" style="margin-right:0;" for="pref-perpage">Status:</label>
+                            <label class="filter-col" style="margin-left:10px" for="pref-perpage">Status:</label>
                             <select id="pref-perpage" class="form-control" name="Status">
                                 <option selected="selected"></option>
                                 <option value=1>In progress</option>
@@ -48,7 +48,7 @@
 </div>
 @foreach (var t in Model)
 {
-    <div class="row pull-right">
+    <div id="tudo" class="row pull-right">
         <ul class="media-list main-list">
             <li class="media">
                 <a class="pull-left" href="/Project/seeproject/@t.IdProjeto">
@@ -68,16 +68,17 @@
                     }
 
                 </div>
-                <form action="/Project/seeproject/@t.IdProjeto" class="pull-right form-inline" >
-                    <button type="submit" class="pull-right btn btn-default filter-col top-right">
-                        <span class="glyphicon glyphicon-eye-open"></span> View
-                    </button>
+                <div id="tudo2">
+                    <form action="/Project/seeproject/@t.IdProjeto" class="pull-right form-inline">
+                        <button type="submit" class="pull-right btn btn-default filter-col top-right">
+                            <span class="glyphicon glyphicon-eye-open"></span> View
+                        </button>
 
-                    <button  type="button" class="pull-right btn btn-default filter-col top-right">
-                        <span class="glyphicon glyphicon-save"></span> Download
-                    </button>
-                </form>
-                
+                        <button type="button" class="pull-right btn btn-default filter-col top-right">
+                            <span class="glyphicon glyphicon-save"></span> Download
+                        </button>
+                    </form>
+                </div>
             </li>
         </ul>
     </div>

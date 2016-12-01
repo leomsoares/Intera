@@ -309,6 +309,21 @@ ul {
 	border-bottom: 1px solid #e8e8e8;
 }
 
+#tudo {
+	width: 60%;
+	
+	
+}
+
+#tudo2 {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	
+	float: left;
+}
+
+
 /*LAYOUT*/
 #menu li a:hover {
     background: #fff;
@@ -486,3 +501,5 @@ body { padding-top: 20px; }
 .nav-pills>li>a {
 border-radius: 0;
 }
+
+
