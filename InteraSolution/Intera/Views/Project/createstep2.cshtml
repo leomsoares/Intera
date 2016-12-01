@@ -8,7 +8,7 @@
 <h2 style="margin-top: 60px;">Create New Project - Step 2</h2>
 
 <div class="container">
-    @if(ViewBag.MensagemErroAluno != null)
+    @if (ViewBag.MensagemErroAluno != null)
     {
         <div class="alert alert-danger" role="alert">
             @ViewBag.MensagemErroAluno
@@ -208,36 +208,23 @@
         }
     </table>
 
-    @*<form action="/project/salvararquivo" method="post" enctype="multipart/form-data">
-        <input type="file" class="file" id="file">
-        <div class="input-group col-xs-6">
-            <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
-            <span class="input-group-btn">
-                <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
-            </span>
-        </div>
-
-        <button class="btn btn-default" type="submit">Finalize Project Creation</button>
-    </form>*@
-
     <form action="/project/salvararquivo" method="post" enctype="multipart/form-data">
-        <div>
-            <input type="file" name="arquivo" accept="application/pdf" required />
-        </div>
-        <div>
-            @*<button class="btn btn-default" type="submit">Save</button>*@
-        </div>
-
-    @if (ViewBag.Status == 1)
-    {
-        <!-- BOTÃO DE PUBLICAR O PROJETO -->
-        <a href="/project/group" class="btn btn-default"> Publish Project</a>
-    }
-    else
-    {
+        @if (ViewBag.Status == 1)
+        {
+            <div>
+                <input type="file" name="arquivo" accept="application/pdf" required />
+            </div>
+            <a href="/project/fimprojeto" class="btn btn-default">Publish Project</a>
+        }
+        else
+        {
+            <div>
+                <input type="file" name="arquivo" accept="application/pdf" />
+            </div>
         <!-- BOTÃO DE FINALIZAR A CRIAÇÃO DO PROJETO -->
-        <button class="btn btn-default" type="submit">Save</button>
-    }
+            <button class="btn btn-default" type="submit">Finalize Project Creation</button>
+            <a href="/project/fimprojeto" class="btn btn-default">Publish Project</a>
+        }}
     </form>
 </div>
 

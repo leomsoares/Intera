@@ -8,53 +8,7 @@
 
 <h2 style="margin-top:60px">Edit Project - @ViewBag.Projeto.NomeProjeto</h2>
 <div class="container">
-    <form class="form-horizontal">
-       
-        <div class="row" style="height:50px; margin-top:35px">
-            <input type="file" class="file">
-            <div class="input-group col-xs-6">
-                <input type="text" class="form-control input-lg" id="btnFile" disabled placeholder="Upload file...">
-                <span class="input-group-btn">
-                    <!-- BOTÃO DE ADICIONAR ARQUIVO AO PROJETO -->
-                    <button class="browse btn btn-default input-lg" style="font-size:18px;" type="button">
-                        <i class="glyphicon glyphicon-search"></i> Browse
-                    </button>
-                </span>
-            </div>
-            <!-- BOTÃO DE SALVAR MUDANÇAS -->
-            @*<a class="btn btn-default btn-lg pull-right btnProject" href="#">
-                    <span class="glyphicon glyphicon-check"></span> Save Changes
-                </a>*@
-            <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES REALIZADAS NO PROJETO -->
-            <button type="button" class="btn btn-default btn-lg pull-right btnProject" data-toggle="modal" data-target="#confirmEditProf"> Save Changes</button>
 
-            <!-- MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES -->
-            <div class="modal fade" id="confirmEditProf" tabindex="-1" role="dialog" aria-labelledby="confirmEditProfLabel">
-                <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content modal-sm">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <h4 class="modal-title" id="confirmEditProf"> Confirm Changes</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p> Are you sure you want to save edits?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"> Cancel</button>
-                            <!-- BOTÃO QUE SALVA AS ALTERAÇÕES REALIZADAS -->
-                            <button type="submit" class="btn btn-success btn-sm"> Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div>
-            <textarea class="form-control " name="Descricao" placeholder="Description..." value="@ViewBag.Projeto.Descricao" rows="4"></textarea>
-        </div>
-    </form>
 
 
     <div style="margin:60px">
@@ -260,5 +214,46 @@
             }
         </table>
     </div>
+
+    <form class="form-horizontal" method="post" action="/project/editarprojeto" enctype="multipart/form-data">
+
+        <div class="row" style="height:50px; margin-top:35px">
+
+
+            <div>
+                <textarea class="form-control " name="Desc" placeholder="Description..." style="margin-top:10px; margin-bottom:100px;" value="@ViewBag.Projeto.Descricao" rows="4"></textarea>
+            </div>
+            <input type="file" name="arquivo" />
+
+            <div>
+                <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES REALIZADAS NO PROJETO -->
+                <button type="button" class="btn btn-default btn-lg pull-right btnProject" data-toggle="modal" data-target="#confirmEditProf"> Save Changes</button>
+
+                <!-- MODAL DE CONFIRMAÇÃO DAS ALTERAÇÕES -->
+                <div class="modal fade" id="confirmEditProf" tabindex="-1" role="dialog" aria-labelledby="confirmEditProfLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content modal-sm">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h4 class="modal-title" id="confirmEditProf"> Confirm Changes</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p> Are you sure you want to save edits?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal"> Cancel</button>
+                                <!-- BOTÃO QUE SALVA AS ALTERAÇÕES REALIZADAS -->
+                                <button type="submit" class="btn btn-success btn-sm"> Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </form>
 </div>
 

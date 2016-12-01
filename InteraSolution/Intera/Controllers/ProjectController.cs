@@ -499,6 +499,80 @@ namespace Intera.Controllers
 
             return View();
         }
-        
+
+        public ActionResult fimprojeto()
+        {
+            HttpPostedFileBase arquivo = Request.Files[0];
+            string caminhoArquivo = null;
+            Projeto projeto = new Projeto();
+            projeto = (Projeto)Session["idProjeto"];
+
+            if (arquivo.ContentLength > 0)
+            {
+                var uploadPath = Server.MapPath("~/Arquivos");
+                caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+                arquivo.SaveAs(caminhoArquivo);
+
+                var linkPath = "~\\Arquivos\\";
+
+                string link = Path.Combine(linkPath, Path.GetFileName(arquivo.FileName));
+
+
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    model.UpProjectLink(link, projeto.IdProjeto);
+                }
+
+            }
+
+            using (ProjetoModel modelf = new ProjetoModel())
+            {
+                modelf.EndProject(projeto.IdProjeto);
+            }
+            return RedirectToAction("seeproject" + projeto.IdProjeto);
+        }
+
+        public ActionResult endproject(int id)
+        {
+            using (ProjetoModel model = new ProjetoModel())
+            {
+                model.EndProject(id);
+            }
+
+            return RedirectToAction("group");
+        }
+
+        [HttpPost]
+        public ActionResult editarprojeto(FormCollection form)
+        {
+            HttpPostedFileBase arquivo = Request.Files[0];
+            string caminhoArquivo = null;
+            string descricao = form["Desc"];
+            int id = (int)Session["idProj"];
+
+            if (arquivo.ContentLength > 0)
+            {
+                var uploadPath = Server.MapPath("~/Arquivos");
+                caminhoArquivo = Path.Combine(@uploadPath, Path.GetFileName(arquivo.FileName));
+                arquivo.SaveAs(caminhoArquivo);
+
+                var linkPath = "~\\Arquivos\\";
+
+                string link = Path.Combine(linkPath, Path.GetFileName(arquivo.FileName));
+
+
+                using (ProjetoModel model = new ProjetoModel())
+                {
+                    model.UpProjectLink(link, id);
+                }
+
+            }
+            using (ProjetoModel modeld = new ProjetoModel())
+            {
+                modeld.UpProjectDesc(descricao, id);
+            }
+
+            return RedirectToAction("group");
+        }
     }
 }

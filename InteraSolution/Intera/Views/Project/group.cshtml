@@ -56,6 +56,10 @@
                     @if (ViewBag.Status == 2)
                     {
                         <a href="/project/edit/@item.IdProjeto"><i class="fa fa-pencil"></i> Edit</a>
+                        if (item.Status == 1)
+                        {
+                            <a href="/project/endproject/@item.IdProjeto"><i class="fa fa-check"></i>Finish</a>
+                        }
                     }
                 </td>
             </tr>
