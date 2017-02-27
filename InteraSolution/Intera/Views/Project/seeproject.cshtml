@@ -6,53 +6,54 @@
 @foreach (var t in Model)
 {
     Session["caminho"] = t.Link;
-<div style="margin-top:100px;">
-    <div>
-        <h2 class="" style="font-weight:bolder;">See Project</h2>
-    </div>
-    <div class="container" style="margin-top:10px;">
-        <br />
-        <div class="panel panel-default">
-            <div class="panel-heading" style="font-weight: 900; font-size:larger;">Name Project</div>
-            <div class="panel-body"> @t.NomeProjeto</div>
+    <div style="margin-top:100px;">
+        <div>
+            <h2 class="" style="font-weight:bolder;">See Project</h2>
+        </div>
+        <div class="container" style="margin-top:10px;">
+            <br />
+            <div class="panel panel-default">
+                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Name Project</div>
+                <div class="panel-body"> @t.NomeProjeto</div>
 
 
-            <div class="panel-heading" style="font-weight: 900; font-size:larger;">Authors</div>
-            @foreach (var U in ViewBag.Membros)
-            {
-                <div class="panel-body">@U.Nome</div>
-            }
-            <div class="panel-heading" style="font-weight: 900; font-size:larger;">Advisor</div>
-            @foreach (var T in ViewBag.ProfessorNome)
-            {
-                <div class="panel-body">@T.Nome</div>
-            }
-            <div class="panel-heading" style="font-weight: 900; font-size:larger;">References</div>
-            @foreach (var item in ViewBag.Refencia)
-            {
-                <div class="panel-body">@item.DescricaoReferencia</div>
-            }
+                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Authors</div>
+                @foreach (var U in ViewBag.Membros)
+                {
+                    <div class="panel-body">@U.Nome</div>
+                }
+                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Advisor</div>
+                @foreach (var T in ViewBag.ProfessorNome)
+                {
+                    <div class="panel-body">@T.Nome</div>
+                }
+                <div class="panel-heading" style="font-weight: 900; font-size:larger;">References</div>
+                @foreach (var item in ViewBag.Refencia)
+                {
+                    <div class="panel-body">@item.DescricaoReferencia</div>
+                }
 
 
-            <div class="panel-heading" style="font-weight: 900; font-size:larger;">Summary</div>
-            <div class="panel-body">
-                @t.Descricao
+                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Summary</div>
+                <div class="panel-body">
+                    @t.Descricao
+                </div>
+            </div>
+            <br />
+
+
+            <hr class="hrProject">
+
+            <div class="row" style="height:50px;">
+                @if (t.Link != "")
+                {
+                    <form action="/Project/seeproject/" class="pull-right form-inline" method="post">
+                        <button type="submit" class="pull-right btn btn-default filter-col top-right">
+                            <span class="glyphicon glyphicon-eye-open"></span> Download
+                        </button>
+                    </form>
+                }
             </div>
         </div>
-        <br />
-
-
-        <hr class="hrProject">
-
-        <div class="row" style="height:50px;">
-            
-            <form action="/Project/seeproject/" class="pull-right form-inline" method="post">
-                <button type="submit" class="pull-right btn btn-default filter-col top-right">
-                    <span class="glyphicon glyphicon-eye-open"></span> Download
-                </button>
-            </form>
-</div>
     </div>
-</div>
-
 }
