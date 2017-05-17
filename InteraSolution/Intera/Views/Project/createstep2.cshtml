@@ -5,7 +5,7 @@
     int referencia = 1;
 }
 
-<h2 style="margin-top: 60px;">Create New Project - Step 2</h2>
+<h2 style="margin-top: 60px;">Criando novo projeto - Passo 2</h2>
 
 <div class="container">
     @if (ViewBag.MensagemErroAluno != null)
@@ -16,8 +16,8 @@
     }
     <div class="row">
         <!-- BOTÃO DE ABRIR MODAL DE ADICIONAR ALUNOS NO PROJETO -->
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#studentsModal" id="btnAddStudent">
-            <i class="fa fa-user-plus"></i> Add Student
+        <button type="button" class="btn btn-success btnAddAluno" data-toggle="modal" data-target="#studentsModal" id="btnAddStudent">
+            <i class="fa fa-user-plus"></i> Adicionar aluno
         </button>
 
         <!-- MODAL QUE MOSTRA A TABELA COM OS ALUNOS CADASTRADOS NO SERVIDOR -->
@@ -29,7 +29,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
-                        <h4 class="modal-title" id="studentsModalLabel">Students</h4>
+                        <h4 class="modal-title" id="studentsModalLabel">Alunos</h4>
                     </div>
 
                     <div class="modal-body">
@@ -37,7 +37,7 @@
                             <div id="custom-search-input">
                                 <div class="input-group col-md-12">
                                     <!-- BOTÃO DE EFETUAR PESQUISA DE ALUNOS PARA INSERIR NO PROJETO -->
-                                    <input type="text" name="Search" class="form-control input-lg" placeholder="Search for Name..." id="search" required />
+                                    <input type="text" name="Search" class="form-control input-lg" placeholder="Pesquisar por nome..." id="search" required />
                                     <span class="input-group-btn">
                                         <button class="btn btn-default btn-lg" type="submit">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -49,7 +49,7 @@
                         <div style="margin:60px">
                             <table class="table table-bordered">
                                 <tr>
-                                    <th>NAME</th>
+                                    <th>NOME</th>
                                     <th>E-MAIL</th>
                                     <th>#</th>
                                 </tr>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
@@ -79,10 +79,10 @@
 
     <table class="table table-hover">
         <tr>
-            <th>NAME</th>
-            <th>EMAIL</th>
-            <th>INITIAL DATE</th>
-            <th>FINAL DATE</th>
+            <th>NOME</th>
+            <th>E-MAIL</th>
+            <th>DATA DE INÍCIO</th>
+            <th>DATA DE ENTREGA</th>
             <th>#</th>
         </tr>
         @foreach (var aluno in ViewBag.AlunoProjeto)
@@ -95,7 +95,7 @@
                 <td>
                     <!-- BOTÃO DE ABRIR O MODAL DE DELETAR ALUNOS DO PROJETO NO PROJETO -->
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser_@createstep2">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir
                     </button>
 
                     <!-- MODAL DE CONFIRMAÇÃO DE DELETAR ALUNO DO PROJETO -->
@@ -106,16 +106,16 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h4 class="modal-title" id="confirmDelUser"> Confirm Deletion</h4>
+                                    <h4 class="modal-title" id="confirmDelUser"> Confirmar exclusão</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p> Are you sure you want to delete?</p>
+                                    <p> Tem certeza que deseja excluir?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancelar</button>
                                     <!-- BOTÃO DE CONFIRMAR EXCLUSÃO DO ALUNO DO PROJETO -->
                                     <a href="/project/delalunodata/@aluno.IdPessoa" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i> Delete
+                                        <i class="fa fa-trash"></i> Excluir
                                     </a>
                                 </div>
                             </div>
@@ -131,7 +131,7 @@
 
     <!--REFERÊNCIA-->
     <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addReferencia">
-        <i class="fa fa-user-plus"></i> Add Reference
+        <i class="fa fa-user-plus"></i> Adicionar referência
     </button>
     <!-- MODAL QUE MOSTRA A TABELA COM OS REFERÊNCIA CADASTRADOS NO SERVIDOR -->
     <div class="modal fade" id="addReferencia" tabindex="-1" role="dialog" aria-labelledby="addReferencialLabel">
@@ -141,7 +141,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="addReferenciaLabel">References</h4>
+                    <h4 class="modal-title" id="addReferenciaLabel">Referências</h4>
                 </div>
                 <form action="/project/addreferenciaprojeto" method="post">
 
@@ -149,14 +149,14 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <input type="text" name="referenceName" placeholder="Reference Name" class="form-control input-register" maxlength="60">
+                                    <input type="text" name="referenceName" placeholder="Nome referência" class="form-control input-register" maxlength="60">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-success btn-sm"> Save</button>
+                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-success btn-sm"> Salvar</button>
                     </div>
                 </form>
             </div>
@@ -164,8 +164,8 @@
     </div> <!--fim-->
     <table class="table table-bordered">
         <tr>
-            <td>REFERENCE</td>
-            <td>OPTIONS</td>
+            <td>REFERÊNCIA</td>
+            <td>OPÇÕES</td>
         </tr>
         @foreach (var item in ViewBag.Referencia)
         {
@@ -174,7 +174,7 @@
                 <td>
                     <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DE DELETAR REFERÊNCIA DO PROJETO -->
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelRef_@referencia">
-                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                        <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir
                     </button>
 
                     <!-- MODAL DE CONFIRMAÇÃO DE DELETAR REFERÊNCIA DO PROJETO -->
@@ -185,16 +185,16 @@
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
-                                    <h4 class="modal-title" id="confirmDelRef"> Confirm Reference Deletion</h4>
+                                    <h4 class="modal-title" id="confirmDelRef"> Confirmar exclusão da referência</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p> Are you sure you want to delete reference?</p>
+                                    <p> Tem certeza que deseja excluir a referência?</p>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancel</button>
+                                    <button type="button" class="btn btn-default btn-sm" data-dismiss="modal"> Cancelar</button>
                                     <!-- BOTÃO DE CONFIRMAR EXCLUSÃO DE REFERÊNCIA -->
                                     <a href="/project/delreferenciaprojeto/@item.IdReferencia" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
+                                        <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir
                                     </a>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@
             <div>
                 <input type="file" name="arquivo" accept="application/pdf" required />
             </div>
-            <a href="/project/fimprojeto" class="btn btn-default">Publish Project</a>
+            <a href="/project/fimprojeto" class="btn btn-default">Publicar projeto</a>
         }
         else
         {
@@ -222,9 +222,9 @@
                 <input type="file" name="arquivo" accept="application/pdf" />
             </div>
         <!-- BOTÃO DE FINALIZAR A CRIAÇÃO DO PROJETO -->
-            <button class="btn btn-default" type="submit">Finalize Project Creation</button>
-            <a href="/project/fimprojeto" class="btn btn-default">Publish Project</a>
-        }}
+            <button class="btn btn-default" type="submit">Finalizar criação do projeto</button>
+            <a href="/project/fimprojeto" class="btn btn-default">Publicar projeto</a>
+        }
     </form>
 </div>
 

@@ -1,0 +1,32 @@
+﻿.div-registros {
+    margin-top: 7.5%;
+}
+
+.div-registrosProjetos {
+    margin-top: 5.5%;
+}
+
+.tamanho-titulo {
+    font-size: 2em;
+}
+
+.tamanho-painel {
+    width: 80%;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    border-color: #222;
+}
+
+.panel-heading.cor-painel {
+    background-color: #222;
+    color: #FFFFFF;
+}
+
+.cor-borda>tbody>tr>td {
+    border-color: #222;
+}
+
+.tm-font {
+    font-size: 1.2em;
+}

@@ -1,0 +1,17 @@
+﻿.div-about {
+     margin-top: 8%;
+}
+
+.panel-heading.sobre-panel {
+     background-color: #222;
+     color: #FFF;
+}
+
+.titulo-sobre {
+    font-size: 2.2em;
+}
+
+.texto-estilo {
+    text-indent: 2.5em;
+    text-align: justify;
+}

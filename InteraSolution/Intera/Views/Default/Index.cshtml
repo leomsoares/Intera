@@ -5,23 +5,23 @@
 }
 <div>
 
-    <div class="jumbotron lead text-justify">
-        <h1 class="display-3">About Intera</h1>
-        <p>
-            The web design application Intera has an main function how to the development and interligation of projects for completion work of the course and scientific initiations. Having focused on the interaction between teacher and student who perform project development.
-            The completion works of course that are saw in the college library will have a better use, they will be available online for viewing and download. Is possible to create too a new project (Final Paper, Scientific Research) directly on the website.
+    <div class="jumbotron">
+        <h1 class="display-3">Sobre o Intera</h1>
+        <p class="texto-estilo">
+            A aplicação web Intera tem como função principal o desenvolvimento e interligação de projetos para o trabalho de conclusão do curso e iniciações científicas. Tendo-se centrado na interação entre o professor eo aluno que realizam o desenvolvimento do projeto.
+            Os trabalhos de conclusão do curso que são vistos na biblioteca da faculdade terão um melhor uso, eles estarão disponíveis on-line para visualização e também para serem baixados. É possível criar também um novo projeto (Trabalho de Conclusão de Curso e Iniciação Científica) diretamente no site.
         </p>
         <hr class="my-2">
         <p>
-            Here you can see the last projects in progress at the Fatec Rio Preto
+            Aqui você pode ver os últimos projetos em andamento na instituição Fatec Rio Preto.
         </p>
 
-        <p><a class="btn btn-danger btn-lg" href="/default/about" style="margin-top:10px" role="button">More Information</a></p>
+        <p><a class="btn btn-default btn-lg" href="/default/about" style="margin-top:10px" role="button">Mais informações</a></p>
     </div>
 </div>
 
 <div style="margin-top:40px">
-    <h1 style="text-decoration:unset">Last Add Projects</h1>
+    <h1 style="text-decoration:unset">Últimos projetos adicionados</h1>
 </div>
 
 
@@ -37,10 +37,10 @@
             <p class="text-justify">
                 @item.Descricao
             </p>
-            <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-danger" role="button"><i class="glyphicon glyphicon-eye-open"></i> View</a>
+            <a href="/Project/seeproject/@item.IdProjeto" class="btn btn-default" role="button"><i class="glyphicon glyphicon-eye-open"></i> Visualizar</a>
             @if (item.Link == "")
             {
-                <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Download</a>
+                <a href="#" class="btn btn-default" role="button"><i class="glyphicon glyphicon-circle-arrow-down"></i> Baixar</a>
             }
         </div>
 

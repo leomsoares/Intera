@@ -1,0 +1,22 @@
+﻿/*INDEX*/
+
+.teste-shadow:hover{
+    -webkit-box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+    box-shadow: 7px 11px 18px -4px rgba(0,0,0,0.75);
+    background-color:rgba(0,0,0,.075);
+}
+
+#drop-user li a:hover {
+    background: #ebebeb;
+}
+
+.img-user {
+    width: 30px;
+    height: 30px;
+}
+
+.texto-estilo {
+    text-indent: 2.5em;
+    text-align: justify;
+}

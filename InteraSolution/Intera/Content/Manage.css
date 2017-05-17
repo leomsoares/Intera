@@ -1,0 +1,33 @@
+﻿.div-gerenciar {
+    margin-top: 6%;
+}
+
+.titulo-pag {
+    margin-bottom: 1.5%;
+}
+
+.input-pesquisar {
+    width: 98%;
+}
+
+.btnPesquisar {
+    width: 140%;
+    border: 1px solid #808080;
+}
+
+.btnAddUser {
+    margin-bottom: 1.5%;
+    margin-left: 84.7%;
+}
+
+.div-usuarios {
+    margin-top: 3.5%; 
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 4%;
+}
+
+.cor-table {
+    background-color: #222; 
+    color: #fff;
+}
