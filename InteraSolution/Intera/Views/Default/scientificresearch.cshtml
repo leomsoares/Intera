@@ -3,33 +3,30 @@
     ViewBag.Title = "Scientific Research";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="margin-top:60px;">
+<div class="div-ic">
     @if (ViewBag.MsgErroForgot != null)
     {
         <div class="alert alert-success" role="alert">
             @ViewBag.MsgErroForgot
         </div>
     }
-    <h2>Scientific Research Projects</h2>
+    <h2>Projetos de Iniciações Científicas</h2>
     <div class="panel panel-heading">
         <!-- Default panel contents -->
         <div class="panel-body">
-            <p>See the main scientific research that are in progress or completed so far in Fatec Rio Preto education institution.</p>
+            <p>Veja aqui as principais iniciações científicas em andamento na FATEC Rio Preto (Faculdade de Tecnologia de São José do Rio Preto).</p>
         </div>
-        <div style="margin-top:30px;">
             <div class="container">
-                <div style="margin:20px">
-
+                <div class="div-ic2">
                     <table class="table table-bordered">
-                        <tr>
-
-                            <th>NAME</th>
-                            <th>ADVISOR</th>
-                            <th>INITIAL DATE</th>
-                            <th>STATUS</th>
+                        <tr class="cor-table">
+                            <th>NOME</th>
+                            <th>ORIENTADOR</th>
+                            <th>DATA DE INÍCIO</th>
+                            <th>SITUAÇÃO</th>
                             @if (Session["user"] != null && ViewBag.Status == 1)
                             {
-                                <th>JOIN</th>
+                                <th>PARTICIPAR</th>
                             }
                         </tr>
                         @foreach (var T in Model)
@@ -41,7 +38,7 @@
                                 @if (T.Status == 1)
                                 {
                                     <th style="color:goldenrod;">
-                                        IN PROGRESS
+                                        EM ANDAMENTO
                                     </th>
 
                                     if (Session["user"] != null && ViewBag.Status == 1)
@@ -61,7 +58,7 @@
                                 {
 
                                     <th style="color:green;">
-                                        FINISHED
+                                        FINALIZADO
                                     </th>
                                     if (Session["user"] != null && ViewBag.Status == 1)
                                     {
@@ -76,6 +73,5 @@
                     </table>
                 </div>
             </div>
-        </div>
     </div>
 </div>

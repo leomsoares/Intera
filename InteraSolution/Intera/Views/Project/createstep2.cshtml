@@ -5,7 +5,7 @@
     int referencia = 1;
 }
 
-<h2 style="margin-top: 60px;">Criando novo projeto - Passo 2</h2>
+<h2 class="title-create">Criando novo projeto - Passo 2</h2>
 
 <div class="container">
     @if (ViewBag.MensagemErroAluno != null)
@@ -35,11 +35,11 @@
                     <div class="modal-body">
                         <div class="col-md-12">
                             <div id="custom-search-input">
-                                <div class="input-group col-md-12">
+                                <div class="input-group col-md-12 input-pesquisar">
                                     <!-- BOTÃO DE EFETUAR PESQUISA DE ALUNOS PARA INSERIR NO PROJETO -->
-                                    <input type="text" name="Search" class="form-control input-lg" placeholder="Pesquisar por nome..." id="search" required />
+                                    <input type="text" name="Search" class="form-control input" placeholder="Pesquisar por nome..." id="search" required />
                                     <span class="input-group-btn">
-                                        <button class="btn btn-default btn-lg" type="submit">
+                                        <button class="btn btn-default btnPesquisar" type="submit">
                                             <i class="glyphicon glyphicon-search"></i>
                                         </button>
                                     </span>
@@ -58,7 +58,7 @@
                                     <tr>
                                         <td>@t.Nome</td>
                                         <td>@t.Email</td>
-                                        <td>
+                                        <td class="btn-alinhamento" >
                                             <!-- BOTÃO DE INSERIR ALUNOS NO PROJETO -->
                                             <a href="/project/addalunodata/@t.IdPessoa" class="btn btn-default btn-sm">
                                                 <i class="fa fa-plus"></i>
@@ -70,15 +70,15 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                        <button type="button" class="btn btn-default btn-Fechar" data-dismiss="modal">Fechar</button>
                     </div>
                 </div>
             </div>
         </div> <!-- fim -->
     </div>
 
-    <table class="table table-hover">
-        <tr>
+    <table class="table table-bordered">
+        <tr class="cor-table">
             <th>NOME</th>
             <th>E-MAIL</th>
             <th>DATA DE INÍCIO</th>
@@ -130,7 +130,7 @@
     </table>
 
     <!--REFERÊNCIA-->
-    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addReferencia">
+    <button type="button" class="btn btn-success btn-AddReferencia" data-toggle="modal" data-target="#addReferencia">
         <i class="fa fa-user-plus"></i> Adicionar referência
     </button>
     <!-- MODAL QUE MOSTRA A TABELA COM OS REFERÊNCIA CADASTRADOS NO SERVIDOR -->
@@ -149,7 +149,7 @@
                         <div class="row">
                             <div class="form-group">
                                 <div class="col-sm-10">
-                                    <input type="text" name="referenceName" placeholder="Nome referência" class="form-control input-register" maxlength="60">
+                                    <input type="text" name="referenceName" placeholder="Nome referência" class="form-control input-register input-referencia" maxlength="60">
                                 </div>
                             </div>
                         </div>
@@ -163,7 +163,7 @@
         </div>
     </div> <!--fim-->
     <table class="table table-bordered">
-        <tr>
+        <tr class="cor-table">
             <td>REFERÊNCIA</td>
             <td>OPÇÕES</td>
         </tr>
@@ -212,18 +212,18 @@
         @if (ViewBag.Status == 1)
         {
             <div>
-                <input type="file" name="arquivo" accept="application/pdf" required />
+                <input type="file" class="input-escolherArquivo" name="arquivo" accept="application/pdf" required />
             </div>
-            <a href="/project/fimprojeto" class="btn btn-default">Publicar projeto</a>
+            <a href="/project/fimprojeto" class="btn btn-default btn-Publicar">Publicar projeto</a>
         }
         else
         {
             <div>
-                <input type="file" name="arquivo" accept="application/pdf" />
+                <input type="file" class="input-escolherArquivo" name="arquivo" accept="application/pdf" />
             </div>
         <!-- BOTÃO DE FINALIZAR A CRIAÇÃO DO PROJETO -->
-            <button class="btn btn-default" type="submit">Finalizar criação do projeto</button>
-            <a href="/project/fimprojeto" class="btn btn-default">Publicar projeto</a>
+            <button class="btn btn-default btn-FinalizarProjeto" type="submit">Finalizar criação do projeto</button>
+            <a href="/project/fimprojeto" class="btn btn-default btn-Publicar">Publicar projeto</a>
         }
     </form>
 </div>

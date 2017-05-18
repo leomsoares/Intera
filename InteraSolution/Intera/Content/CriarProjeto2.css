@@ -1,0 +1,49 @@
+﻿/*CREATE PROJECT*/
+.input-create:focus {
+    border-color: #808080;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(128,128,128,.6);
+}
+
+.title-create{
+    width: 600px;
+    margin-top: 7%;
+}
+
+.btnAddAluno {
+    margin-top: 2%;
+    margin-bottom: 1.5%;
+    margin-left: 86%;
+}
+
+.btn-Fechar {
+    margin-right: 1.8%;
+}
+
+.btn-AddReferencia {
+    margin-top: 2%;
+    margin-bottom: 1.5%;
+    margin-left: 84.4%;
+}
+
+.input-referencia {
+    margin-left: 10%;
+}
+
+.input-escolherArquivo {
+    margin-top: 2%;
+    margin-left: 70%;
+}
+
+.btn-Publicar {
+    margin-top: 2%;
+    margin-bottom: 1.5%;
+    margin-left: 0.5%
+}
+
+.btn-FinalizarProjeto {
+    margin-top: 2%;
+    margin-bottom: 1.5%;
+    margin-left: 70%;
+}

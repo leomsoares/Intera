@@ -121,9 +121,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\CriarProjeto.css" />
+    <Content Include="Content\CriarProjeto1.css" />
+    <Content Include="Content\CriarProjeto2.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Content\IniciacaoCientifica.css" />
     <Content Include="Content\Manage.css" />
+    <Content Include="Content\MeusProjetos.css" />
     <Content Include="Content\Registrar.css" />
     <Content Include="Content\Relatorios.css" />
     <Content Include="Content\Sobre.css" />

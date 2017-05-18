@@ -2,6 +2,8 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+/*LAYOUT.CSHTML*/
+
 #btnAdd:hover{
     background-color: #2980b9;
     color:#FFF;
@@ -85,7 +87,6 @@
 /*ADD PROJECT*/
 .divProject{
     display:block;
-    margin-top: 15px;
 }
 
 .inputProject{

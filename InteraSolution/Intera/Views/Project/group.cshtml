@@ -3,17 +3,17 @@
     ViewBag.Title = "My Groups";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div style="margin-top:60px;">
-    <h2>My Projects</h2>
+<div class="div-meusProjetos">
+    <h2>Meus Projetos</h2>
 </div>
-<div style="margin:60px">
-    <table class="table table-bordered text-center">
-        <tr>
-            <th>NAME</th>
-            <th>ADVISOR</th>
-            <th>CO-ADVISOR</th>
-            <th>STATUS</th>
-            <th></th>
+<div class="div-meusProjetos2" >
+    <table class="table table-bordered projetos-table">
+        <tr class="cor-table">
+            <th class="text-center">NOME</th>
+            <th class="text-center">ORIENTADOR</th>
+            <th class="text-center">CO-ORIENTADOR</th>
+            <th class="text-center">SITUAÇÃO</th>
+            <th class="text-center">#</th>
         </tr>
         @foreach (var item in Model)
             {
@@ -52,13 +52,13 @@
                     <td>Finished</td>
                 }
                 <td>
-                    <a href="/project/posts/@item.IdProjeto"><i class="fa fa-commenting"></i> Posts</a>
+                    <a href="/project/posts/@item.IdProjeto" class="btn btn-sm btn-default"><i class="fa fa-commenting"></i> Posts</a>
                     @if (ViewBag.Status == 2)
                     {
-                        <a href="/project/edit/@item.IdProjeto"><i class="fa fa-pencil"></i> Edit</a>
+                        <a href="/project/edit/@item.IdProjeto" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Edit</a>
                         if (item.Status == 1)
                         {
-                            <a href="/project/endproject/@item.IdProjeto"><i class="fa fa-check"></i>Finish</a>
+                            <a href="/project/endproject/@item.IdProjeto" class="btn btn-sm btn-success"><i class="fa fa-check"></i>Finish</a>
                         }
                     }
                 </td>
