@@ -23,7 +23,7 @@
                             <th>NOME</th>
                             <th>ORIENTADOR</th>
                             <th>DATA DE INÍCIO</th>
-                            <th>SITUAÇÃO</th>
+                            <th class="alinhar-btns">SITUAÇÃO</th>
                             @if (Session["user"] != null && ViewBag.Status == 1)
                             {
                                 <th>PARTICIPAR</th>
@@ -37,7 +37,7 @@
                                 <th>@T.DataInicio.ToShortDateString()</th>
                                 @if (T.Status == 1)
                                 {
-                                    <th style="color:goldenrod;">
+                                    <th class="alinhar-btns" style="color:goldenrod;">
                                         EM ANDAMENTO
                                     </th>
 
@@ -57,7 +57,7 @@
                                 @if (T.Status == 2)
                                 {
 
-                                    <th style="color:green;">
+                                    <th class="alinhar-btns" style="color:green;">
                                         FINALIZADO
                                     </th>
                                     if (Session["user"] != null && ViewBag.Status == 1)

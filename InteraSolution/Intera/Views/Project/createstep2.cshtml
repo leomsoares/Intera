@@ -83,7 +83,7 @@
             <th>E-MAIL</th>
             <th>DATA DE INÍCIO</th>
             <th>DATA DE ENTREGA</th>
-            <th>#</th>
+            <th class="alinhar-btns">#</th>
         </tr>
         @foreach (var aluno in ViewBag.AlunoProjeto)
         {
@@ -92,7 +92,7 @@
                 <td>@aluno.Email</td>
                 <td>@aluno.DataEntrada.ToShortDateString()</td>
                 <td>--</td>
-                <td>
+                <td class="alinhar-btns">
                     <!-- BOTÃO DE ABRIR O MODAL DE DELETAR ALUNOS DO PROJETO NO PROJETO -->
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelUser_@createstep2">
                         <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir
@@ -164,14 +164,14 @@
     </div> <!--fim-->
     <table class="table table-bordered">
         <tr class="cor-table">
-            <td>REFERÊNCIA</td>
-            <td>OPÇÕES</td>
+            <td class="tam-tableRef">REFERÊNCIA</td>
+            <td class="alinhar-btns">OPÇÕES</td>
         </tr>
         @foreach (var item in ViewBag.Referencia)
         {
             <tr>
                 <td>@item.DescricaoReferencia</td>
-                <td>
+                <td class="alinhar-btns">
                     <!-- BOTÃO QUE ABRE O MODAL DE CONFIRMAÇÃO DE DELETAR REFERÊNCIA DO PROJETO -->
                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#confirmDelRef_@referencia">
                         <i class="fa fa-trash-o" aria-hidden="true"></i> Excluir

@@ -40,7 +40,7 @@
             <th>NOME</th>
             <th>E-MAIL</th>
             <th>TIPO</th>
-            <th>OPÇOES</th>
+            <th class="alinhar-btns">OPÇOES</th>
         </tr>
 
         @foreach (var t in Model)
@@ -63,7 +63,7 @@
                     <td>Professor</td>
                     professor = (Intera.Entity.Professor)t;
                 }
-                <td>
+                <td class="alinhar-btns">
                     <!-- BOTÃO QUE ABRE O MODAL DE EXIBIÇÃO DE DADOS DO USUÁRIO -->
                     <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#viewUser_@manageuser">
                         <i class="fa fa-eye" aria-hidden="true"></i> Visualizar
