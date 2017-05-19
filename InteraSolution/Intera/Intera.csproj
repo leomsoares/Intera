@@ -127,10 +127,12 @@
     <Content Include="Content\IniciacaoCientifica.css" />
     <Content Include="Content\Manage.css" />
     <Content Include="Content\MeusProjetos.css" />
+    <Content Include="Content\Projetos.css" />
     <Content Include="Content\Registrar.css" />
     <Content Include="Content\Relatorios.css" />
     <Content Include="Content\Sobre.css" />
     <Content Include="Content\Style.css" />
+    <Content Include="Content\VerProjeto.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="scripts\addCampo.js" />

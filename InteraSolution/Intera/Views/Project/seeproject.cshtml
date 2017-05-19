@@ -6,35 +6,45 @@
 @foreach (var t in Model)
 {
     Session["caminho"] = t.Link;
-    <div style="margin-top:100px;">
+    <div class="div-verProjeto">
         <div>
-            <h2 class="" style="font-weight:bolder;">See Project</h2>
+            <strong class="titulo-verProj">Informações sobre o projeto</strong>
         </div>
-        <div class="container" style="margin-top:10px;">
+        <div class="container">
             <br />
-            <div class="panel panel-default">
-                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Name Project</div>
+            <div class="panel panel-default ver-projPanel">
+                <div class="panel-heading ver-projeto">
+                    <strong class="titulos-verProj2">Nome do Projeto</strong>
+                </div>
                 <div class="panel-body"> @t.NomeProjeto</div>
 
 
-                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Authors</div>
+                <div class="panel-heading ver-projeto">
+                    <strong class="titulos-verProj2">Autores</strong>
+                </div>
                 @foreach (var U in ViewBag.Membros)
                 {
                     <div class="panel-body">@U.Nome</div>
                 }
-                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Advisor</div>
+                <div class="panel-heading ver-projeto">
+                    <strong class="titulos-verProj2">Orientador</strong>
+                </div>
                 @foreach (var T in ViewBag.ProfessorNome)
                 {
                     <div class="panel-body">@T.Nome</div>
                 }
-                <div class="panel-heading" style="font-weight: 900; font-size:larger;">References</div>
+                <div class="panel-heading ver-projeto">
+                    <strong class="titulos-verProj2">Referências</strong>
+                </div>
                 @foreach (var item in ViewBag.Refencia)
                 {
                     <div class="panel-body">@item.DescricaoReferencia</div>
                 }
 
 
-                <div class="panel-heading" style="font-weight: 900; font-size:larger;">Summary</div>
+                <div class="panel-heading ver-projeto">
+                    <strong class="titulos-verProj2">Resumo</strong>
+                </div>
                 <div class="panel-body">
                     @t.Descricao
                 </div>
